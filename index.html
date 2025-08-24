@@ -6,11 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { font-family: sans-serif; text-align: center; padding: 2rem; }
-    h1 { color: #2c3e50; }
+    .success {
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <h1>Willkommen auf der Website zu unserer Hochzeit!</h1>
   <p>Dies ist eine einfache HTML-Seite, gehostet mit GitHub Pages.</p>
+  <h2> Bitte Passwort eingeben:
+  </h2>
+  <button onclick="checkPassword()">Bestätigen</button>
+  <div id="result"></div>
+  <script>
+    const correctPassword "meinPasswort123";
+
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value;
+      const resultDiv = document.getElementById("result");
+      if (input === correctPassword){
+        resultDiv.innerHTML = "<p class='success'>Erfolgreich </p>;
+      } else {
+        resultDiv.innerHTML = "<p style='color:red;'>Falsches Passwort </p>";
+      }
+    }         
+  </script>
 </body>
 </html>

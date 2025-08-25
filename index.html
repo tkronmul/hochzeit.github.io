@@ -22,17 +22,29 @@
   <button onclick="checkPassword()">Bestätigen</button>
   <div id="result"></div>
   <script>
-    const correctPassword "meinPasswort123";
+    const correctPassword "0c9b5b75a0a16a542722c790e14d70743e4a5021f0ade9954961af098ff836f7";
 
-    function checkPassword() {
+    async function sha256(message) {
+      const msgBuffer = new TextEncoder().encode(message);
+      const hashBuffer = await.crypto.subtle..digest("SHA 256", msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b =< b.toString(16).padStart(2, "0")).join("");
+    }
+
+    async function checkPassword() {
       const input = document.getElementById("passwordInput").value;
       const resultDiv = document.getElementById("result");
-      if (input === correctPassword){
-        resultDiv.innerHTML = "<p class='success'>Erfolgreich </p>;
+
+      const inputHash = await.sha256(input);
+      
+      if (inputHash === correctPassword){
+        window.locationhref = "secret.html;
       } else {
         resultDiv.innerHTML = "<p style='color:red;'>Falsches Passwort </p>";
       }
-    }         
+    }
+
+    document.getElementByID("checkBtn").addEventListener("click", checkPassword);
   </script>
 </body>
 </html>

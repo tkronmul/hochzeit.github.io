@@ -16,8 +16,8 @@
 <body>
   <h1>Willkommen auf der Website zu unserer Hochzeit!</h1>
   <p>Dies ist eine einfache HTML-Seite, gehostet mit GitHub Pages.</p>
-  <h2> Bitte Passwort eingeben:
-  </h2>
+  
+  <h2> Bitte Passwort eingeben:</h2>
   <input type="password" id="passwordInput" placeholder="Passwort">
   
   <button onclick="checkBtn">Bestätigen</button>
@@ -25,25 +25,28 @@
   <div id="result"></div>
   
   <script>
-    const correctPassword "0c9b5b75a0a16a542722c790e14d70743e4a5021f0ade9954961af098ff836f7";
+    const correctPassword1 = "0c9b5b75a0a16a542722c790e14d70743e4a5021f0ade9954961af098ff836f7";
+    const correctPassword2 = "96241e6eb75114da43c9d2f7f5378edd5ed69d24e7dddc42f42d71961791f3fb"
 
     async function sha256(message) {
       const msgBuffer = new TextEncoder().encode(message);
-      const hashBuffer = await.crypto.subtle..digest("SHA 256", msgBuffer);
+      const hashBuffer = await.crypto.subtle.digest("SHA 256", msgBuffer);
       const hashArray = Array.from(new Uint8Array(hashBuffer));
-      return hashArray.map(b =< b.toString(16).padStart(2, "0")).join("");
+      return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
     }
 
     async function checkPassword() {
       const input = document.getElementById("passwordInput").value;
       const resultDiv = document.getElementById("result");
 
-      const inputHash = await.sha256(input);
+      const inputHash = await sha256(input);
       
-      if (inputHash === correctPassword){
-        window.locationhref = "secret.html;
-      } else {
-        resultDiv.innerHTML = "<p style='color:red;'>Falsches Passwort </p>";
+      if (inputHash === correctPassword1){
+        resultDiv.innerHTML = "<p class='success'> Passwort 1 korrekt </p>";
+      } else if (inputHash === correctPassword2) {
+        resultDiv.innerHTML = "<p class='success'> Passwort 2 korrekt </p>";
+      else {
+        resultDiv.innerHTML = "<p class='error';'>Falsches Passwort </p>";
       }
     }
 

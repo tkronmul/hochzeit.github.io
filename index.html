@@ -5,11 +5,30 @@
   <title>Meine Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 2rem; }
-    .success {
+    #menu {
+      margin-top 20px;
+      display: none;
+    }
+    .event-btn {
+      margin-right: 10 px;
+      padding: 8px 16px;
+      border: 1px solid #333;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .event-btn:hover {
+      background-color: #f0f0f0;
+    }
+    #formSection{
       margin-top: 20px;
-      color: green;
-      font-weight: bold;
+      display: none;
+      border: 1px solid #aaa;
+      padding: 15px;
+      border-radius: 5px;
+      background: #fafafa;
+    }
+    .field {
+      margin-button: 10px;
     }
   </style>
 </head>
@@ -17,19 +36,50 @@
   <h1>Willkommen auf der Website zu unserer Hochzeit!</h1>
   <p>Dies ist eine einfache HTML-Seite, gehostet mit GitHub Pages.</p>
   
+  <!--Passworteingabe -->
   <h2> Bitte Passwort eingeben:</h2>
   <input type="password" id="passwordInput" placeholder="Passwort">
-  
   <button id="checkBtn">Bestätigen</button>
-  
   <div id="result"></div>
 
+  <!-- Menü -->
   <div id="menu">
     <button id="event1" class="event-btn">Event 1</button>
     <button id="event2" class="event-btn">Event 2</button>
   </div>
 
   <div id="eventResult"></div>
+
+  <!-- Formular -->
+  <div id="formSection">
+    <h3 id="FormTitle"></h3>
+
+    <div class="field">
+      <label>Vorname: <input tpe="text" id="vorname"></label>
+    </div>
+    <div class="field">
+      <label>Nachname: <input type="text" id="nachname"></label>
+    </div>
+    <div class="field">
+      <label><input type="checkbox" id="teilname">Ich nehme teil</label>
+    </div>
+    <div class="field">
+      <label><input type="checkbox" id="begleitung"> Ich komme mit Begleitung</label>
+    </div>
+    <div id="begleitungSection" style="display:none;">
+      <label>Anzahl Begleitpersonen:
+      <input type="number" id="anzahlBeglleitung" value="1" min="1">
+      </label>
+      <div id="begleiterFelder"></div>
+    </div>
+
+    <div class="field">
+      <label>Kommentar:<br>
+        <textarea id="kommentar" rows="3" cols"30"></textarea>
+      </label>
+    </div>
+
+    <button id="submitBtn">Absenden</button>
   
   <script>
     const correctPassword1 = "78fd437096cd5bf68409698730d67ce7a588dfc26c325b3a2d7cdd9e35bd50b8";
@@ -68,12 +118,69 @@
       }
     }
 
+    // Passwort
     document.getElementById("checkBtn").addEventListener("click", checkPassword);
     document.getElementById("passwordInput").addEventListener("keypress", function(event) {
       if (event.key === "Enter") {
         checkPassword();
       }
     });
+
+    // Event-Auswahl
+    document.getElementById("event1").addEventListener("click", function() {
+      document.getElementById("EventResult").innerHTML = "Anmeldung zu Event 1";
+      showForm("Event 1");
+    });
+
+    document.getElementById("event2").addEventListener("click", function() {
+      document.getElementById("EventResult").innerHTML = "Anmeldung zu Event 2";
+      showForm("Event 2");
+    });
+
+    //Formular einblenden
+    function showForm(eventName) {
+      document.getElementById("formSection").style.display = "block";
+      document.getElementById("formTitle").innerText = "Anmeldung für " + eventName;
+    }
+
+    //Checkbox "Begleitung" steuert Anzeige
+    document.getElementById("begleitung".addEventListener("change", function() {
+      const section = document.getElementById("begleitungSection");
+      section.style.display = this.checked ? "block" : "none";
+      if (!this.checked) {
+        document.getElementById("begleiterFelder").innterHTML = "";
+      }
+    });
+
+    //Dynamisch Begleitfelder erzeugen
+    document.getElementById("anzahlBegleitung").addEventListener("input", functon() {
+      const container = document.getElementById("begleiterFelder");
+      container.innerHTML = "";
+      const anzahl = parseInt(this.value) || 0;
+      for (let i = 1; i<=anzahl; i++) {
+        <div class="field">
+          <label>Begleiter ${i} Vorname: <input type="text" name="begleiterVorname${i}"></label>
+          </div>
+        <div class="field">
+          <label>Begleiter ${i} Nachname: <input type="text" name="begleiterNachname"${i}"></label>
+          </div>
+        ;
+      }
+    });
+
+    //Button + Enter
+    document.getElementById("checkBtn").addEventListener("click", checkPassword);
+    document.getElementById("passwordInput").addEventListener(keypress", function(event) {
+      if (event.key === "Enter") checkPassword();
+    });
+
+    // Absenden (nur Demo)
+    document.getElementById("submitBtn").addEventListener("click", function() {
+      alert("Formular abgesendet (Demo)!");
+    });
+    
+
+    
   </script>
 </body>
 </html>

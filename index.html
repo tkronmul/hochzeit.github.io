@@ -160,6 +160,7 @@
       container.innerHTML = "";
       const anzahl = parseInt(this.value) || 0;
       for (let i = 1; i<=anzahl; i++) {
+        container.innerHTML +=
         <div class="field">
           <label>Begleiter ${i} Vorname: <input type="text" name="begleiterVorname${i}"></label>
           </div>

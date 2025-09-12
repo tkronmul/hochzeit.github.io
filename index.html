@@ -68,7 +68,7 @@
     </div>
     <div id="begleitungSection" style="display:none;">
       <label>Anzahl Begleitpersonen:
-      <input type="number" id="anzahlBeglleitung" value="1" min="1">
+      <input type="number" id="anzahlBegleitung" value="1" min="1">
       </label>
       <div id="begleiterFelder"></div>
     </div>
@@ -161,11 +161,11 @@
       const anzahl = parseInt(this.value) || 0;
       for (let i = 1; i<=anzahl; i++) {
         container.innerHTML +=
-        <div class="field">
-          <label>Begleiter ${i} Vorname: <input type="text" name="begleiterVorname${i}"></label>
+          <div class="field">
+            <label>Begleiter ${i} Vorname: <input type="text" name"begleiterVorname${i}"></label>
           </div>
-        <div class="field">
-          <label>Begleiter ${i} Nachname: <input type="text" name="begleiterNachname"${i}"></label>
+          <div class="field">
+            <label>Begleiter${i} Nachname: <input type="text" name=begleiterNachname${i}"></label>
           </div>
         ;
       }

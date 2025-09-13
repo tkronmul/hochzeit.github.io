@@ -80,6 +80,14 @@
     </div>
 
     <button id="submitBtn">Absenden</button>
+
+    <form id="eventForm">
+      <input type="text" id="vorname" name="vorname" placeholder="Vorname">
+      <input type="text" id="nachname" name="nachname" placeholder="Nachname">
+      <textarea id="kommentar" name="kommentar"></textarea>
+      <button type="submit">Absenden</button>
+    </form>
+    
   
   <script>
     const correctPassword1 = "78fd437096cd5bf68409698730d67ce7a588dfc26c325b3a2d7cdd9e35bd50b8";
@@ -194,6 +202,27 @@
       alert("Formular abgesendet (Demo)!");
       resetForm();
     });
+
+    //Daten an API senden
+    document.getElementById("eventForm").addEventListener("submit",async function(e) {
+      e.preventDefault();
+
+      const data= {
+        vorname: document.getElementById("vorname").value,
+        nachname: document.getElementById("nachname").value,
+        kommentar: document.getElementById("kommentar").value,
+      };
+
+      const response = await fetch("/api/saveForm", {
+        method: "POST",
+        headers: {"Content-type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      alert(result.message);
+    });
+          
     
 
     

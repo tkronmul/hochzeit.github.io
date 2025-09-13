@@ -85,7 +85,7 @@
     </div>
     <div id="begleitungSection" style="display:none;">
       <label>Anzahl Begleitpersonen:
-      <input type="number" id="anzahlBegleitung" value="1" min="1">
+      <input type="number" id="anzahlBegleiter" value="1" min="1">
       </label>
       <div id="begleiterFelder"></div>
     </div>
@@ -145,7 +145,7 @@
       document.getElementById("teilnahme").checked = false;
       document.getElementById("begleitung").checked = false;
       document.getElementById("begleitungSetion").style.display = "none";
-      document.getElementById("anzahlBegleitung").value = 1;
+      document.getElementById("anzahlBegleiter").value = 1;
       document.getElementById("begleiterFelder").innerHTML = "";
       document.getElementById("kommentar").value = "";
     }
@@ -189,7 +189,7 @@
     });
 
     //Dynamisch Begleitfelder erzeugen
-    document.getElementById("anzahlBegleitung").addEventListener("input", function() {
+    document.getElementById("anzahlBegleiter").addEventListener("input", function() {
       const container = document.getElementById("begleiterFelder");
       container.innerHTML = "";
       const anzahl = parseInt(this.value) || 0;

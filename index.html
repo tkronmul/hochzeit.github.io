@@ -50,7 +50,7 @@
 
   <div id="eventResult"></div>
 
-  // Neue Felder für API
+  //Neue Felder für API
   <div id="formSection">
     <h3 id="formTitle"></h3>
     //Felder definieren
@@ -209,14 +209,7 @@
     document.getElementById("passwordInput").addEventListener("keypress", function(event) {
       if (event.key === "Enter") checkPassword();
     });
-    <!-- Nicht benötigt
-    // Absenden (nur Demo)
-    document.getElementById("submitBtn").addEventListener("click", function() {
-      alert("Formular abgesendet (Demo)!");
-      resetForm();
-    });
-    -->
-
+    
     //Daten an API senden
     document.getElementById("eventForm").addEventListener("submit",async function(e) {
       alert("Formular abgesendet (Demo)!");

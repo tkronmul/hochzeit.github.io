@@ -50,10 +50,27 @@
 
   <div id="eventResult"></div>
 
-  <!-- Formular -->
+  // Neue Felder für API
   <div id="formSection">
     <h3 id="formTitle"></h3>
+    //Felder definieren
+    <form id="eventForm">
+      <label>Vorname: <input type="text" id="vorname-main" name="vorname" required></label><br>
+      <label>Nachname: <input type="text" id="nachname-main" name="nachname" required></label><br>
+      <label>Kommentar: <textarea id="kommentar" name="kommentar"></textarea></label><br>
+      <label><input type="checkbox" id="teilnahme"> Ich nehme teil</label><br>
+      <label><input type="checkbox" id="begleitung"> Ich komme mit Begleitung</label><br>
+      <div id="begleitung-container" class="hidden">
+        <label>Anzzahl Begleitpersonen: 
+        <input type="number" id="anzahlBegleiter" min="1" value="1">
+        </label>
+        <div id="begleitpersonen-felder"></div>
+      </div>
+      
+      <button type="submit">Absenden</button>
+    </form>
 
+    <!-- Alte Felder ohne API
     <div class="field">
       <label>Vorname: <input tpe="text" id="vorname"></label>
     </div>
@@ -80,13 +97,9 @@
     </div>
 
     <button id="submitBtn">Absenden</button>
+    -->
 
-    <form id="eventForm">
-      <input type="text" id="vorname" name="vorname" placeholder="Vorname">
-      <input type="text" id="nachname" name="nachname" placeholder="Nachname">
-      <textarea id="kommentar" name="kommentar"></textarea>
-      <button type="submit">Absenden</button>
-    </form>
+    
     
   
   <script>
@@ -196,15 +209,17 @@
     document.getElementById("passwordInput").addEventListener("keypress", function(event) {
       if (event.key === "Enter") checkPassword();
     });
-
+    <!-- Nicht benötigt
     // Absenden (nur Demo)
     document.getElementById("submitBtn").addEventListener("click", function() {
       alert("Formular abgesendet (Demo)!");
       resetForm();
     });
+    -->
 
     //Daten an API senden
     document.getElementById("eventForm").addEventListener("submit",async function(e) {
+      alert("Formular abgesendet (Demo)!");
       e.preventDefault();
 
       const data= {

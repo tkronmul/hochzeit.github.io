@@ -2,9 +2,18 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 
 
 export default async function handler(req, res) {
-      res.setHeader('Access-Control-Allow-Origin', 'https://hochzeitsfeier-anna-tim.de');
+      const allowedOrigins =[
+            'https://hochzeitsfeier-anna-tim.de',
+            'https://localhost:5500'
+            ];
+      const origin = req.headers.origin;
+      if (allowedOrigins.includes(origin)) {
+            res.setHeader('Access-Control-Allow-Origin', origin);
+      }
+      //res.setHeader('Access-Control-Allow-Origin', 'https://hochzeitsfeier-anna-tim.de');
       res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
       res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      
       if (req.method === 'OPTIONS') {
             return res.status(200).end();
       }

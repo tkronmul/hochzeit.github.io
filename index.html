@@ -211,24 +211,28 @@
     });
     
     //Daten an API senden
-    document.getElementById("eventForm").addEventListener("submit",async function(e) {
-      alert("Formular abgesendet (Demo)!");
+    document.getElementById("eventForm").addEventListener("submit",async (e) => {
+      //alert("Formular abgesendet (Demo)!");
       e.preventDefault();
 
-      const data= {
-        vorname: document.getElementById("vorname").value,
-        nachname: document.getElementById("nachname").value,
-        kommentar: document.getElementById("kommentar").value,
+      const formdata= {
+        vorname: e.target.vorname.value, //document.getElementById("vorname").value,
+        nachname: e.target.nachname.value, //document.getElementById("nachname").value,
+        kommentar: e.target.kommentar.value //document.getElementById("kommentar").value,
       };
 
-      const response = await fetch("/api/saveForm", {
+      try {
+        const response = await fetch("/api/saveForm", {
         method: "POST",
-        headers: {"Content-type": "application/json" },
-        body: JSON.stringify(data),
+        headers: {"Content-Type": "application/json" },
+        body: JSON.stringify(formdata),
       });
 
-      const result = await response.json();
-      alert(result.message);
+      const data = await response.json();
+      document.getElementById("result").textContent = data.message;
+      } catch(err) {
+        document.getElementById("result").textContent = "Fehler: " + err.message;
+      //alert(result.message);
     });
           
     

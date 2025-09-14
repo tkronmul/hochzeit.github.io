@@ -220,7 +220,16 @@
         nachname: e.target.nachname.value, //document.getElementById("nachname").value,
         kommentar: e.target.kommentar.value //document.getElementById("kommentar").value,
       };
+      export default async function handler(req, res) {
+      if (req.method === 'POST') {
+        // Daten speichern
+        res.status(200).json({ message: 'Erfolgreich gespeichert' });
+      } else {
+        res.status(405).json({ message: 'Method not allowed' });
+      }
+      }});
 
+      <!--
       try {
         const response = await fetch("/api/saveForm", {
         method: "POST",
@@ -233,7 +242,9 @@
       } catch(err) {
         document.getElementById("result").textContent = "Fehler: " + err.message;
       //alert(result.message);
-    }});
+    }
+    -->
+    
           
     
 

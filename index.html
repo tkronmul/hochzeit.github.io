@@ -216,13 +216,16 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = Object.fromEntries(new FormData(form).entries());
-      const res = await fetch ('https://hochzeit-github-io.vercel.app/api/saveForm', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-      const result = await res.json();
-      console.log(result);
+      try {
+        const res = await fetch ('https://hochzeit-github-io.vercel.app/api/saveForm', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+        const result = await res.json();
+        console.log(result);
+        alert('Fehler beim Senden des Formulars');
+      }
     });
     <!--
     document.getElementById("eventForm").addEventListener("submit",async (e) => {

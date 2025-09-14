@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       }
       try {
        // Daten speichern
-       const doc = new GoogleSpreadsheet(pricess.env.GOOGLE_SHEET_ID);
+       const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
        await doc.useServiceAccountAuth({
         client_email: process.env.GOOGLE_CLIENT_EMAIL,
         private_ley: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),

@@ -3,8 +3,5 @@
   "builds": [
     { "src": "index.html", "use": "@vercel/static" },
     { "src": "api/saveForm.js", "use": "@vercel/node" }
-  ]//,
-  //"routes": [
-    //{ "src": "/api/(.*)", "dest": "/api/$1.js" }
-  //]
+  ]
 }

@@ -1,4 +1,4 @@
-export default function handler(req, res) {
+ export default async function handler(req, res) {
       res.setHeader('Access-Control-Allow-Origin', 'https://hochzeitsfeier-anna-tim.de');
       res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
       res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -10,8 +10,13 @@ export default function handler(req, res) {
       }
       try {
             // Daten speichern
-            let data = req.body;
-            if (typeof data === 'string') data = JSON.parse(data);
+            let data = await new Promise((resolve, reject) => { //alt: req.body
+                  let body = '';
+                  req.on('data'. chunk => boy += chunk.toString());
+                  req.on('end', () => resolve(JSON.parse(body)));
+                  req.on('error' err => reject(err));
+            });
+            //if (typeof data === 'string') data = JSON.parse(data);
             console.log('Formulardaten:', data);
             return res.status(200).json({ message: 'Erfolgreich gespeichert' , received: data});
       } catch (error) {

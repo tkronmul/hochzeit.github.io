@@ -16,7 +16,7 @@ export default async function handler(req, res) {
        const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
        await doc.useServiceAccountAuth({
         client_email: process.env.GOOGLE_CLIENT_EMAIL,
-        private_ley: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+        private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
        });
 
        await doc.loadInfo();
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
        const formData = req.body;
        await sheet.addRow(formData);
 
-       res-status(200).json({message: 'Data erfolgreich gespeichert'});
+       return res-status(200).json({message: 'Data erfolgreich gespeichert'});
        /*
             let data = await new Promise((resolve, reject) => { //alt: req.body
                   let body = '';

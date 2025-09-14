@@ -1,9 +1,11 @@
-export default async function handler(req, res) {
+export default function handler(req, res) {
       res.setHeader('Access-Control-Allow-Origin', 'https://hochzeitsfeier-anna-tim.de');
       res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
       res.setHeader('Access-Control-Allow-Heaaders', 'Content-Type');
-      if (req-method === 'OPTIONS') return res.status(200).end();
-      if (req.ethod !== 'POST') {
+      if (req-method === 'OPTIONS') {
+            return res.status(200).end();
+      }
+      if (req.method !== 'POST') {
             return res.status(405).json({ message: 'Method ${req.method} not allowed' });
       }
       try {

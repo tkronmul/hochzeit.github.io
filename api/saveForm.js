@@ -4,7 +4,7 @@ export default async function handler(req, res) {
       res.setHeader('Access-Control-Allow-Heaaders', 'Content-Type');
       if (req-method === 'OPTIONS') return res.status(200).end();
       if (req.ethod !== 'POST') {
-            return res.status(405).json({ message: 'Method &{req.method} not allowed' });
+            return res.status(405).json({ message: 'Method ${req.method} not allowed' });
       }
       try {
             // Daten speichern
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
             console.log('Formulardaten:', data);
             return res.status(200).json({ message: 'Erfolgreich gespeichert' , received: data});
       } catch (error) {
-            console.error('Feler in saveForm:', error);
+            console.error('Fehler in saveForm:', error);
             return res.status(500).json({message: 'Fehler beim Verarbeiten der Daten', error: error.message })
       }
       }

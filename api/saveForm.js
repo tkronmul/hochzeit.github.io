@@ -12,9 +12,9 @@
             // Daten speichern
             let data = await new Promise((resolve, reject) => { //alt: req.body
                   let body = '';
-                  req.on('data'. chunk => boy += chunk.toString());
+                  req.on('data', chunk => body += chunk.toString());
                   req.on('end', () => resolve(JSON.parse(body)));
-                  req.on('error' err => reject(err));
+                  req.on('error', err => reject(err));
             });
             //if (typeof data === 'string') data = JSON.parse(data);
             console.log('Formulardaten:', data);

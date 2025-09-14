@@ -211,16 +211,25 @@
     });
     
     //Daten an API senden
+    const formd = document.getElementById('eventForm');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formdata = Object.fromEntries(new FormData(form).entries());
+      const res = await fetch ('/api/saveForm', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      const result = await res.json();
+      console.log(result);
+    });
+    <!--
     document.getElementById("eventForm").addEventListener("submit",async (e) => {
       //alert("Formular abgesendet (Demo)!");
       e.preventDefault();
-
-      const formdata= {
-        vorname: e.target.vorname.value, //document.getElementById("vorname").value,
-        nachname: e.target.nachname.value, //document.getElementById("nachname").value,
-        kommentar: e.target.kommentar.value //document.getElementById("kommentar").value,
-      };
       
+           
       
       try {
         const response = await fetch("/api/saveForm", {
@@ -236,6 +245,7 @@
       //alert(result.message);
     }
     });
+    -->
     
           
     

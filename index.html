@@ -54,7 +54,7 @@
   <div id="formSection">
     <h3 id="formTitle"></h3>
     //Felder definieren
-    <form id="eventForm">
+    <form id="eventForm" method="POST" action"/api/saveForm">
       <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br>
       <label>Nachname: <input type="text" id="nachname" name="nachname" required></label><br>
       <label>Kommentar: <textarea id="kommentar" name="kommentar"></textarea></label><br>
@@ -216,7 +216,7 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = Object.fromEntries(new FormData(form).entries());
-      const res = await fetch ('/api/saveForm', {
+      const res = await fetch ('https://hochzeit-github-io.vercel.app/api/saveForm', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

@@ -214,7 +214,7 @@
     const form = document.getElementById('eventForm');
 
     //form.addEventListener('submit', async (e) => {
-    document.querySelector("form".addEventListener("submit", async (e) => {
+    document.querySelector("form").addEventListener("submit", async (e) => {
       e.preventDefault();
       const formData = Object.fromEntries(new FormData(form).entries());
       try {

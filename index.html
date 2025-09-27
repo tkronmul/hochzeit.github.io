@@ -105,6 +105,7 @@
   <script>
     const correctPassword1 = "78fd437096cd5bf68409698730d67ce7a588dfc26c325b3a2d7cdd9e35bd50b8";
     const correctPassword2 = "0f19c406623e70f5d55cbf72a5636ca4c0538db997e4edbe22d0b27c70afa591";
+    const correctPassword3 = "936a185caaa266bb9cbe981e9e05cb78cd732b0b3280eb944412bb6f8f8f07af";
 
     async function sha256(message) {
       const msgBuffer = new TextEncoder().encode(message);
@@ -132,6 +133,11 @@
         menu.style.display ="block";
         event1.style.display = "inline-block";
         event2.style.display = "inline-block";
+      } else if(inputHash === correctPassword3) {
+        resultDiv.innerHTML = "<p class='success'> Passwort 3 korrekt </p>";
+        menu.style.display = "block";
+        event1.style.display ="none";
+        event2.style.display ="inline-block";
       }
       else {
         resultDiv.innerHTML = "<p class='error';'>Falsches Passwort </p>";

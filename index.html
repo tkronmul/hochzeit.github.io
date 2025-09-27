@@ -97,7 +97,7 @@
   //Menu
     <button id="menuButton">☰ Menü </button>
 
-    <div id="sideMenu">
+    <div id="sideMenu" style="diplay:none;">
       <h3 data-level="Ebene 1">Ebene 1</h3>
       <div class="submenu">
         <div data-level="Unterkapitel 1.1">Unterkapitel 1.1</div>
@@ -183,12 +183,18 @@
       return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
     }
 
+    function onLoginSuccess() {
+      
+
     async function checkPassword() {
       const input = document.getElementById("passwordInput").value;
       const resultDiv = document.getElementById("result");
       const menu = document.getElementById("menu");
       const event1 = document.getElementById("event1");
-      const event2 = document.getElementById("event2");                                           
+      const event2 = document.getElementById("event2");
+      const menuButton = document.getElementById("menuButton");
+      const sideMenu = document.getElementById("sideMenu");
+      const output = document.getElementById("output");
       
       const inputHash = await sha256(input);
       
@@ -197,16 +203,22 @@
         menu.style.display ="block";
         event1.style.display = "inline-block";
         event2.style.display = "none";
+        menuButton.classList.remove("hidden");
+        sideMenu.classList.remove("hidden");
       } else if (inputHash === correctPassword2) {
         resultDiv.innerHTML = "<p class='success'> Passwort 2 korrekt </p>";
         menu.style.display ="block";
         event1.style.display = "inline-block";
         event2.style.display = "inline-block";
+        menuButton.classList.remove("hidden");
+        sideMenu.classList.remove("hidden");
       } else if(inputHash === correctPassword3) {
         resultDiv.innerHTML = "<p class='success'> Passwort 3 korrekt </p>";
         menu.style.display = "block";
         event1.style.display ="none";
         event2.style.display ="inline-block";
+        menuButton.classList.remove("hidden");
+        sideMenu.classList.remove("hidden");
       }
       else {
         resultDiv.innerHTML = "<p class='error';'>Falsches Passwort </p>";
@@ -214,9 +226,7 @@
       }
     }
 
-    const menuButton = document.getElementById("menuButton");
-    const sideMenu = document.getElementById("sideMenu");
-    const output = document.getElementById("output");
+    
 
     menuButton.addEventListener("click", () => {
       sideMenu.classList.toggle("open");

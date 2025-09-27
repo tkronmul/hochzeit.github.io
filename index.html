@@ -30,6 +30,51 @@
     .field {
       margin-button: 10px;
     }
+    #menuButton {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      background: #0077cc;
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    #sidemenu {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 300px;
+      height: 100%;
+      background: #f5f5f5;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+      transition: right 0.3s ease;
+      padding: 20px;
+      z-index: 1000;
+    }
+    #sideMenu.open {
+      right: 0;
+    }
+    #sideMenu h3 {
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    .submenu {
+      margin-left: 20px;
+      margin-top: 8px;
+    }
+    .submenu div {
+      cursor: pointer;
+      padding: 4px 0;
+    }
+    #output {
+      margin: 50px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color:#333;
+    }
   </style>
 </head>
 <body>
@@ -99,6 +144,27 @@
     <button id="submitBtn">Absenden</button>
     -->
 
+    //Menu
+    <button id="menuButton">☰ Menü </button>
+
+    <div id="sideMenu">
+      <h3 data-level="Ebene 1">Ebene 1</h3>
+      <div class="submenu">
+        <div data-level="Unterkapitel 1.1">Unterkapitel 1.1</div>
+        <div data-level="Unterkapitel 1.2">Unterkapitel 1.2</div>
+        <div data-level="Unterkapitel 1.3">Unterkapitel 1.3</div>
+      </div>
+      <h3 data-level="Ebene 2">Ebene 2</h3>
+      <div class"submenu">
+        <div data-level="Unterkapitel 2.1">Unterkapitel 2.1</div>
+        <div data-level="Unterkapitel 2.2">Unterkapitel 2.2</div>
+        <div data-level="Unterkapitel 2.3">Unterkapitel 2.3</div>
+      </div>
+    </div>
+
+    <div id="output"> Bitte wähle eine Option im Menü </div>
+    
+
     
     
   
@@ -144,6 +210,23 @@
         menu.style.display = "none";
       }
     }
+
+    const menuButton = document.getElementById("menuButton");
+    const sideMenu = document.getElementById("sideMenu");
+    const output = document.getElementById("output")
+
+    menuButton.addEventListener("click", () => {
+      sideMenu.classList.toggle("open");
+    });
+
+    sideMenu.addEventListener("click", (e) => {
+      if (e.target.dataset.level) {
+        output.textContent = e.target.dataset.level;
+        sideMenu.classList.remove("open");
+      }
+    });
+
+    
 
     function resetForm() {
       document.getElementById("vorname").value = "";
@@ -215,7 +298,8 @@
     document.getElementById("passwordInput").addEventListener("keypress", function(event) {
       if (event.key === "Enter") checkPassword();
     });
-    
+
+       
     //Daten an API senden
     const form = document.getElementById('eventForm');
 

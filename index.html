@@ -234,6 +234,7 @@
 
     sideMenu.addEventListener("click", (e) => {
       if (e.target.dataset.level) {
+        output.classList.remove("hidden");
         output.textContent = e.target.dataset.level;
         sideMenu.classList.remove("open");
       }

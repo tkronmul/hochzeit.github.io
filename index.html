@@ -116,24 +116,26 @@
     <div id="sideMenu" class="hidden">
       <h3 data-level="Ebene 1">Ebene 1</h3>
       <div class="submenu">
-        <div data-level="Unterkapitel 1.1">Unterkapitel 1.1</div>
-        <div data-level="Unterkapitel 1.2">Unterkapitel 1.2</div>
-        <div data-level="Unterkapitel 1.3">Unterkapitel 1.3</div>
+        <div data-level="kap1">Unterkapitel 1.1</div>
+        <div data-level="kap2">Unterkapitel 1.2</div>
+        <div data-level="kap3">Unterkapitel 1.3</div>
       </div>
       <h3 data-level="Ebene 2">Ebene 2</h3>
       <div class"submenu">
-        <div data-level="Unterkapitel 2.1">Unterkapitel 2.1</div>
-        <div data-level="Unterkapitel 2.2">Unterkapitel 2.2</div>
-        <div data-level="Unterkapitel 2.3">Unterkapitel 2.3</div>
+        <div data-level="kap10">Unterkapitel 2.1</div>
+        <div data-level="kap11">Unterkapitel 2.2</div>
+        <div data-level="kap12">Unterkapitel 2.3</div>
       </div>
     </div>
 
     <div id="output" class="hidden"> Bitte wähle eine Option im Menü </div>
 
-  <section id="kap1" class="hidden">Bereich 1.1</section>
-  <section id="kap2" class="hidden">Bereich 1.2</section>
-  <section id="kap3" class="hidden">Bereich 2.1</section>
-  <section id="kap4" class="hidden">Bereich 2.2</section>
+  <section id="kap1" class="hidden">Zeitstrahl</section>
+  <section id="kap2" class="hidden">Informationen</section>
+  <section id="kap3" class="hidden">Anmeldung</section>
+  <section id="kap10" class="hidden">Zeitstrahl</section>
+  <section id="kap11" class="hidden">Informationen</section>
+  <section id="kap12" class="hidden">Anmeldung</section>
   
   <div id="eventResult"></div>
 
@@ -224,7 +226,8 @@
         menuButton.classList.remove("hidden");
         sideMenu.classList.remove("hidden");
         kap1.classList.remove("hidden");
-        kap2.classList.remove("hidden");        
+        kap2.classList.remove("hidden"); 
+        kap3.classList.remove("hidden");
       } else if (inputHash === correctPassword2) {
         resultDiv.innerHTML = "<p class='success'> Passwort 2 korrekt </p>";
         menu.style.display ="block";
@@ -235,7 +238,9 @@
         kap1.classList.remove("hidden");
         kap2.classList.remove("hidden");
         kap3.classList.remove("hidden");
-        kap4.classList.remove("hidden"); 
+        kap10.classList.remove("hidden");
+        kap11.classList.remove("hidden");
+        kap12.classList.remove("hidden");
       } else if(inputHash === correctPassword3) {
         resultDiv.innerHTML = "<p class='success'> Passwort 3 korrekt </p>";
         menu.style.display = "block";
@@ -243,8 +248,9 @@
         event2.style.display ="inline-block";
         menuButton.classList.remove("hidden");
         sideMenu.classList.remove("hidden");
-        kap3.classList.remove("hidden");
-        kap4.classList.remove("hidden"); 
+        kap10.classList.remove("hidden");
+        kap11.classList.remove("hidden");
+        kap12.classList.remove("hidden");
       }
       else {
         resultDiv.innerHTML = "<p class='error';'>Falsches Passwort </p>";

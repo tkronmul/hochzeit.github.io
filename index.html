@@ -150,6 +150,7 @@
     </div>
 
     <div id="output" class="hidden"> Bitte wähle eine Option im Menü </div>
+  
   <!-- Bereiche -->
   <section id="kap1" class="hidden">Zeitstrahl</section>
   <section id="kap2" class="hidden">Informationen</section>
@@ -161,10 +162,11 @@
   <section id="kap11" class="hidden">Informationen</section>
   <section id="kap12" class="hidden">
     Anmeldung
-    <button id="event2" class="event-btn">Event 2</button>
+    <button id="openFormBtn" class="hidden">Anmeldung</button>
   </section>
+
+  <!-- Formular Polterabend -->
   
-  <button id="openFormBtn">Formular öffnen</button>
 
   //Neue Felder für API
   <div id="modalPolterabend" class="hidden">
@@ -227,7 +229,6 @@
       const hashArray = Array.from(new Uint8Array(hashBuffer));
       return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
     } 
-
     async function checkPassword() {
       const input = document.getElementById("passwordInput").value;
       const resultDiv = document.getElementById("result");
@@ -235,7 +236,7 @@
       const menuButton = document.getElementById("menuButton");
       const sideMenu = document.getElementById("sideMenu");
       const output = document.getElementById("output");
-                 
+      const PolterabendButton = document.getElementById("openFormBtn");          
       const inputHash = await sha256(input);
 
       //Subseiten aufbauen je nach Passwort
@@ -251,6 +252,7 @@
         formPolterabend.style.display = "inline-block";
         menuButton.classList.remove("hidden");
         sideMenu.classList.remove("hidden");
+        PolterabendButton.classList.remove("hidden");
         kap1.classList.remove("hidden");
         kap2.classList.remove("hidden");
         kap3.classList.remove("hidden");
@@ -270,6 +272,12 @@
         resultDiv.innerHTML = "<p class='error';'>Falsches Passwort </p>";
       }
     }
+    //Button + Enter
+    document.getElementById("checkBtn").addEventListener("click", checkPassword);
+    document.getElementById("passwordInput").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") checkPassword();
+    });
+    
     //Menüband
     menuButton.addEventListener("click", () => {
       sideMenu.classList.toggle("open");
@@ -313,11 +321,8 @@
         modal.style.display ="none";
       }
     });
-    //Button + Enter
-    document.getElementById("checkBtn").addEventListener("click", checkPassword);
-    document.getElementById("passwordInput").addEventListener("keypress", function(event) {
-      if (event.key === "Enter") checkPassword();
-    });
+    
+    
 
     
   </script>

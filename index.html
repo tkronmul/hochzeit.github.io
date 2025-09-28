@@ -167,11 +167,11 @@
   <button id="openFormBtn">Formular öffnen</button>
 
   //Neue Felder für API
-  <div id="formPolterabend" class="hidden">
+  <div id="modalPolterabend" class="hidden">
     <div class="modal-content">
       <span id="clodeModal" class="close">&times;</span>
       <h2>Anmeldung Polterabend</h3>
-      <form id="myForm">
+      <form id="formPolterabend">
         <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br><br>
         <label>Nachname: <input type="text" id="nachname" name="nachname" required></label><br><br>
         <label><input type="checkbox" id="teilnahme"> Ich nehme teil</label><br>
@@ -288,8 +288,8 @@
 
 
     //Formular Polterabend
-    const formPolterabend = document.getElementById("myModal");
-    const form = document.getElementById("myForm");
+    const modal = document.getElementById("modalPolterabend");
+    const form = document.getElementById("formPolterabend");
     const notification = document.getElementById("notification");
 
     openFormBtn.addEventListener("click", () => {

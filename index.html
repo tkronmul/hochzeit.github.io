@@ -232,7 +232,7 @@
       const input = document.getElementById("passwordInput").value;
       const resultDiv = document.getElementById("result");
       const openFormBtn = document.getElementById("openFormBtn");
-      const Polterabend = document.getElementById("myModal");
+      const formPolterabend = document.getElementById("myModal");
       const form = document.getElementById("myForm");
       const notification = document.getElementById("notification");
       const menuButton = document.getElementById("menuButton");
@@ -251,7 +251,7 @@
         kap3.classList.remove("hidden");
       } else if (inputHash === correctPassword2) {
         resultDiv.innerHTML = "<p class='success'> Passwort 2 korrekt </p>";
-        Polterabend.style.display = "inline-block";
+        formPolterabend.style.display = "inline-block";
         menuButton.classList.remove("hidden");
         sideMenu.classList.remove("hidden");
         kap1.classList.remove("hidden");
@@ -262,7 +262,7 @@
         kap12.classList.remove("hidden");
       } else if(inputHash === correctPassword3) {
         resultDiv.innerHTML = "<p class='success'> Passwort 3 korrekt </p>";
-        Polterabend.style.display ="inline-block";
+        formPolterabend.style.display ="inline-block";
         menuButton.classList.remove("hidden");
         sideMenu.classList.remove("hidden");
         kap10.classList.remove("hidden");

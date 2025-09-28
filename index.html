@@ -138,59 +138,51 @@
   <div id="eventResult"></div>
 
   //Neue Felder für API
-  <div id="formSection">
-    <h3 id="formTitle"></h3>
-    //Felder definieren
-    <form id="eventForm" method="POST" action"/api/saveForm">
-      <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br>
-      <label>Nachname: <input type="text" id="nachname" name="nachname" required></label><br>
-      <label>Kommentar: <textarea id="kommentar" name="kommentar"></textarea></label><br>
-      <label><input type="checkbox" id="teilnahme"> Ich nehme teil</label><br>
-      <label><input type="checkbox" id="begleitung"> Ich komme mit Begleitung</label><br>
-      <div id="begleitungSection" class="hidden">
-        <label>Anzahl Begleitpersonen: 
-        <input type="number" id="anzahlBegleiter" min="1" value="1">
+  <div id="formPolterabend" class="hidden">
+    <div class="modal-content">
+      <span id="clodeModal" class="close">&times;</span>
+      <h2>Anmeldung Polterabend</h3>
+      <form id="dynamicForm">
+        <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br><br>
+        <label>Nachname: <input type="text" id="nachname" name="nachname" required></label><br><br>
+        <label><input type="checkbox" id="teilnahme"> Ich nehme teil</label><br>
+        <label><input type="checkbox" id="begleitung"> Ich komme mit Begleitung</label><br>
+        <div id="begleitungSection" class="hidden">
+          <label>Anzahl Begleitpersonen: 
+            <input type="number" id="anzahlBegleiter" min="1" value="1">
+          </label>
+          <div id="begleiterFelder"></div>
+        </div>
+        <label>
+          <input type="radio" name="Uebernachtung" value="zelten"> Zelten
         </label>
-        <div id="begleiterFelder"></div>
-      </div>
-      
+        <label>
+          <input type="radio" name="Uebernachtung" value="selbst"> Selbstorganisieren
+        </label>
+        <label><input type="checkbox" id="mitbringen"> Ich bringe etwas für das Buffet mit</label><br>
+        <div id="MitbringenSection" class="hidden">
+          <label>Auswahl</label>
+          <label><input type="checkbox" name="Buffet" value="Kartoffelsalat"> Kartoffelsalat </label>
+          <label><input type="checkbox" name="Buffet" value="Tomate-Mozzarella"> Tomate-Mazzarerlla </label>
+          <label><input type="checkbox" name="Buffet" value="Nudelsalat"> Nudelsalat </label>
+          <label><input type="checkbox" name="Buffet" value="Krautsalat"> Krautsalat </label>
+          <label><input type="checkbox" name="Buffet" value="Grüner Salat"> Grüner Salat </label>
+          <label><input type="checkbox" name="Buffet" value="Gurkensalat"> Gurkensalat </label>
+          <label><input type="checkbox" name="Buffet" value="Pizzaschnecken"> Pzzaschnecken </label>
+          <label><input type="checkbox" name="Buffet" value="Tzatziki"> Tzatziki </label>
+          <label><input type="checkbox" name="Buffet" value="Hummus"> Hummus </label>
+          <label><input type="checkbox" name="Buffet" value="Trauben-Käse-Spieße"> Trauben-Käse-Spieße </label>
+          <label><input type="checkbox" name="Buffet" value="Gemüse mit Dip"> Gemüse mit Dip </label>
+          <label><input type="checkbox" name="Buffet" value="Muffins"> Muffins </label>
+          <label><input type="checkbox" name="Buffet" value="Brownies"> Brownies </label>
+          <label>Weiteres: <input type="text" id="Weiteres" name="Weiteres" ></label>
+        </div>       
+        <label>Kommentar: <textarea id="kommentar" name="kommentar"></textarea></label><br>
       <button type="submit">Absenden</button>
     </form>
+    </div>
+  </div>
 
-    <!-- Alte Felder ohne API
-    <div class="field">
-      <label>Vorname: <input tpe="text" id="vorname"></label>
-    </div>
-    <div class="field">
-      <label>Nachname: <input type="text" id="nachname"></label>
-    </div>
-    <div class="field">
-      <label><input type="checkbox" id="teilname">Ich nehme teil</label>
-    </div>
-    <div class="field">
-      <label><input type="checkbox" id="begleitung"> Ich komme mit Begleitung</label>
-    </div>
-    <div id="begleitungSection" style="display:none;">
-      <label>Anzahl Begleitpersonen:
-      <input type="number" id="anzahlBegleiter" value="1" min="1">
-      </label>
-      <div id="begleiterFelder"></div>
-    </div>
-
-    <div class="field">
-      <label>Kommentar:<br>
-        <textarea id="kommentar" rows="3" cols"30"></textarea>
-      </label>
-    </div>
-
-    <button id="submitBtn">Absenden</button>
-    -->
-
-    
-    
-
-    
-    
   
   <script>
     const correctPassword1 = "78fd437096cd5bf68409698730d67ce7a588dfc26c325b3a2d7cdd9e35bd50b8";
@@ -281,25 +273,8 @@
       document.getElementById("kommentar").value = "";
     }
 
-    // Passwort
-    <!--
-    document.getElementById("checkBtn").addEventListener("click", checkPassword);
-    document.getElementById("passwordInput").addEventListener("keypress", function(event) {
-      if (event.key === "Enter") {
-        checkPassword();
-      }
-    });
-    -->
-
-    // Event-Auswahl
-    document.getElementById("event1").addEventListener("click", function() {
-      document.getElementById("eventResult").innerHTML = "Anmeldung zu Event 1";
-      showForm("Event 1");
-      resetForm();
-    });
-
     document.getElementById("event2").addEventListener("click", function() {
-      document.getElementById("eventResult").innerHTML = "Anmeldung zu Event 2";
+      document.getElementById("formPolterabend").innerHTML = "Anmeldung zu Event 2";
       showForm("Event 2");
       resetForm();
     });

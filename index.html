@@ -79,6 +79,19 @@
       font-weight: bold;
       color:#333;
     }
+
+    section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      color: white;
+    }
+    #kapitel1-1 {background: #4caf50;}
+    #kapitel1-2 {background: #2196f3;}
+    #kapitel2-1 {background: #ff9800;}
+    #kapitel2-2 {background: #9c27b0;}
   </style>
 </head>
 <body>
@@ -117,6 +130,11 @@
 
     <div id="output" class="hidden"> Bitte wähle eine Option im Menü </div>
 
+  <section id="kapitel1-1" class="hidden">Bereich 1.1</section>
+  <section id="kapitel1-2" class="hidden">Bereich 1.2</section>
+  <section id="kapitel2-1" class="hidden">Bereich 2.1</section>
+  <section id="kapitel2-2" class="hidden">Bereich 2.2</section>
+  
   <div id="eventResult"></div>
 
   //Neue Felder für API
@@ -195,7 +213,7 @@
       const menuButton = document.getElementById("menuButton");
       const sideMenu = document.getElementById("sideMenu");
       const output = document.getElementById("output");
-      
+            
       const inputHash = await sha256(input);
       
       if (inputHash === correctPassword1){
@@ -236,6 +254,9 @@
       if (e.target.dataset.level) {
         output.classList.remove("hidden");
         output.textContent = e.target.dataset.level;
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth"});
+        }
         sideMenu.classList.remove("open");
       }
     });

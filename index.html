@@ -213,6 +213,10 @@
       const menuButton = document.getElementById("menuButton");
       const sideMenu = document.getElementById("sideMenu");
       const output = document.getElementById("output");
+      const kapitel1-1 = document.getElementById("kapitel1-1");
+      const kapitel1-2 = document.getElementById("kapitel1-2");
+      const kapitel2-1 = document.getElementById("kapitel2-1");
+      const kapitel2-2 = document.getElementById("kapitel2-2");
             
       const inputHash = await sha256(input);
       
@@ -223,6 +227,8 @@
         event2.style.display = "none";
         menuButton.classList.remove("hidden");
         sideMenu.classList.remove("hidden");
+        kapitel1-1.classList.remove("hidden");
+        kapitel1-2.classList.remove("hidden");        
       } else if (inputHash === correctPassword2) {
         resultDiv.innerHTML = "<p class='success'> Passwort 2 korrekt </p>";
         menu.style.display ="block";
@@ -230,6 +236,10 @@
         event2.style.display = "inline-block";
         menuButton.classList.remove("hidden");
         sideMenu.classList.remove("hidden");
+        kapitel1-1.classList.remove("hidden");
+        kapitel1-2.classList.remove("hidden");
+        kapitel2-1.classList.remove("hidden");
+        kapitel2-2.classList.remove("hidden"); 
       } else if(inputHash === correctPassword3) {
         resultDiv.innerHTML = "<p class='success'> Passwort 3 korrekt </p>";
         menu.style.display = "block";
@@ -237,6 +247,8 @@
         event2.style.display ="inline-block";
         menuButton.classList.remove("hidden");
         sideMenu.classList.remove("hidden");
+        kapitel2-1.classList.remove("hidden");
+        kapitel2-2.classList.remove("hidden"); 
       }
       else {
         resultDiv.innerHTML = "<p class='error';'>Falsches Passwort </p>";

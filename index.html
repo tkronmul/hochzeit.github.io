@@ -293,7 +293,7 @@
 
     openFormBtn.addEventListener("click", (e) => {
       const rect = openFormBtn.getBoundingClientRect();
-      popupForm.style.top = rect.bottom + wind.scrollY + "px";
+      popupForm.style.top = rect.bottom + window.scrollY + "px";
       popupForm.style.left = rect.left + window.scrollX + "px";
       popupForm.style.display = "block";
     });

@@ -327,6 +327,31 @@
       }
     });
 
+    //Dynamisch Begleitfelder erzeugen
+    document.getElementById("anzahlBegleiter").addEventListener("input", function() {
+      const container = document.getElementById("begleiterFelder");
+      container.innerHTML = "";
+      const anzahl = parseInt(this.value) || 0;
+      for (let i = 1; i<=anzahl; i++) {
+        container.innerHTML +=
+          '<div class="field">' +
+          '<label>Begleiter' + i + ' Vorname: <input type="text" name="begleiterVorname"' + i + '"></label>' +
+          '</div>' +
+          '<div class="field">' + 
+            '<label>Begleiter' + i + ' Nachname: <input type="text" name="begleiterNachname"' + i + '"></label>' + 
+          '</div>'; +
+          '<div class="field">' + 
+            '<labe>Begleiter' + i + Alter unter 3: <input type="radio" name="Uebernachtung" value="baby"' + 'i' + '"></label>' + 
+          '</div>'; + 
+          '<div class="field">' + 
+            '<labe>Begleiter' + i + Alter zwischen 4 und 12: <input type="radio" name="Uebernachtung" value="kind"' + 'i' + '"></label>' + 
+          '</div>';
+        </label>
+        
+      }
+    });
+
+
     
     
 

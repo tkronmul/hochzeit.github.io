@@ -5,10 +5,6 @@
   <title>Meine Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    #menu {
-      margin-top 20px;
-      display: none;
-    }
     .event-btn {
       margin-right: 10 px;
       padding: 8px 16px;
@@ -211,7 +207,6 @@
     async function checkPassword() {
       const input = document.getElementById("passwordInput").value;
       const resultDiv = document.getElementById("result");
-      const menu = document.getElementById("menu");
       const event1 = document.getElementById("event1");
       const event2 = document.getElementById("event2");
       const menuButton = document.getElementById("menuButton");
@@ -222,7 +217,6 @@
       
       if (inputHash === correctPassword1){
         resultDiv.innerHTML = "<p class='success'> Passwort 1 korrekt </p>";
-        menu.style.display ="block";
         event1.style.display = "inline-block";
         event2.style.display = "none";
         menuButton.classList.remove("hidden");
@@ -232,7 +226,6 @@
         kap3.classList.remove("hidden");
       } else if (inputHash === correctPassword2) {
         resultDiv.innerHTML = "<p class='success'> Passwort 2 korrekt </p>";
-        menu.style.display ="block";
         event1.style.display = "inline-block";
         event2.style.display = "inline-block";
         menuButton.classList.remove("hidden");
@@ -245,7 +238,6 @@
         kap12.classList.remove("hidden");
       } else if(inputHash === correctPassword3) {
         resultDiv.innerHTML = "<p class='success'> Passwort 3 korrekt </p>";
-        menu.style.display = "block";
         event1.style.display ="none";
         event2.style.display ="inline-block";
         menuButton.classList.remove("hidden");
@@ -256,7 +248,6 @@
       }
       else {
         resultDiv.innerHTML = "<p class='error';'>Falsches Passwort </p>";
-        menu.style.display = "none";
       }
     }
 

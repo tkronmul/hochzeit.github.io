@@ -5,6 +5,35 @@
   <title>Meine Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      margin: 15% auto;
+      width: 300px;
+      border:radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .notification {
+      display: none;
+      position: fixed;
+      top: 20px; right: 20px;
+      background: #4caf50;
+      color: white; 
+      padding: 12px 20px;
+      border-radius: 8px;
+      z-index: 2000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    
+    
     .event-btn {
       margin-right: 10 px;
       padding: 8px 16px;
@@ -135,14 +164,14 @@
     <button id="event2" class="event-btn">Event 2</button>
   </section>
   
-  <div id="eventResult"></div>
+  <button id="openFormBtn">Formular öffnen</button>
 
   //Neue Felder für API
   <div id="formPolterabend" class="hidden">
     <div class="modal-content">
       <span id="clodeModal" class="close">&times;</span>
       <h2>Anmeldung Polterabend</h3>
-      <form id="dynamicForm">
+      <form id="myForm">
         <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br><br>
         <label>Nachname: <input type="text" id="nachname" name="nachname" required></label><br><br>
         <label><input type="checkbox" id="teilnahme"> Ich nehme teil</label><br>
@@ -182,9 +211,12 @@
     </form>
     </div>
   </div>
+    <div id="notification" class="notification"> Erfolgreich abgesendet!</div>
+  
 
   
   <script>
+    //Passworteingabe
     const correctPassword1 = "78fd437096cd5bf68409698730d67ce7a588dfc26c325b3a2d7cdd9e35bd50b8";
     const correctPassword2 = "0f19c406623e70f5d55cbf72a5636ca4c0538db997e4edbe22d0b27c70afa591";
     const correctPassword3 = "936a185caaa266bb9cbe981e9e05cb78cd732b0b3280eb944412bb6f8f8f07af";
@@ -199,18 +231,19 @@
     async function checkPassword() {
       const input = document.getElementById("passwordInput").value;
       const resultDiv = document.getElementById("result");
-      const event1 = document.getElementById("event1");
-      const event2 = document.getElementById("event2");
+      const openFormBtn = document.getElementById("openFormBtn");
+      const Polterabend = document.getElementById("myModal");
+      const form = document.getElementById("myForm");
+      const notification = document.getElementById("notification");
       const menuButton = document.getElementById("menuButton");
       const sideMenu = document.getElementById("sideMenu");
       const output = document.getElementById("output");
                  
       const inputHash = await sha256(input);
-      
+
+      //Subseiten aufbauen je nach Passwort
       if (inputHash === correctPassword1){
         resultDiv.innerHTML = "<p class='success'> Passwort 1 korrekt </p>";
-        event1.style.display = "inline-block";
-        event2.style.display = "none";
         menuButton.classList.remove("hidden");
         sideMenu.classList.remove("hidden");
         kap1.classList.remove("hidden");
@@ -218,8 +251,7 @@
         kap3.classList.remove("hidden");
       } else if (inputHash === correctPassword2) {
         resultDiv.innerHTML = "<p class='success'> Passwort 2 korrekt </p>";
-        event1.style.display = "inline-block";
-        event2.style.display = "inline-block";
+        Polterabend.style.display = "inline-block";
         menuButton.classList.remove("hidden");
         sideMenu.classList.remove("hidden");
         kap1.classList.remove("hidden");
@@ -230,8 +262,7 @@
         kap12.classList.remove("hidden");
       } else if(inputHash === correctPassword3) {
         resultDiv.innerHTML = "<p class='success'> Passwort 3 korrekt </p>";
-        event1.style.display ="none";
-        event2.style.display ="inline-block";
+        Polterabend.style.display ="inline-block";
         menuButton.classList.remove("hidden");
         sideMenu.classList.remove("hidden");
         kap10.classList.remove("hidden");
@@ -242,9 +273,7 @@
         resultDiv.innerHTML = "<p class='error';'>Falsches Passwort </p>";
       }
     }
-
-    
-
+    //Menüband
     menuButton.addEventListener("click", () => {
       sideMenu.classList.toggle("open");
     });
@@ -260,107 +289,32 @@
       }
     });
 
-    
-
-    function resetForm() {
-      document.getElementById("vorname").value = "";
-      document.getElementById("nachname").value = "";
-      document.getElementById("teilnahme").checked = false;
-      document.getElementById("begleitung").checked = false;
-      document.getElementById("begleitungSection").style.display = "none";
-      document.getElementById("anzahlBegleiter").value = 1;
-      document.getElementById("begleiterFelder").innerHTML = "";
-      document.getElementById("kommentar").value = "";
-    }
-
-    document.getElementById("event2").addEventListener("click", function() {
-      document.getElementById("formPolterabend").innerHTML = "Anmeldung zu Event 2";
-      showForm("Event 2");
-      resetForm();
+    openFormBtn.addEventListener("click", () => {
+      modal.style.display = "none";
     });
 
-    //Formular einblenden
-    function showForm(eventName) {
-      document.getElementById("formSection").style.display = "block";
-      document.getElementById("formTitle").innerText = "Anmeldung für " + eventName;
-    }
-
-    //Checkbox "Begleitung" steuert Anzeige
-    document.getElementById("begleitung").addEventListener("change", function() {
-      const section = document.getElementById("begleitungSection");
-      section.style.display = this.checked ? "block" : "none";
-      if (!this.checked) {
-        document.getElementById("begleiterFelder").innterHTML = "";
-      }
-    });
-
-    //Dynamisch Begleitfelder erzeugen
-    document.getElementById("anzahlBegleiter").addEventListener("input", function() {
-      const container = document.getElementById("begleiterFelder");
-      container.innerHTML = "";
-      const anzahl = parseInt(this.value) || 0;
-      for (let i = 1; i<=anzahl; i++) {
-        container.innerHTML +=
-          '<div class="field">' +
-          '<label>Begleiter' + i + ' Vorname: <input type="text" name"begleiterVorname' + i + '"></label>' +
-          '</div>' +
-          '<div class="field">' + 
-            '<label>Begleiter' + i + ' Nachname: <input type="text" name=begleiterNachname' + i + '"></label>' + 
-          '</div>';
-      }
-    });
-
-    //Button + Enter
-    document.getElementById("checkBtn").addEventListener("click", checkPassword);
-    document.getElementById("passwordInput").addEventListener("keypress", function(event) {
-      if (event.key === "Enter") checkPassword();
-    });
-
-       
-    //Daten an API senden
-    const form = document.getElementById('eventForm');
-
-    //form.addEventListener('submit', async (e) => {
-    document.querySelector("form").addEventListener("submit", async (e) => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const formData = Object.fromEntries(new FormData(form).entries());
-      try {
-        const res = await fetch ('https://hochzeit-github-io.vercel.app/api/saveForm', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        });
-        const result = await res.json();
-        console.log(result);
-        alert(result.message);
-      } catch(error){
-        console.error('Fehler beim Senden:', error);
-        alert('Fehler beim Senden des Formulars');
-              }
-            
-    });
-    <!--
-    document.getElementById("eventForm").addEventListener("submit",async (e) => {
-      //alert("Formular abgesendet (Demo)!");
-      e.preventDefault();
-      
-           
-      
-      try {
-        const response = await fetch("/api/saveForm", {
-        method: "POST",
-        headers: {"Content-Type": "application/json" },
-        body: JSON.stringify(formdata),
+      modal.style.display = "none";
+
+      notification.style.display = "block";
+
+      setTimeout(() => {
+        notification.style.display ="none";
+        form.reset();
+      }, 3000);
       });
 
-      const data = await response.json();
-      document.getElementById("result").textContent = data.message;
-      } catch(err) {
-        document.getElementById("result").textContent = "Fehler: " + err.message;
-      //alert(result.message);
-    }
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display ="none";
+      }
     });
-    -->
+
+    
+
+    
+    
     
           
     

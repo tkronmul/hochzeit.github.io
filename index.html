@@ -317,6 +317,16 @@
         popupForm.style.display ="none";
       }
     });
+
+    //Checkbox "Begleitung" steuert Anzeige
+    document.getElementById("begleitung").addEventListener("change", function() {
+      const section = document.getElementById("begleitungSection");
+      section.style.display = this.checked ? "block" : "none";
+      if (!this.checked) {
+        document.getElementById("begleiterFelder").innterHTML = "";
+      }
+    });
+
     
     
 

@@ -232,9 +232,6 @@
       const input = document.getElementById("passwordInput").value;
       const resultDiv = document.getElementById("result");
       const openFormBtn = document.getElementById("openFormBtn");
-      const formPolterabend = document.getElementById("myModal");
-      const form = document.getElementById("myForm");
-      const notification = document.getElementById("notification");
       const menuButton = document.getElementById("menuButton");
       const sideMenu = document.getElementById("sideMenu");
       const output = document.getElementById("output");
@@ -288,6 +285,12 @@
         sideMenu.classList.remove("open");
       }
     });
+
+
+    //Formular Polterabend
+    const formPolterabend = document.getElementById("myModal");
+    const form = document.getElementById("myForm");
+    const notification = document.getElementById("notification");
 
     openFormBtn.addEventListener("click", () => {
       modal.style.display = "none";

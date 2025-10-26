@@ -321,10 +321,10 @@
     formPolterabend.addEventListener("submit", (e) => handleSubmit(e, "polterabend"));
 
     window.addEventListener("click", (e) => {
-      if (popupForm.style.display === "block" && 
-         !popupForm.contains(e.target) &&
+      if (popupPolterabend.style.display === "block" && 
+         !popupPolterabend.contains(e.target) &&
          e.target !== openFormBtn) {
-        popupForm.style.display ="none";
+        popupPolterabend.style.display ="none";
       }
     });  
     

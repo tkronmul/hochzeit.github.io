@@ -150,27 +150,38 @@
   <section id="kap2" class="hidden">Informationen</section>
   <section id="kap3" class="hidden">
     Anmeldung
-    <button id="event1" class="event-btn">Event 1</button>
+    <button id="AnmeldungHochzeit" class="event-btn">Anmeldung Hochzeitsfeier</button>
   </section>
   <section id="kap10" class="hidden">Zeitstrahl</section>
   <section id="kap11" class="hidden">Informationen</section>
   <section id="kap12" class="hidden">
     Anmeldung
-    <button id="openFormBtn" class="hidden">Anmeldung</button>
+    <button id="AnmeldungPolterabend" class="hidden">Anmeldung Polterabend</button>
   </section>
 
   <!-- Formular Polterabend -->
   
 
   //Neue Felder für API
-  <div id="popupForm" class="hidden">
+  <div id="popupPolterabend" class="hidden">
     <h2>Anmeldung Polterabend</h3>
-    <form id="formPolterabend">
+    <form id="formPolterabend>
         <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br><br>
         <label>Nachname: <input type="text" id="nachname" name="nachname" required></label><br><br>
       <button type="submit">Absenden</button>
     </form>
   </div>
+
+  <div id="popupHochzeit" class="hidden">
+    <h2>Anmeldung Hochzeit</h3>
+    <form id="formHochzeit>
+        <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br><br>
+        <label>Nachname: <input type="text" id="nachname" name="nachname" required></label><br><br>
+      <button type="submit">Absenden</button>
+    </form>
+  </div>
+
+  
     <div id="notification" class="notification"> Erfolgreich abgesendet!</div>
   
 
@@ -253,32 +264,50 @@
     });
 
 
-    //Formular Polterabend
-    const popupForm = document.getElementById("popupForm");
-    const form = document.getElementById("formPolterabend");
+    //Formulare Anmeldungen
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxJHxEft8JWempdXUWJfPsk_ALPfcbgMdTS5plGTzADrmcuPktWVTrz_bWShg1dh-XWww/exec";
     const notification = document.getElementById("notification");
-    const openFormBtn = document.getElementById("openFormBtn");
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxJHxEft8JWempdXUWJfPsk_ALPfcbgMdTS5plGTzADrmcuPktWVTrz_bWShg1dh-XWww/exec"
+    //Buttons Polterabend
+    const openPolterabendBtn = document.getElementById("openPolterabendBtn");
+    const popupPolterabend = document.getElementById("popupPolterabend");
+    const formPolterabend = document.getElementById("formPolterabend");
 
-    openFormBtn.addEventListener("click", () => {
-      popupForm.style.display = "block";
+    //Buttons Polterabend
+    const openHochzeitBtn = document.getElementById("openHochzeitBtn");
+    const popupHochzeit = document.getElementById("popupHochzeit");
+    const formHochzeit = document.getElementById("formHochzeit");
+
+    //Formular Polterabend öffnnen
+    openPolterabendBtn.addEventListener("click", () => {
+      const rect = openPolterabendBtn.getBoundingClientRect();
+      popupPolterabend.style.display = "block";
+      popupPolterabend.style.display = "none";
     });
 
-    form.addEventListener("submit", async (e) => {
+    //Formular Hochzeit öffnnen
+    openHochzeitBtn.addEventListener("click", () => {
+      const rect = openHochzeitBtn.getBoundingClientRect();
+      popupHochzeit.style.display = "block";
+      popupHochzeit.style.display = "none";
+    });
+
+    //FormSubmit für beide Formulare
+    formPolterabend.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const vorname = document.getElementById("vorname").value;
-      const nachname = document.getElementById("nachname").value;
+      const form = e.target;
+      const vorname = form.querySelector("[name='vorname']").value;
+      const nachname = form.querySelector("[name='nachname']").value;
 
       try {
         await fetch (scriptURL, {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-type": "application/json" },
-          body: JSON.stringify({ vorname, nachname }),
+          body: JSON.stringify({ veranstaltung, vorname, nachname }),
         });
 
-        popupForm.style.disply ="none";
+        popupPolterabend.style.display ="none";
         notification.style.display = "block";
 
         setTimeout(() => {
@@ -289,6 +318,7 @@
         alert("Fehler beim Senden: " + error);
       }
     });
+    formPolterabend.addEventListener("submit", (e) => handleSubmit(e, "polterabend"));
 
     window.addEventListener("click", (e) => {
       if (popupForm.style.display === "block" && 

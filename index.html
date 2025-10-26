@@ -201,6 +201,7 @@
     async function checkPassword() {
       const input = document.getElementById("passwordInput").value;
       const resultDiv = document.getElementById("result");
+      const checkBtn = document.getElementbyId("checkBtn")
       const HochzeitButton = document.getElementById("openHochzeitBtn");
       const menuButton = document.getElementById("menuButton");
       const sideMenu = document.getElementById("sideMenu");
@@ -208,11 +209,7 @@
       const PolterabendButton = document.getElementById("openPolterabendBtn");          
       const inputHash = await sha256(input);
 
-      //Button + Enter
-      document.getElementById("checkBtn").addEventListener("click", checkPassword);
-      document.getElementById("passwordInput").addEventListener("keypress", function(event) {
-        if (event.key === "Enter") checkPassword();
-      })
+      
 
       //Subseiten aufbauen je nach Passwort
       if (inputHash === correctPassword1){
@@ -246,8 +243,12 @@
       else {
         resultDiv.innerHTML = "<p class='error';'>Falsches Passwort </p>";
       }
-    }
-    ;
+      //Button + Enter
+      document.getElementById("checkBtn").addEventListener("click", checkPassword);
+      document.getElementById("passwordInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") checkPassword();
+      })
+    };
     
     //Menüband
     menuButton.addEventListener("click", () => {

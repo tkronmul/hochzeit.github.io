@@ -206,7 +206,7 @@
       const menuButton = document.getElementById("menuButton");
       const sideMenu = document.getElementById("sideMenu");
       const output = document.getElementById("output");
-      const PolterabendButton = document.getElementById("openPolterabendBtn");          
+      const openPolterabendBtn = document.getElementById("openPolterabendBtn");          
       const inputHash = await sha256(input);
 
       
@@ -224,7 +224,7 @@
         formPolterabend.style.display = "inline-block";
         menuButton.classList.remove("hidden");
         sideMenu.classList.remove("hidden");
-        PolterabendButton.classList.remove("hidden");
+        openPolterabendBtn.classList.remove("hidden");
         kap1.classList.remove("hidden");
         kap2.classList.remove("hidden");
         kap3.classList.remove("hidden");
@@ -274,12 +274,12 @@
     //Buttons Polterabend
     const openPolterabendBtn = document.getElementById("openPolterabendBtn");
     const popupPolterabend = document.getElementById("popupPolterabend");
-    const formPolterabend = document.getElementById("formPolterabend");
+    //const formPolterabend = document.getElementById("formPolterabend")
 
     //Buttons Polterabend
     const openHochzeitBtn = document.getElementById("openHochzeitBtn");
     const popupHochzeit = document.getElementById("popupHochzeit");
-    const formHochzeit = document.getElementById("formHochzeit");
+    //const formHochzeit = document.getElementById("formHochzeit")
 
     //Formular öffnen öffnen
     function openPopup(btn, popup) {
@@ -289,11 +289,13 @@
     }
     //Formular Polterabend öffnen
     openPolterabendBtn.addEventListener("click", () => {
+      popupPolterabend.style.display = "none";
       openPopup(openPolterabendBtn, popupPolterabend);  
     });
 
     //Formular Hochzeit öffnen
     openHochzeitBtn.addEventListener("click", () => {
+      popupHochzeit.style.display = "none";
       openPopup(openHochzeitBzn, popupHochzeit);
     });
 

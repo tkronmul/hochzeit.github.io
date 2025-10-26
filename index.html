@@ -168,39 +168,6 @@
     <form id="formPolterabend">
         <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br><br>
         <label>Nachname: <input type="text" id="nachname" name="nachname" required></label><br><br>
-        <label><input type="checkbox" id="teilnahme"> Ich nehme teil</label><br>
-        <label><input type="checkbox" id="begleitung"> Ich komme mit Begleitung</label><br>
-        <div id="begleitungSection" class="hidden">
-          <label>Anzahl Begleitpersonen: 
-            <input type="number" id="anzahlBegleiter" min="1" value="1">
-          </label>
-          <div id="begleiterFelder"></div>
-        </div>
-        <label>
-          <input type="radio" name="Uebernachtung" value="zelten"> Zelten
-        </label>
-        <label>
-          <input type="radio" name="Uebernachtung" value="selbst"> Selbstorganisieren
-        </label><br>
-        <label><input type="checkbox" id="mitbringen"> Ich bringe etwas für das Buffet mit</label><br>
-        <div id="MitbringenSection" class="hidden">
-          <label>Auswahl</label>
-          <label><input type="checkbox" name="Buffet" value="Kartoffelsalat"> Kartoffelsalat </label>
-          <label><input type="checkbox" name="Buffet" value="Tomate-Mozzarella"> Tomate-Mazzarerlla </label><br>
-          <label><input type="checkbox" name="Buffet" value="Nudelsalat"> Nudelsalat </label>
-          <label><input type="checkbox" name="Buffet" value="Krautsalat"> Krautsalat </label><br>
-          <label><input type="checkbox" name="Buffet" value="Grüner Salat"> Grüner Salat </label>
-          <label><input type="checkbox" name="Buffet" value="Gurkensalat"> Gurkensalat </label><br>
-          <label><input type="checkbox" name="Buffet" value="Pizzaschnecken"> Pzzaschnecken </label>
-          <label><input type="checkbox" name="Buffet" value="Tzatziki"> Tzatziki </label><br>
-          <label><input type="checkbox" name="Buffet" value="Hummus"> Hummus </label>
-          <label><input type="checkbox" name="Buffet" value="Trauben-Käse-Spieße"> Trauben-Käse-Spieße </label><br>
-          <label><input type="checkbox" name="Buffet" value="Gemüse mit Dip"> Gemüse mit Dip </label>
-          <label><input type="checkbox" name="Buffet" value="Muffins"> Muffins </label><br>
-          <label><input type="checkbox" name="Buffet" value="Brownies"> Brownies </label>
-          <label>Weiteres: <input type="text" id="Weiteres" name="Weiteres" ></label><br>
-        </div>       
-        <label>Kommentar: <textarea id="kommentar" name="kommentar"></textarea></label><br>
       <button type="submit">Absenden</button>
     </form>
   </div>
@@ -290,25 +257,38 @@
     const popupForm = document.getElementById("popupForm");
     const form = document.getElementById("formPolterabend");
     const notification = document.getElementById("notification");
+    const openFormBtn = document.getElementById("openFormBtn");
 
-    openFormBtn.addEventListener("click", (e) => {
-      const rect = openFormBtn.getBoundingClientRect();
-      popupForm.style.top = rect.bottom + window.scrollY + "px";
-      popupForm.style.left = rect.left + window.scrollX + "px";
+    const scriptURL = "https://script.google.com/macros/s/AKfycby9T69F3AsHoy8eH-Z8vfc4HeGWZL2mTI0RA_rUjf-HO59r8RS82MCxD2mouajpjmWsBw/exec"
+
+    openFormBtn.addEventListener("click", () => {
       popupForm.style.display = "block";
     });
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      popupForm.style.display = "none";
+      const vorname = document.getElementById("vorname").value;
+      const nachname = document.getElementById("nachname").value;
 
-      notification.style.display = "block";
+      try {
+        await fetch (scriptURL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({ vorname, nachname }),
+        });
 
-      setTimeout(() => {
-        notification.style.display ="none";
-        form.reset();
-      }, 3000);
-      });
+        popupForm.style.disply ="none";
+        notification.style.display = "block";
+
+        setTimeout(() => {
+          notification.style.display ="block";
+          form.reset();
+        }, 3000);
+      } catch (error) {
+        alert("Fehler beim Senden: " + error);
+      }
+    });
 
     window.addEventListener("click", (e) => {
       if (popupForm.style.display === "block" && 

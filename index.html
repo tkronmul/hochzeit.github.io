@@ -166,8 +166,8 @@
   <div id="popupPolterabend" class="hidden">
     <h2>Anmeldung Polterabend</h3>
     <form id="formPolterabend">
-        <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br><br>
-        <label>Nachname: <input type="text" id="nachname" name="nachname" required></label><br><br>
+        <label>Vorname: <input type="text" id="vornamePol" name="vorname" required></label><br><br>
+        <label>Nachname: <input type="text" id="nachnamePol" name="nachname" required></label><br><br>
       <button type="submit">Absenden</button>
     </form>
   </div>
@@ -175,8 +175,8 @@
   <div id="popupHochzeit" class="hidden">
     <h2>Anmeldung Hochzeit</h3>
     <form id="formHochzeit">
-        <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br><br>
-        <label>Nachname: <input type="text" id="nachname" name="nachname" required></label><br><br>
+        <label>Vorname: <input type="text" id="vornameHoch" name="vorname" required></label><br><br>
+        <label>Nachname: <input type="text" id="nachnameHoch" name="nachname" required></label><br><br>
       <button type="submit">Absenden</button>
     </form>
   </div>
@@ -289,22 +289,22 @@
     formPolterabend.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const vorname = document.getElementById("vorname").value;
-      const nachname = document.getElementById("nachname").value;
+      const vorname = document.getElementById("vornamePol").value;
+      const nachname = document.getElementById("nachnamePol").value;
 
       try {
         await fetch(scriptURLPolterabend, {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ vorname, nachname}),
+          body: JSON.stringify({ vornamePol, nachnamePol}),
         });
 
         popupPolterabend.style.display ="none";
         notification.style.display = "block";
         setTimeout(() => {
           notification.style.display = "none";
-          form.reset();
+          formPolterabend.reset();
         }, 3000);
       } catch (error) {
         alert("Fehler beim Senden: " + error);
@@ -327,22 +327,22 @@
     formHochzeit.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const vorname = document.getElementById("vorname").value;
-      const nachname = document.getElementById("nachname").value;
+      const vorname = document.getElementById("vornameHoch").value;
+      const nachname = document.getElementById("nachnameHoch").value;
 
       try {
         await fetch(scriptURLHochzeit, {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ vorname, nachname}),
+          body: JSON.stringify({ vornameHoch, nachnameHoch}),
         });
 
         popupHochzeit.style.display ="none";
         notification.style.display = "block";
         setTimeout(() => {
           notification.style.display = "none";
-          form.reset();
+          formHochzeit.reset();
         }, 3000);
       } catch (error) {
         alert("Fehler beim Senden: " + error);

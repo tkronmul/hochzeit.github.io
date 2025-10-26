@@ -170,12 +170,6 @@
         <label>Nachname: <input type="text" id="nachnamePol" name="nachnamePol" required></label><br><br>
         <label><input type="checkbox" id="teilnahmePol"> Ich nehme teil</label><br>
         <label><input type="checkbox" id="begleitungPol"> Ich komme mit Begleitung</label><br>
-        <div id="begleitungPol" class="hidden">
-          <label>Anzahl Begleitpersonen: 
-            <input type="number" id="anzahlBegleiterPol" min="1" value="1">
-          </label>
-          <div id="begleiterFelder"></div>
-        </div>
         <label>Überanchtung:</label><br>
           <label><input type="radio" name="UebernachtungPol" value="Location"> Zelten</label>
           <label><input type="radio" name="UebernachtungPol" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause</label> <br>
@@ -191,13 +185,7 @@
         <label>Nachname: <input type="text" id="nachnameHoch" name="nachnameHoch" required></label><br><br>
         <label><input type="checkbox" id="teilnahmeHoch"> Ich nehme teil</label><br>
         <label><input type="checkbox" id="begleitungHoch"> Ich komme mit Begleitung</label><br>
-        <div id="begleitungHoch" class="hidden">
-          <label>Anzahl Begleitpersonen: 
-            <input type="number" id="anzahlBegleiterHoch" min="1" value="1">
-          </label>
-          <div id="begleiterFelder"></div>
-        </div>
-      <label>Überanchtung:</label><br>
+        <label>Überanchtung:</label><br>
         <label><input type="radio" name="UebernachtungHoch" value="Location"> In der Location</label>
         <label><input type="radio" name="UebernachtungHoch" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause</label> <br>
         <label>Kommentar: <textarea id="KommentarHoch" name="kommentar"></textarea></label><br>
@@ -294,7 +282,7 @@
     const notification = document.getElementById("notification");
 
     //Buttons Polterabend
-    const scriptURLPolterabend = "https://script.google.com/macros/s/AKfycbyqUxGS8MNzcRieGOpwI3SnGhvql1U8wVEpWbvKnDOLK9mn1ax1Gc59928n6zGAMFf6dg/exec";
+    const scriptURLPolterabend = "https://script.google.com/macros/s/AKfycbzEG6Hn1cLDCCKYkEUWnpYViLwTVE3Ccl8lv525GbZp1r8qze3QxLzAi97bFL04gQsgDA/exec";
     const openPolterabendBtn = document.getElementById("openPolterabendBtn");
     const popupPolterabend = document.getElementById("popupPolterabend");
     const formPolterabend = document.getElementById("formPolterabend");
@@ -316,7 +304,6 @@
       const vorname = document.getElementById("vornamePol")?.value || "";
       const nachname = document.getElementById("nachnamePol")?.value || "";
       const Begleitung = document.getElementById("BegleitungPol")?.checked ? "Ja": "Nein";
-      //const AnzahlBegleiter = document.getElementById("anzahlBegleiterPol").value
       const Uebernachtung = document.querySelector('input[name="UebernachtungPol"]:checked')?.value || "";
       const Kommentar = document.getElementById("KommentarPol")?.value || "";
 
@@ -358,7 +345,6 @@
       const vorname = document.getElementById("vornameHoch")?.value || "";
       const nachname = document.getElementById("nachnameHoch")?.value || "";
       const Begleitung = document.getElementById("BegleitungHoch")?.checked ? "Ja": "Nein";
-      //const AnzahlBegleiter = document.getElementById("anzahlBegleiterPol").value
       const Uebernachtung = document.querySelector('input[name="UebernachtungHoch"]:checked')?.value || "";
       const Kommentar = document.getElementById("KommentarHoch")?.value || "";
 

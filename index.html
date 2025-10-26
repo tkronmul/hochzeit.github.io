@@ -146,16 +146,16 @@
     <div id="output" class="hidden"> Bitte wähle eine Option im Menü </div>
   
   <!-- Bereiche -->
-  <section id="kap1" class="hidden">Zeitstrahl</section>
-  <section id="kap2" class="hidden">Informationen</section>
+  <section id="kap1" class="hidden">Zeitstrahl Hochzeit </section>
+  <section id="kap2" class="hidden">Informationen Hochzeit </section>
   <section id="kap3" class="hidden">
-    Anmeldung
+    Anmeldung <br>
     <button id="openHochzeitBtn" class="event-btn">Anmeldung Hochzeitsfeier</button>
   </section>
-  <section id="kap10" class="hidden">Zeitstrahl</section>
-  <section id="kap11" class="hidden">Informationen</section>
+  <section id="kap10" class="hidden">Zeitstrahl Polterabend </section>
+  <section id="kap11" class="hidden">Informationen Polterabend </section>
   <section id="kap12" class="hidden">
-    Anmeldung
+    Anmeldung <br>
     <button id="openPolterabendBtn" class="hidden">Anmeldung Polterabend</button>
   </section>
 
@@ -163,7 +163,7 @@
   
 
   //Neue Felder für API
-  <div id="popupPolterabend" class="hidden">
+  <div id="popupPolterabend" class="popupForm" visibility = "hidden">
     <h2>Anmeldung Polterabend</h3>
     <form id="formPolterabend" data-veranstaltung = "polterabend">
         <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br><br>
@@ -172,7 +172,7 @@
     </form>
   </div>
 
-  <div id="popupHochzeit" class="hidden">
+  <div id="popupHochzeit" class="popupForm" visibility = "hidden">
     <h2>Anmeldung Hochzeit</h3>
     <form id="formHochzeit" data-veranstaltung = "hochzeit">
         <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br><br>

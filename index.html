@@ -166,8 +166,8 @@
   <div id="popupPolterabend" class="hidden">
     <h2>Anmeldung Polterabend</h3>
     <form id="formPolterabend">
-        <label>Vorname: <input type="text" id="vornamePol" name="vorname" required></label><br><br>
-        <label>Nachname: <input type="text" id="nachnamePol" name="nachname" required></label><br><br>
+        <label>Vorname: <input type="text" id="vornamePol" name="vornamePol" required></label><br><br>
+        <label>Nachname: <input type="text" id="nachnamePol" name="nachnamePol" required></label><br><br>
       <button type="submit">Absenden</button>
     </form>
   </div>
@@ -175,8 +175,8 @@
   <div id="popupHochzeit" class="hidden">
     <h2>Anmeldung Hochzeit</h3>
     <form id="formHochzeit">
-        <label>Vorname: <input type="text" id="vornameHoch" name="vorname" required></label><br><br>
-        <label>Nachname: <input type="text" id="nachnameHoch" name="nachname" required></label><br><br>
+        <label>Vorname: <input type="text" id="vornameHoch" name="vornameHoch" required></label><br><br>
+        <label>Nachname: <input type="text" id="nachnameHoch" name="nachnameHoch" required></label><br><br>
       <button type="submit">Absenden</button>
     </form>
   </div>
@@ -289,8 +289,8 @@
     formPolterabend.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const vorname = document.getElementById("vornamePol").value;
-      const nachname = document.getElementById("nachnamePol").value;
+      const vornamePol = document.getElementById("vornamePol").value;
+      const nachnamePol = document.getElementById("nachnamePol").value;
 
       try {
         await fetch(scriptURLPolterabend, {
@@ -327,8 +327,8 @@
     formHochzeit.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const vorname = document.getElementById("vornameHoch").value;
-      const nachname = document.getElementById("nachnameHoch").value;
+      const vornameHoch = document.getElementById("vornameHoch").value;
+      const nachnameHoch = document.getElementById("nachnameHoch").value;
 
       try {
         await fetch(scriptURLHochzeit, {

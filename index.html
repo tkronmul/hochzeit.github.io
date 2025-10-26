@@ -307,7 +307,7 @@
       //Alle Formfelder auslesen
       const formData ={};
       [...form.elements].forEach(el => {
-        if (l.name) formData[el.name] = el.value;
+        if (el.name) formData[el.name] = el.value;
       });
 
       try {

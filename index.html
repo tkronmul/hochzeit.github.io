@@ -165,7 +165,7 @@
   //Neue Felder für API
   <div id="popupPolterabend" class="hidden">
     <h2>Anmeldung Polterabend</h3>
-    <form id="formPolterabend">
+    <form id="formPolterabend" data-veranstaltung = "polterabend">
         <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br><br>
         <label>Nachname: <input type="text" id="nachname" name="nachname" required></label><br><br>
       <button type="submit">Absenden</button>
@@ -174,7 +174,7 @@
 
   <div id="popupHochzeit" class="hidden">
     <h2>Anmeldung Hochzeit</h3>
-    <form id="formHochzeit">
+    <form id="formHochzeit" data-veranstaltung = "hochzeit">
         <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br><br>
         <label>Nachname: <input type="text" id="nachname" name="nachname" required></label><br><br>
       <button type="submit">Absenden</button>
@@ -207,6 +207,12 @@
       const output = document.getElementById("output");
       const PolterabendButton = document.getElementById("openPolterabendBtn");          
       const inputHash = await sha256(input);
+
+      //Button + Enter
+      document.getElementById("checkBtn").addEventListener("click", checkPassword);
+      document.getElementById("passwordInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") checkPassword();
+      })
 
       //Subseiten aufbauen je nach Passwort
       if (inputHash === correctPassword1){
@@ -241,11 +247,7 @@
         resultDiv.innerHTML = "<p class='error';'>Falsches Passwort </p>";
       }
     }
-    //Button + Enter
-    document.getElementById("checkBtn").addEventListener("click", checkPassword);
-    document.getElementById("passwordInput").addEventListener("keypress", function(event) {
-      if (event.key === "Enter") checkPassword();
-    });
+    ;
     
     //Menüband
     menuButton.addEventListener("click", () => {
@@ -278,36 +280,43 @@
     const popupHochzeit = document.getElementById("popupHochzeit");
     const formHochzeit = document.getElementById("formHochzeit");
 
-    //Formular Polterabend öffnnen
-    openPolterabendBtn.addEventListener("click", () => {
-      const rect = openPolterabendBtn.getBoundingClientRect();
+    //Formular öffnen öffnen
+    function openPopup(btn, popup) {
+      const rect = btn.getBoundingClientRect();
       popupPolterabend.style.display = "block";
       popupPolterabend.style.display = "none";
+    }
+    //Formular Polterabend öffnen
+    openPolterabendBtn.addEventListener("click", () => {
+      openPopup(openPolterabendBtn, popupPolterabend);  
     });
 
-    //Formular Hochzeit öffnnen
+    //Formular Hochzeit öffnen
     openHochzeitBtn.addEventListener("click", () => {
-      const rect = openHochzeitBtn.getBoundingClientRect();
-      popupHochzeit.style.display = "block";
-      popupHochzeit.style.display = "none";
+      openPopup(openHochzeitBzn, popupHochzeit);
     });
 
     //FormSubmit für beide Formulare
-    formPolterabend.addEventListener("submit", async (e) => {
+    async function handleSubmit(e) {
       e.preventDefault();
       const form = e.target;
-      const vorname = form.querySelector("[name='vorname']").value;
-      const nachname = form.querySelector("[name='nachname']").value;
+      const veranstaltung = form.dataset.veranstaltung;
+      //Alle Formfelder auslesen
+      const formData ={};
+      [...form.elements].forEach(el => {
+        if (l.name) formData[el.name] = el.value;
+      });
 
       try {
         await fetch (scriptURL, {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-type": "application/json" },
-          body: JSON.stringify({ veranstaltung, vorname, nachname }),
+          body: JSON.stringify(formData),
         });
 
         popupPolterabend.style.display ="none";
+        popupHochzeit.style.display="none";
         notification.style.display = "block";
 
         setTimeout(() => {
@@ -317,19 +326,19 @@
       } catch (error) {
         alert("Fehler beim Senden: " + error);
       }
-    });
-    //formPolterabend.addEventListener("submit", (e) => handleSubmit(e, "polterabend"))
+
+      document.getElementById("formPolterabend").addEventListener("submit", handleSubmit);
+      dicument.getElementById("formHochzeit").addEventListener("submit", handleSubmit);
 
     window.addEventListener("click", (e) => {
-      if (popupPolterabend.style.display === "block" && 
-         !popupPolterabend.contains(e.target) &&
-         e.target !== openFormBtn) {
-        popupPolterabend.style.display ="none";
+      [popupPolterabend, popupHochzeit].forEach(popup => {
+        if (popup.style.display === "block" &&
+            !popup.contains(e.target) &&
+            e.target !== openPolterabendBtn && 
+            e.target !== OpenHochzeitBtn) {
+        popup.style.display ="none";
       }
     });  
-    
-
-    
   </script>
 </body>
 </html>

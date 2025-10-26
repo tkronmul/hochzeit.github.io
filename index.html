@@ -318,7 +318,7 @@
       const Begleitung = document.getElementById("BegleitungPol")?.checked ? "Ja": "Nein";
       //const AnzahlBegleiter = document.getElementById("anzahlBegleiterPol").value
       const Uebernachtung = document.querySelector('input[name="UebernachtungPol"]:checked')?.value || "";
-      const Kommentar = document.getElementById("KommentarPol").value;
+      const Kommentar = document.getElementById("KommentarPol")?.value || "";
 
       try {
         await fetch(scriptURLPolterabend, {
@@ -360,7 +360,7 @@
       const Begleitung = document.getElementById("BegleitungHoch")?.checked ? "Ja": "Nein";
       //const AnzahlBegleiter = document.getElementById("anzahlBegleiterPol").value
       const Uebernachtung = document.querySelector('input[name="UebernachtungHoch"]:checked')?.value || "";
-      const Kommentar = document.getElementById("KommentarHoch").value;
+      const Kommentar = document.getElementById("KommentarHoch")?.value || "";
 
       try {
         await fetch(scriptURLHochzeit, {

@@ -168,6 +168,21 @@
     <form id="formPolterabend">
         <label>Vorname: <input type="text" id="vornamePol" name="vornamePol" required></label><br><br>
         <label>Nachname: <input type="text" id="nachnamePol" name="nachnamePol" required></label><br><br>
+        <label><input type="checkbox" id="teilnahmePol"> Ich nehme teil</label><br>
+        <label><input type="checkbox" id="begleitungPol"> Ich komme mit Begleitung</label><br>
+        <div id="begleitungPol" class="hidden">
+          <label>Anzahl Begleitpersonen: 
+            <input type="number" id="anzahlBegleiterPol" min="1" value="1">
+          </label>
+          <div id="begleiterFelder"></div>
+        </div>
+        <label>
+          <input type="radio" name="Zelt" value="zelten"> Zelten
+        </label>
+        <label>
+          <input type="radio" name="SelbstorgPol" value="selbst"> Ich kümmere mich selbst darum 
+        </label><br>
+        <label>Kommentar: <textarea id="kommentarPol" name="kommentar"></textarea></label><br>
       <button type="submit">Absenden</button>
     </form>
   </div>
@@ -177,6 +192,21 @@
     <form id="formHochzeit">
         <label>Vorname: <input type="text" id="vornameHoch" name="vornameHoch" required></label><br><br>
         <label>Nachname: <input type="text" id="nachnameHoch" name="nachnameHoch" required></label><br><br>
+        <label><input type="checkbox" id="teilnahmeHoch"> Ich nehme teil</label><br>
+        <label><input type="checkbox" id="begleitungHoch"> Ich komme mit Begleitung</label><br>
+        <div id="begleitungHoch" class="hidden">
+          <label>Anzahl Begleitpersonen: 
+            <input type="number" id="anzahlBegleiterHoch" min="1" value="1">
+          </label>
+          <div id="begleiterFelder"></div>
+        </div>
+        <label>
+          <input type="radio" name="Location" value="Location"> In der Location
+        </label>
+        <label>
+          <input type="radio" name="Selbst" value="SelbstHoch"> Ich kümmere mich selbst darum / fahre nach Hause
+        </label>
+        <label>Kommentar: <textarea id="kommentarHoch" name="kommentar"></textarea></label><br>
       <button type="submit">Absenden</button>
     </form>
   </div>
@@ -270,13 +300,13 @@
     const notification = document.getElementById("notification");
 
     //Buttons Polterabend
-    const scriptURLPolterabend = "https://script.google.com/macros/s/AKfycbx34Gt4-eLz4aXzjLw1no4LzTG0wpOmMtB7bGzHqxN2w5T0nbKmNr_0AqXmAA1ApBTdtw/exec";
+    const scriptURLPolterabend = "https://script.google.com/macros/s/AKfycbyqUxGS8MNzcRieGOpwI3SnGhvql1U8wVEpWbvKnDOLK9mn1ax1Gc59928n6zGAMFf6dg/exec";
     const openPolterabendBtn = document.getElementById("openPolterabendBtn");
     const popupPolterabend = document.getElementById("popupPolterabend");
     const formPolterabend = document.getElementById("formPolterabend");
 
     //Buttons Polterabend
-    const scriptURLHochzeit = "https://script.google.com/macros/s/AKfycbwC609dgurcpInN4kaB_-6CbGP1BgaRbVDEkYQNYz8WxkMWcDTBDJ0GuAr5veAZ3aPwIA/exec";
+    const scriptURLHochzeit = "https://script.google.com/macros/s/AKfycbyAA7IJlA90xO8AT5nfDiv-g8ZLsoScshD6efEfWpUuY4oyyC5GfugqFEN-5ThH6olnHg/exec";
     const openHochzeitBtn = document.getElementById("openHochzeitBtn");
     const popupHochzeit = document.getElementById("popupHochzeit");
     const formHochzeit = document.getElementById("formHochzeit")
@@ -291,13 +321,18 @@
 
       const vorname = document.getElementById("vornamePol").value;
       const nachname = document.getElementById("nachnamePol").value;
+      const Begleitung = document.getElementById("BegleitungPol").value;
+      const AnzahlBegleiter = document.getElementById("anzahlBegleiterPol").value;
+      const Zelten = document.getElementById("Zelt").value;
+      const Selbstorganisieren = document.getElementById("SelbstorgPol").value;
+      const Kommentar = document.getElementById("KommentarPol").value;
 
       try {
         await fetch(scriptURLPolterabend, {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ vorname, nachname}),
+          body: JSON.stringify({ vorname, nachname, Begleitung, AnzahlBegleitung, Zelten, Selbstorganisieren, Kommentar }),
         });
 
         popupPolterabend.style.display ="none";
@@ -329,6 +364,11 @@
 
       const vorname = document.getElementById("vornameHoch").value;
       const nachname = document.getElementById("nachnameHoch").value;
+      const Begleitung = document.getElementById("BegleitungHoch").value;
+      const AnzahlBegleiter = document.getElementById("anzahlBegleiterHoch").value;
+      const Location = document.getElementById("Location").value;
+      const Selbstorganisieren = document.getElementById("SelbstorgHoch").value;
+      const Kommentar = document.getElementById("KommentarHoch").value;
 
       try {
         await fetch(scriptURLHochzeit, {

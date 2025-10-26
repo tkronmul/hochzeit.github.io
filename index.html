@@ -284,8 +284,8 @@
     //Formular öffnen öffnen
     function openPopup(btn, popup) {
       const rect = btn.getBoundingClientRect();
-      popupPolterabend.style.display = "block";
-      popupPolterabend.style.display = "none";
+      popup.style.display = "block";
+      popup.style.display = "none";
     }
     //Formular Polterabend öffnen
     openPolterabendBtn.addEventListener("click", () => {
@@ -296,7 +296,7 @@
     //Formular Hochzeit öffnen
     openHochzeitBtn.addEventListener("click", () => {
       popupHochzeit.style.display = "none";
-      openPopup(openHochzeitBzn, popupHochzeit);
+      openPopup(openHochzeitBtn, popupHochzeit);
     });
 
     //FormSubmit für beide Formulare

@@ -176,12 +176,9 @@
           </label>
           <div id="begleiterFelder"></div>
         </div>
-        <label>
-          <input type="radio" id="Zelten" name="Zelten" value="zelten"> Zelten
-        </label>
-        <label>
-          <input type="radio" id="SelbstorgPol" name="SelbstorgPol" value="selbst"> Ich kümmere mich selbst darum 
-        </label><br>
+        <label>Überanchtung:</label><br>
+          <label><input type="radio" name="UebernachtungPol" value="Location"> Zelten</label>
+          <label><input type="radio" name="UebernachtungPol" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause</label> <br>
         <label>Kommentar: <textarea id="kommentarPol" name="kommentar"></textarea></label><br>
       <button type="submit">Absenden</button>
     </form>
@@ -200,12 +197,9 @@
           </label>
           <div id="begleiterFelder"></div>
         </div>
-        <label>
-          <input type="radio" id="Location" name="Location" value="Location"> In der Location
-        </label>
-        <label>
-          <input type="radio" id="SelbstorgHoch" name="SelbstorgHoch" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause
-        </label>
+      <label>Überanchtung:</label><br>
+        <label><input type="radio" name="UebernachtungHoch" value="Location"> In der Location</label>
+        <label><input type="radio" name="UebernachtungHoch" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause</label> <br>
         <label>Kommentar: <textarea id="kommentarHoch" name="kommentar"></textarea></label><br>
       <button type="submit">Absenden</button>
     </form>
@@ -319,12 +313,11 @@
     formPolterabend.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const vorname = document.getElementById("vornamePol").value;
-      const nachname = document.getElementById("nachnamePol").value;
-      const Begleitung = document.getElementById("BegleitungPol").value;
+      const vorname = document.getElementById("vornamePol")?.value || "";
+      const nachname = document.getElementById("nachnamePol")?.value || "";
+      const Begleitung = document.getElementById("BegleitungPol")?.checked ? "Ja": "Nein";
       //const AnzahlBegleiter = document.getElementById("anzahlBegleiterPol").value
-      const Zelten = document.getElementById("Zelt").value;
-      const Selbstorganisieren = document.getElementById("SelbstorgPol").value;
+      const Uebernachtung = document.querySelector('input[name="UebernachtungPol"]:checked')?.value || "";
       const Kommentar = document.getElementById("KommentarPol").value;
 
       try {
@@ -362,13 +355,12 @@
     formHochzeit.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const vorname = document.getElementById("vornameHoch").value;
-      const nachname = document.getElementById("nachnameHoch").value;
-      const Begleitung = document.getElementById("BegleitungHoch").value;
-      //const AnzahlBegleiter = document.getElementById("anzahlBegleiterHoch").value
-      const Location = document.getElementById("Location").value;
-      const Selbstorganisieren = document.getElementById("SelbstorgHoch").value;
-      const Kommentar = document.getElementById("KommentarHoch").value;
+      const vorname = document.getElementById("vornameHoch")?.value || "";
+      const nachname = document.getElementById("nachnameHoch")?.value || "";
+      const Begleitung = document.getElementById("BegleitungHoch")?.checked ? "Ja": "Nein";
+      //const AnzahlBegleiter = document.getElementById("anzahlBegleiterPol").value
+      const Uebernachtung = document.querySelector('input[name="UebernachtungHoch"]:checked')?.value || "";
+      const Kommentar = document.getElementById("KommentaHoch").value;
 
       try {
         await fetch(scriptURLHochzeit, {

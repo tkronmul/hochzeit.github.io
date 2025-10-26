@@ -165,7 +165,7 @@
   //Neue Felder für API
   <div id="popupPolterabend" class="popupForm" visibility = "hidden">
     <h2>Anmeldung Polterabend</h3>
-    <form id="formPolterabend" data-veranstaltung = "polterabend">
+    <form id="formPolterabend" data-veranstaltung = "polterabend" action="SCRIPT_URL" method="POST" target="hidden_iframe">
         <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br><br>
         <label>Nachname: <input type="text" id="nachname" name="nachname" required></label><br><br>
       <button type="submit">Absenden</button>
@@ -174,15 +174,15 @@
 
   <div id="popupHochzeit" class="popupForm" visibility = "hidden">
     <h2>Anmeldung Hochzeit</h3>
-    <form id="formHochzeit" data-veranstaltung = "hochzeit">
+    <form id="formHochzeit" data-veranstaltung = "hochzeit" action="SCRIPT_URL" method="POST" target="hidden_iframe">
         <label>Vorname: <input type="text" id="vorname" name="vorname" required></label><br><br>
         <label>Nachname: <input type="text" id="nachname" name="nachname" required></label><br><br>
       <button type="submit">Absenden</button>
     </form>
   </div>
 
-  
-    <div id="notification" class="notification"> Erfolgreich abgesendet!</div>
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+  <div id="notification" class="notification"> Erfolgreich abgesendet!</div>
   
 
   

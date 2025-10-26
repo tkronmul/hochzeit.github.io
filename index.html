@@ -312,7 +312,7 @@
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ vorname, nachname, Begleitung, AnzahlBegleitung, Zelten, Selbstorganisieren, Kommentar }),
+          body: JSON.stringify({ vorname, nachname, Begleitung, Uebernachtung, Kommentar }),
         });
 
         popupPolterabend.style.display ="none";
@@ -353,7 +353,7 @@
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ vorname, nachname}),
+          body: JSON.stringify({ vorname, nachname, Begleitung, Uebernachtung, Kommentar }),
         });
 
         popupHochzeit.style.display ="none";

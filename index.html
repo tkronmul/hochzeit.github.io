@@ -243,13 +243,13 @@
       else {
         resultDiv.innerHTML = "<p class='error';'>Falsches Passwort </p>";
       }
+    }
       //Button + Enter
       document.getElementById("checkBtn").addEventListener("click", checkPassword);
       document.getElementById("passwordInput").addEventListener("keypress", function(event) {
         if (event.key === "Enter") checkPassword();
-      })
-    };
-    
+      });
+       
     //Menüband
     menuButton.addEventListener("click", () => {
       sideMenu.classList.toggle("open");

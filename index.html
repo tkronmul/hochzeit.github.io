@@ -289,15 +289,15 @@
     formPolterabend.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const vornamePol = document.getElementById("vornamePol").value;
-      const nachnamePol = document.getElementById("nachnamePol").value;
+      const vorname = document.getElementById("vornamePol").value;
+      const nachname = document.getElementById("nachnamePol").value;
 
       try {
         await fetch(scriptURLPolterabend, {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ vornamePol, nachnamePol}),
+          body: JSON.stringify({ vorname, nachname}),
         });
 
         popupPolterabend.style.display ="none";
@@ -327,15 +327,15 @@
     formHochzeit.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const vornameHoch = document.getElementById("vornameHoch").value;
-      const nachnameHoch = document.getElementById("nachnameHoch").value;
+      const vorname = document.getElementById("vornameHoch").value;
+      const nachname = document.getElementById("nachnameHoch").value;
 
       try {
         await fetch(scriptURLHochzeit, {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ vornameHoch, nachnameHoch}),
+          body: JSON.stringify({ vorname, nachname}),
         });
 
         popupHochzeit.style.display ="none";

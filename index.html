@@ -268,7 +268,7 @@
 
 
     //Formulare Anmeldungen
-    const scriptURL = "https://script.google.com/macros/s/AKfycby1VLH-OrPwE_VoLeE8tCMtyS6AZFcVMry8GDH1yHxWHynKt_YtW4Xx6dhN30mRz9pILA/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxaCisHbQ2idvH1yBwmxmcatHd0Qp6JVnE1pgWeGj4XwibVuI9tqyzrJgT2GHPivYth/exec";
     const notification = document.getElementById("notification");
 
     //Buttons Polterabend
@@ -313,7 +313,6 @@
       try {
         await fetch (scriptURL, {
           method: "POST",
-          mode: "no-cors",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify(formData),
         });

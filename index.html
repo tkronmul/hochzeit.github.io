@@ -326,9 +326,10 @@
       } catch (error) {
         alert("Fehler beim Senden: " + error);
       }
+    }
 
       document.getElementById("formPolterabend").addEventListener("submit", handleSubmit);
-      dicument.getElementById("formHochzeit").addEventListener("submit", handleSubmit);
+      document.getElementById("formHochzeit").addEventListener("submit", handleSubmit);
 
     window.addEventListener("click", (e) => {
       [popupPolterabend, popupHochzeit].forEach(popup => {

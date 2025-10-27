@@ -88,14 +88,19 @@
     .field {
       margin-button: 10px;
     }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    form label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
     }
 
-    label {
-      font-weight: bold;
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
     }
 
     input, select, textarea, button {

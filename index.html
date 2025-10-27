@@ -282,7 +282,7 @@
     const notification = document.getElementById("notification");
 
     //Buttons Polterabend
-    const scriptURLPolterabend = "https://script.google.com/macros/s/AKfycbzEG6Hn1cLDCCKYkEUWnpYViLwTVE3Ccl8lv525GbZp1r8qze3QxLzAi97bFL04gQsgDA/exec";
+    const scriptURLPolterabend = "https://script.google.com/macros/s/AKfycbySDOPZULrWDr-oSuqlEYAGlZnr3sZ4MImrNHP71qVdon5_UC-ohPvxspH7jpcrcimKqQ/exec";
     const openPolterabendBtn = document.getElementById("openPolterabendBtn");
     const popupPolterabend = document.getElementById("popupPolterabend");
     const formPolterabend = document.getElementById("formPolterabend");
@@ -303,6 +303,7 @@
 
       const vorname = document.getElementById("vornamePol")?.value || "";
       const nachname = document.getElementById("nachnamePol")?.value || "";
+      const teilnahme = document.getElementById("teilnahmePol")?.value || "";
       const Begleitung = document.getElementById("BegleitungPol")?.checked ? "Ja": "Nein";
       const Uebernachtung = document.querySelector('input[name="UebernachtungPol"]:checked')?.value || "";
       const Kommentar = document.getElementById("KommentarPol")?.value || "";
@@ -312,7 +313,7 @@
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ vorname, nachname, Begleitung, Uebernachtung, Kommentar }),
+          body: JSON.stringify({ vorname, nachname, teilnahme, Begleitung, Uebernachtung, Kommentar }),
         });
 
         popupPolterabend.style.display ="none";
@@ -344,6 +345,7 @@
 
       const vorname = document.getElementById("vornameHoch")?.value || "";
       const nachname = document.getElementById("nachnameHoch")?.value || "";
+      const teilnahme = document.getElementById("teilnahmeHoch")?.value || "";
       const Begleitung = document.getElementById("BegleitungHoch")?.checked ? "Ja": "Nein";
       const Uebernachtung = document.querySelector('input[name="UebernachtungHoch"]:checked')?.value || "";
       const Kommentar = document.getElementById("KommentarHoch")?.value || "";
@@ -353,7 +355,7 @@
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ vorname, nachname, Begleitung, Uebernachtung, Kommentar }),
+          body: JSON.stringify({ vorname, nachname, teilnahme, Begleitung, Uebernachtung, Kommentar }),
         });
 
         popupHochzeit.style.display ="none";

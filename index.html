@@ -26,8 +26,42 @@
       z-index: 2000;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
-    
-    
+    .overlay {
+      display: none; /* wird per JS sichtbar */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 400px;
+      z-index: 1000;
+    }
+    .closeBtn {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 22px;
+      color: #555;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+    .closeBtn:hover {
+      color: #000;
+    }
     .event-btn {
       margin-right: 10 px;
       padding: 8px 16px;
@@ -163,7 +197,9 @@
   
 
   //Neue Felder für API
+  <div class = "overlay" id="overlay">
   <div id="popupPolterabend" class="hidden">
+    <button class="closeBtn" id="closeformBtn">&times;</button>
     <h2>Anmeldung Polterabend</h3>
     <form id="formPolterabend">
         <label>Vorname: <input type="text" id="vornamePol" name="vornamePol" required></label><br><br>
@@ -176,6 +212,7 @@
         <label>Kommentar: <textarea id="kommentarPol" name="kommentar"></textarea></label><br>
       <button type="submit">Absenden</button>
     </form>
+  </div>
   </div>
 
   <div id="popupHochzeit" class="hidden">
@@ -284,6 +321,8 @@
     //Buttons Polterabend
     const scriptURLPolterabend = "https://script.google.com/macros/s/AKfycbxT_Uni0ET9lV0sFu1SWBb0h-azX-uxfT7xmvCV9s4qYcOdcOpXQ6TqQJM-HKBMkK7LUg/exec";
     const openPolterabendBtn = document.getElementById("openPolterabendBtn");
+    const overlay = document.getElementById("overlay");
+    const closeBtn = document.getElementById("closeFormBtn");
     const popupPolterabend = document.getElementById("popupPolterabend");
     const formPolterabend = document.getElementById("formPolterabend");
 
@@ -295,7 +334,10 @@
 
     //Formular Polterabend öffnen
     openPolterabendBtn.addEventListener("click", () => {
-      popupPolterabend.style.display = "block"; 
+      overlay.style.display = "block"; 
+    });
+    closeBtn.addEventListener("click", () => {
+      overlay.style.display="none";
     });
 
     formPolterabend.addEventListener("submit", async (e) => {
@@ -320,6 +362,7 @@
         notification.style.display = "block";
         setTimeout(() => {
           notification.style.display = "none";
+          overlay.style.display="none";
           formPolterabend.reset();
         }, 3000);
       } catch (error) {

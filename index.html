@@ -261,6 +261,24 @@
         <label>Übernachtung:</label><br>
           <label><input type="radio" name="UebernachtungPol" value="Location"> Zelten</label>
           <label><input type="radio" name="UebernachtungPol" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause</label> <br>
+        <label><input type="checkbox" id="mitbringen"> Ich bringe etwas für das Buffet mit</label><br>
+        <div id="MitbringenSection" class="hidden">
+          <label>Auswahl:</label><br>
+          <label><input type="checkbox" name="Buffet" value="Kartoffelsalat"> Kartoffelsalat </label>
+          <label><input type="checkbox" name="Buffet" value="Tomate-Mozzarella"> Tomate-Mazzarerlla </label><br>
+          <label><input type="checkbox" name="Buffet" value="Nudelsalat"> Nudelsalat </label>
+          <label><input type="checkbox" name="Buffet" value="Krautsalat"> Krautsalat </label><br>
+          <label><input type="checkbox" name="Buffet" value="Grüner Salat"> Grüner Salat </label>
+          <label><input type="checkbox" name="Buffet" value="Gurkensalat"> Gurkensalat </label><br>
+          <label><input type="checkbox" name="Buffet" value="Pizzaschnecken"> Pzzaschnecken </label>
+          <label><input type="checkbox" name="Buffet" value="Tzatziki"> Tzatziki </label><br>
+          <label><input type="checkbox" name="Buffet" value="Hummus"> Hummus </label>
+          <label><input type="checkbox" name="Buffet" value="Trauben-Käse-Spieße"> Trauben-Käse-Spieße </label><br>
+          <label><input type="checkbox" name="Buffet" value="Gemüse mit Dip"> Gemüse mit Dip </label>
+          <label><input type="checkbox" name="Buffet" value="Muffins"> Muffins </label><br>
+          <label><input type="checkbox" name="Buffet" value="Brownies"> Brownies </label><br>
+          <label>Weiteres: <input type="text" id="Weiteres" name="Weiteres" ></label><br>
+        </div> 
         <label>Kommentar: <textarea id="kommentarPol" name="kommentar"></textarea></label><br>
       <button type="submit">Absenden</button>
     </form>
@@ -375,7 +393,7 @@
     // =========================
     // POLTERABEND
     // =========================
-    const scriptURLPolterabend = "https://script.google.com/macros/s/AKfycbzUS_aNZOSmoTBnIt_-9covk9EEd1l5aLAOgWzI8vz907BvCwSM4WBJbbLntCn_rKH2TQ/exec";
+    const scriptURLPolterabend = "https://script.google.com/macros/s/AKfycbwY4wmdi0j6SrQEyTkdlXxLz2wj2GgABngmVO6UMupAsCNQFVXGhnZG92Eyv2ZvGMmLlg/exec";
 
     const openPolterabendBtn = document.getElementById("openPolterabendBtn");
       const overlay = document.getElementById("overlay");
@@ -387,6 +405,8 @@
       const begleiterSection = document.getElementById("BegleiterPol");
       const anzahlInput = document.getElementById("anzahlBegleiterPol");
       const container = document.getElementById("begleiterFelder");
+      const mitbringenCheckbox = document.getElementById("mitbringen");
+      const mitbringenSection = document.getElementById("MitbringenSection");
       
       // Formular Polterabend öffnen/schließen
       openPolterabendBtn.addEventListener("click", () => {
@@ -407,6 +427,11 @@
         } else {
           generateFields();
         }
+      });
+
+      // --- Anzeige der Mitbringen-Section steuern ---
+      mitbringenCheckbox.addEventListener("change", function() {
+        mitbringenSection.style.display = this.checked ? "block" : "none";
       });
       
       // =========================
@@ -470,6 +495,12 @@
             });
           }
         }
+        // --- Buffet-Auswahl sammeln ---
+        const Buffetmitbringen = [];
+        document.querySelectorAll('input[name="Buffet"]:checked').forEach(cb => {
+          buffetSelections.push(cb.value);
+        });
+        const weitereGerichte = document.getElementById("Weiteres")?.value || "";
         try {
           await fetch(scriptURLPolterabend, {
             method: "POST",
@@ -483,7 +514,9 @@
               AnzahlBegleiter,
               Uebernachtung,
               Kommentar,
-              Begleiter
+              Begleiter,
+              Buffetmitbringen,
+              weitereGerichte
             }),
           });
       

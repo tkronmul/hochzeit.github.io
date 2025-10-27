@@ -188,7 +188,7 @@
         <label>Überanchtung:</label><br>
         <label><input type="radio" name="UebernachtungHoch" value="Location"> In der Location</label>
         <label><input type="radio" name="UebernachtungHoch" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause</label> <br>
-        <label>Kommentar: <textarea id="KommentarHoch" name="kommentar"></textarea></label><br>
+        <label>Kommentar: <textarea id="kommentarHoch" name="kommentar"></textarea></label><br>
       <button type="submit">Absenden</button>
     </form>
   </div>
@@ -306,7 +306,7 @@
       const teilnahme = document.getElementById("teilnahmePol")?.value || "";
       const Begleitung = document.getElementById("BegleitungPol")?.checked ? "Ja": "Nein";
       const Uebernachtung = document.querySelector('input[name="UebernachtungPol"]:checked')?.value || "";
-      const Kommentar = document.getElementById("KommentarPol")?.value || "";
+      const Kommentar = document.getElementById("kommentarPol")?.value || "";
 
       try {
         await fetch(scriptURLPolterabend, {
@@ -348,7 +348,7 @@
       const teilnahme = document.getElementById("teilnahmeHoch")?.value || "";
       const Begleitung = document.getElementById("BegleitungHoch")?.checked ? "Ja": "Nein";
       const Uebernachtung = document.querySelector('input[name="UebernachtungHoch"]:checked')?.value || "";
-      const Kommentar = document.getElementById("KommentarHoch")?.value || "";
+      const Kommentar = document.getElementById("kommentarHoch")?.value || "";
 
       try {
         await fetch(scriptURLHochzeit, {

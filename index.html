@@ -453,7 +453,23 @@
         const AnzahlBegleiter = anzahlInput.value || "";
         const Uebernachtung = document.querySelector('input[name="UebernachtungPol"]:checked')?.value || "";
         const Kommentar = document.getElementById("kommentarPol")?.value || "";
+        // ✅ Neues Array "Begleiter" erzeugen
+        const Begleiter = [];
+        if (Begleitung === "Ja") {
+          const anzahl = parseInt(AnzahlBegleiter) || 0;
       
+          for (let i = 1; i <= anzahl; i++) {
+            const vornameB = document.querySelector(`input[name="begleiterVorname${i}"]`)?.value || "";
+            const nachnameB = document.querySelector(`input[name="begleiterNachname${i}"]`)?.value || "";
+            const alterB = document.querySelector(`input[name="begleiterAlter${i}"]:checked`)?.value || "";
+      
+            Begleiter.push({
+              Vorname: vornameB,
+              Nachname: nachnameB,
+              Alter: alterB
+            });
+          }
+        }
         try {
           await fetch(scriptURLPolterabend, {
             method: "POST",
@@ -466,7 +482,8 @@
               Begleitung,
               AnzahlBegleiter,
               Uebernachtung,
-              Kommentar
+              Kommentar,
+              Begleiter
             }),
           });
       

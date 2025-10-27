@@ -367,103 +367,134 @@
     });
 
 
-    //Formulare Anmeldungen
+    // =========================
+    // FORMULARE ANMELDUNGEN
+    // =========================
     const notification = document.getElementById("notification");
 
-    //Buttons Polterabend
+    // =========================
+    // POLTERABEND
+    // =========================
     const scriptURLPolterabend = "https://script.google.com/macros/s/AKfycbxNeW4SbAjFbR8Ph1vgxt0KzyMZYod5jbOlCIm-MtPeJMKMaEedOXzdNnw13vIJFgs5/exec";
-    const formPolterabend = document.getElementById("formPolterabend");
-    const begleitungCheckbox = document.getElementById("begleitungPol");
-    const begleiterSection = document.getElementById("BegleiterPol");
-    const anzahlInput = document.getElementById("anzahlBegleiterPol");
-    const container = document.getElementById("begleiterFelder");     
 
-    //Formular Polterabend öffnen
-    openPolterabendBtn.addEventListener("click", () => {
-      overlay.style.display = "block"; 
-    });
-    closeBtn.addEventListener("click", () => {
-      overlay.style.display="none";
-    });
-
-    // --- Checkbox „Begleitung“ steuert Anzeige ---
-    begleitungCheckbox.addEventListener("change", function() {
-      begleiterSection.style.display = this.checked ? "block" : "none";
-      if (!this.checked) {
+    const openPolterabendBtn = document.getElementById("openPolterabendBtn");
+      const overlay = document.getElementById("overlay");
+      const closeBtn = document.getElementById("closeformBtn");
+      const popupPolterabend = document.getElementById("popupPolterabend");
+      const formPolterabend = document.getElementById("formPolterabend");
+      
+      const begleitungCheckbox = document.getElementById("begleitungPol");
+      const begleiterSection = document.getElementById("BegleiterPol");
+      const anzahlInput = document.getElementById("anzahlBegleiterPol");
+      const container = document.getElementById("begleiterFelder");
+      
+      // Formular Polterabend öffnen/schließen
+      openPolterabendBtn.addEventListener("click", () => {
+        overlay.style.display = "block"; 
+      });
+      
+      closeBtn.addEventListener("click", () => {
+        overlay.style.display = "none";
+      });
+      
+      // =========================
+      // Checkbox „Begleitung“ steuert Anzeige
+      // =========================
+      begleitungCheckbox.addEventListener("change", function() {
+        begleiterSection.style.display = this.checked ? "block" : "none";
+        if (!this.checked) {
+          container.innerHTML = "";
+        } else {
+          generateFields();
+        }
+      });
+      
+      // =========================
+      // Dynamisch Begleitfelder erzeugen
+      // =========================
+      anzahlInput.addEventListener("input", generateFields);
+      
+      function generateFields() {
         container.innerHTML = "";
-      } else {
-        generateFields();
-      }
-    });
+        const anzahl = parseInt(anzahlInput.value) || 0;
       
-       // --- Dynamisch Begleitfelder erzeugen ---
-  anzahlInput.addEventListener("input", generateFields);
-
-  function generateFields() {
-    container.innerHTML = "";
-    const anzahl = parseInt(anzahlInput.value) || 0;
-
-    for (let i = 1; i <= anzahl; i++) {
-      container.innerHTML += `
-        <div class="field">
-          <label>Begleiter ${i} Vorname:
-            <input type="text" name="begleiterVorname${i}">
-          </label>
-        </div>
-        <div class="field">
-          <label>Begleiter ${i} Nachname:
-            <input type="text" name="begleiterNachname${i}">
-          </label>
-        </div>
-        <div class="field">
-          <span>Begleiter ${i} Alter:</span><br>
-          <label><input type="radio" name="begleiterAlter${i}" value="Baby"> 0–3 Jahre</label>
-          <label><input type="radio" name="begleiterAlter${i}" value="Kind"> 4–12 Jahre</label>
-          <label><input type="radio" name="begleiterAlter${i}" value="Jugendlich"> älter als 12</label>
-        </div>
-        <hr>`;
-    }
-  }
-
-    formPolterabend.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const vorname = document.getElementById("vornamePol")?.value || "";
-      const nachname = document.getElementById("nachnamePol")?.value || "";
-      const teilnahme = document.getElementById("teilnahmePol")?.value || "";
-      const Begleitung = begleitungCheckbox.checked ? "Ja" : "Nein";
-      const AnzahlBegleiter = anzahlInput.value || "";
-      const Uebernachtung = document.querySelector('input[name="UebernachtungPol"]:checked')?.value || "";
-      const Kommentar = document.getElementById("kommentarPol")?.value || "";
-
+        for (let i = 1; i <= anzahl; i++) {
+          container.innerHTML += `
+            <div class="field">
+              <label>Begleiter ${i} Vorname:
+                <input type="text" name="begleiterVorname${i}">
+              </label>
+            </div>
+            <div class="field">
+              <label>Begleiter ${i} Nachname:
+                <input type="text" name="begleiterNachname${i}">
+              </label>
+            </div>
+            <div class="field">
+              <span>Begleiter ${i} Alter:</span><br>
+              <label><input type="radio" name="begleiterAlter${i}" value="Baby"> 0–3 Jahre</label>
+              <label><input type="radio" name="begleiterAlter${i}" value="Kind"> 4–12 Jahre</label>
+              <label><input type="radio" name="begleiterAlter${i}" value="Jugendlich"> älter als 12</label>
+            </div>
+            <hr>`;
+        }
+      }
       
-      try {
-        await fetch(scriptURLPolterabend, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ vorname, nachname, teilnahme, Begleitung, AnzahlBegleiter, Uebernachtung, Kommentar }),
-        });
-
-        popupPolterabend.style.display ="none";
-        notification.style.display = "block";
-        setTimeout(() => {
-          notification.style.display = "none";
-          overlay.style.display="none";
-          formPolterabend.reset();
-        }, 3000);
-      } catch (error) {
-        alert("Fehler beim Senden: " + error);
-      }
-    });
-    
-    window.addEventListener("click", (e) => {
-      if (popupPolterabend.style.display === "block" &&
-            !popupPolterabend.contains(e.target) &&
-            e.target !== openPolterabendBtn) {
-        popupPolterabend.style.display ="none";
-      }
-    });
+      // =========================
+      // Formular absenden
+      // =========================
+      formPolterabend.addEventListener("submit", async (e) => {
+        e.preventDefault();
+      
+        const vorname = document.getElementById("vornamePol")?.value || "";
+        const nachname = document.getElementById("nachnamePol")?.value || "";
+        const teilnahme = document.getElementById("teilnahmePol")?.checked ? "Ja" : "Nein"; // ✅ korrigiert
+        const Begleitung = begleitungCheckbox.checked ? "Ja" : "Nein";
+        const AnzahlBegleiter = anzahlInput.value || "";
+        const Uebernachtung = document.querySelector('input[name="UebernachtungPol"]:checked')?.value || "";
+        const Kommentar = document.getElementById("kommentarPol")?.value || "";
+      
+        try {
+          await fetch(scriptURLPolterabend, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              vorname,
+              nachname,
+              teilnahme,
+              Begleitung,
+              AnzahlBegleiter,
+              Uebernachtung,
+              Kommentar
+            }),
+          });
+      
+          popupPolterabend.style.display = "none";
+          notification.style.display = "block";
+          setTimeout(() => {
+            notification.style.display = "none";
+            overlay.style.display = "none";
+            formPolterabend.reset();
+            container.innerHTML = ""; // Felder nach dem Reset löschen
+          }, 3000);
+        } catch (error) {
+          alert("Fehler beim Senden: " + error);
+        }
+      });
+      
+      // =========================
+      // Klick außerhalb des Popups schließt es
+      // =========================
+      window.addEventListener("click", (e) => {
+        if (
+          popupPolterabend.style.display === "block" &&
+          !popupPolterabend.contains(e.target) &&
+          e.target !== openPolterabendBtn
+        ) {
+          popupPolterabend.style.display = "none";
+        }
+      });
 
 
     //Buttons Hochzeit

@@ -256,6 +256,7 @@
           <label>Anzahl Begleitpersonen:
             <input type="number" id="anzahlBegleiterPol" min="1" value="1"><br>
           </label>
+          <div id="begleiterFelder"></div>
         </div>
         <label>Übernachtung:</label><br>
           <label><input type="radio" name="UebernachtungPol" value="Location"> Zelten</label>
@@ -402,6 +403,35 @@
       const Uebernachtung = document.querySelector('input[name="UebernachtungPol"]:checked')?.value || "";
       const Kommentar = document.getElementById("kommentarPol")?.value || "";
 
+      document.getElementById("BegleitungPol").addEventListener("change", function() {
+        const section = document.getElementById("BegleiterPol");
+        section.style.display = this.checked ? "block" : "none";
+        if (!this.checked) {
+          document.getElementById("begleiterFelder").innterHTML = "";
+        }
+      });
+      //Dynamisch Begleitfelder erzeugen
+      document.getElementById("BegleiterPol").addEventListener("input", function() {
+        const container = document.getElementById("begleiterFelder");
+        container.innerHTML = "";
+        const anzahl = parseInt(this.value) || 0;
+        for (let i = 1; i<=anzahl; i++) {
+          container.innerHTML +=
+            '<div class="field">' +
+            '<label>Begleiter' + i + ' Vorname: <input type="text" name="begleiterVorname"' + i + '"></label>' +
+            '</div>' +
+            '<div class="field">' + 
+              '<label>Begleiter' + i + ' Nachname: <input type="text" name="begleiterNachname"' + i + '"></label>' + 
+            '</div>';
+          container.innerHTML +=
+            '<div class="field">' +
+              '<span>Begleiter ' + i + ' Alter: </span><br>' + 
+              '<label><input type="radio" name="begleiterAlter' + 'i' + '"value="Baby"> 0-3 Jahre</label>' + 
+              '<label><input type="radio" name="begleiterAlter' + 'i' + '"value="Kind"> 4-12 Jahre</label>' + 
+              '<label><input type="radio" name="begleiterAlter' + 'i' + '"value="Jugendlich"> älter als 12</label>' + 
+            '</div><hr>';        
+          }
+        });
       try {
         await fetch(scriptURLPolterabend, {
           method: "POST",

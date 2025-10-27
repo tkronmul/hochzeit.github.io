@@ -498,7 +498,7 @@
         // --- Buffet-Auswahl sammeln ---
         const Buffetmitbringen = [];
         document.querySelectorAll('input[name="Buffet"]:checked').forEach(cb => {
-          buffetSelections.push(cb.value);
+          Buffetmitbringen.push(cb.value);
         });
         const weitereGerichte = document.getElementById("Weiteres")?.value || "";
         try {

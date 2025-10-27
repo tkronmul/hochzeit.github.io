@@ -252,6 +252,11 @@
         <label>Nachname: <input type="text" id="nachnamePol" name="nachnamePol" required></label><br><br>
         <label><input type="checkbox" id="teilnahmePol"> Ich nehme teil</label><br>
         <label><input type="checkbox" id="begleitungPol"> Ich komme mit Begleitung</label><br>
+        <div id="BegleiterPol" class="hidden">
+          <label>Anzahl Begleitpersonen:
+            <input type="number" id="anzahlBegleiterPol" min="1" value="1"><br>
+          </label>
+        </div>
         <label>Übernachtung:</label><br>
           <label><input type="radio" name="UebernachtungPol" value="Location"> Zelten</label>
           <label><input type="radio" name="UebernachtungPol" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause</label> <br>
@@ -365,7 +370,7 @@
     const notification = document.getElementById("notification");
 
     //Buttons Polterabend
-    const scriptURLPolterabend = "https://script.google.com/macros/s/AKfycbxT_Uni0ET9lV0sFu1SWBb0h-azX-uxfT7xmvCV9s4qYcOdcOpXQ6TqQJM-HKBMkK7LUg/exec";
+    const scriptURLPolterabend = "https://script.google.com/macros/s/AKfycbxNeW4SbAjFbR8Ph1vgxt0KzyMZYod5jbOlCIm-MtPeJMKMaEedOXzdNnw13vIJFgs5/exec";
     const openPolterabendBtn = document.getElementById("openPolterabendBtn");
     const overlay = document.getElementById("overlay");
     const closeBtn = document.getElementById("closeformBtn");
@@ -393,6 +398,7 @@
       const nachname = document.getElementById("nachnamePol")?.value || "";
       const teilnahme = document.getElementById("teilnahmePol")?.value || "";
       const Begleitung = document.getElementById("BegleitungPol")?.checked ? "Ja": "Nein";
+      const AnzahlBegleiter document.getElementById("anzahlBegleiterPol")?.value || "";
       const Uebernachtung = document.querySelector('input[name="UebernachtungPol"]:checked')?.value || "";
       const Kommentar = document.getElementById("kommentarPol")?.value || "";
 
@@ -401,7 +407,7 @@
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ vorname, nachname, teilnahme, Begleitung, Uebernachtung, Kommentar }),
+          body: JSON.stringify({ vorname, nachname, teilnahme, Begleitung, AnzahlBegleiter, Uebernachtung, Kommentar }),
         });
 
         popupPolterabend.style.display ="none";

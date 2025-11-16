@@ -673,14 +673,14 @@
       const vorname = document.getElementById("vornameHoch")?.value || "";
       const nachname = document.getElementById("nachnameHoch")?.value || "";
       const teilnahme = document.getElementById("teilnahmeHoch")?.checked ? "Ja" : "Nein";
-      const Gewohnheit = document.getElementById("gewohnheitHoch")?.value || "";
+      const gewohnheit = document.getElementById("gewohnheitHoch")?.value || "";
       const Begleitung = begleitungCheckboxHoch.checked ? "Ja" : "Nein";
       const AnzahlBegleiter = anzahlInputHoch.value || "";
       const Uebernachtung = document.querySelector('input[name="UebernachtungHoch"]:checked')?.value || "";
       const Zimmer = document.getElementById("anzahlZimmer")?.value || "";
       const Kommentar = document.getElementById("kommentarHoch")?.value || "";
       // Neues Array "Begleiter" erzeugen
-      const Begleiter = [];
+      const BegleiterHoch = [];
       if (Begleitung === "Ja") {
           const anzahlHoch = parseInt(AnzahlBegleiter) || 0;
       
@@ -690,7 +690,7 @@
             const gewohnheitC = document.querySelector(`input[name="gewohnheitHoch{i}"]`)?.value || "";
             const alterC = document.querySelector(`input[name="begleiterAlterHoch${i}"]:checked`)?.value || "";
       
-            Begleiter.push({
+            BegleiterHoch.push({
               Vorname: vornameC,
               Nachname: nachnameC,
               Gewohnheit: gewohnheitC,
@@ -708,13 +708,13 @@
             vorname, 
             nachname, 
             teilnahme,
-            Gewohnheit,
+            gewohnheit,
             Begleitung,
             AnzahlBegleiter,
             Uebernachtung,
             Zimmer,
             Kommentar,
-            Begleiter }),
+            BegleiterHoch }),
         });
 
         popupHochzeit.style.display ="none";

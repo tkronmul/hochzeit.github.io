@@ -586,6 +586,12 @@
     const closeHochzeitBtn = document.getElementById("closeformHochBtn");
     const popupHochzeit = document.getElementById("popupHochzeit");
     const formHochzeit = document.getElementById("formHochzeit");
+    const teilnahmeCheckboxHoch = document.getElementById("teilnahmeHoch");
+    const teilnahmeSectionHoch = document.getElementById("TeilnahmeHoch");
+    const begleitungCheckboxHoch = document.getElementById("begleitungHoch");
+    const begleiterSectionHoch = document.getElementById("BegleiterHoch");
+    const anzahlInputHoch = document.getElementById("anzahlBegleiterHoch");
+    const containerHoch = document.getElementById("begleiterFelder");
 
     //Formular Hochzeit öffnen
     openHochzeitBtn.addEventListener("click", () => {
@@ -595,36 +601,116 @@
     closeHochzeitBtn.addEventListener("click", () => {
       overlayHoch.style.display = "none";
     });
+    
+    // --- Anzeige der Teilnahme-Section steuern ---
+    teilnahmeCheckboxHoch.addEventListener("change", function() {
+      teilnahmeSectionHoch.style.display = this.checked ? "block" : "none";
+    });
 
+    // Checkbox „Begleitung“ steuert Anzeige
+    begleitungCheckboxHoch.addEventListener("change", function() {
+      begleiterSectionHoch.style.display = this.checked ? "block" : "none";
+      if (!this.checked) {
+        container.innerHTML = "";
+      } else {
+        generateFieldsHoch();
+      }
+    });
+
+    // Dynamisch Begleitfelder erzeugen
+    anzahlInput.addEventListener("input", generateFieldsHoch);
+      
+    function generateFieldsHoch() {
+      container.innerHTML = "";
+      const anzahl = parseInt(anzahlInput.value) || 0;
+      for (let i = 1; i <= anzahl; i++) {
+        container.innerHTML += `
+          <div class="field">
+            <label>Begleiter ${i} Vorname:
+              <input type="text" name="begleiterVorname${i}">
+            </label>
+          </div>
+          <div class="field">
+            <label>Begleiter ${i} Nachname:
+              <input type="text" name="begleiterNachname${i}">
+            </label>
+          </div>
+          <div class="field">
+            <label>Gewohnheit ${i}:
+              <input type="text" name="gewohnheit${i}">
+            </label>
+          </div>
+          <div class="field">
+            <span>Begleiter ${i} Alter:</span><br>
+            <label><input type="radio" name="begleiterAlter${i}" value="Baby"> 0–3 Jahre</label>
+            <label><input type="radio" name="begleiterAlter${i}" value="Kind"> 4–12 Jahre</label>
+            <label><input type="radio" name="begleiterAlter${i}" value="Jugendlich"> älter als 12</label>
+          </div>
+          <hr>`;
+      }
+    }
+    
+    // Formular absenden
     formHochzeit.addEventListener("submit", async (e) => {
       e.preventDefault();
-
       const vorname = document.getElementById("vornameHoch")?.value || "";
       const nachname = document.getElementById("nachnameHoch")?.value || "";
       const teilnahme = document.getElementById("teilnahmeHoch")?.value || "";
+      const gewohnheit = document.getElementById("gewohnheitHoch")?.value || "";
       const Begleitung = document.getElementById("BegleitungHoch")?.checked ? "Ja": "Nein";
+      const AnzahlBegleiter = anzahl.Inut.value || "";
       const Uebernachtung = document.querySelector('input[name="UebernachtungHoch"]:checked')?.value || "";
       const Kommentar = document.getElementById("kommentarHoch")?.value || "";
+      // Neues Array "Begleiter" erzeugen
+      if (Begleitung === "Ja") {
+          const anzahl = parseInt(AnzahlBegleiter) || 0;
+      
+          for (let i = 1; i <= anzahl; i++) {
+            const vornameB = document.querySelector(`input[name="begleiterVorname${i}"]`)?.value || "";
+            const nachnameB = document.querySelector(`input[name="begleiterNachname${i}"]`)?.value || "";
+            const gewohnheitB = document.querySelector(`input[name="gewohnheit{i}"]`)?.value || "";
+            const alterB = document.querySelector(`input[name="begleiterAlter${i}"]:checked`)?.value || "";
+      
+            Begleiter.push({
+              Vorname: vornameB,
+              Nachname: nachnameB,
+              Gewohnheit: gewohnheitB,
+              Alter: alterB
+            });
+          }
+        }
 
       try {
         await fetch(scriptURLHochzeit, {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ vorname, nachname, teilnahme, Begleitung, Uebernachtung, Kommentar }),
+          body: JSON.stringify({ 
+            vorname, 
+            nachname, 
+            teilnahme,
+            gewohnheit,
+            Begleitung,
+            AnzahlBegleiter,
+            Uebernachtung, 
+            Kommentar,
+            Begleiter }),
         });
 
         popupHochzeit.style.display ="none";
         notification.style.display = "block";
         setTimeout(() => {
           notification.style.display = "none";
+          overlay.style.display ="none";
           formHochzeit.reset();
+          container.innerHTML = ""; //Felder nach dem Reset löschen
         }, 3000);
       } catch (error) {
         alert("Fehler beim Senden: " + error);
       }
     });
     
+    // Klick außerhalb des Popups schließt es
     window.addEventListener("click", (e) => {
       if (popupHochzeit.style.display === "block" &&
             !popupHochzeit.contains(e.target) &&

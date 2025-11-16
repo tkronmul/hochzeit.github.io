@@ -479,7 +479,7 @@
             </div>
             <div class="field">
               <label>Gewohnheit ${i}:
-                <input type="text" name="gewohnheit${i}">
+                <input type="text" name="begleitergewohnheit${i}">
               </label>
             </div>
             <div class="field">
@@ -513,7 +513,7 @@
           for (let i = 1; i <= anzahl; i++) {
             const vornameB = document.querySelector(`input[name="begleiterVorname${i}"]`)?.value || "";
             const nachnameB = document.querySelector(`input[name="begleiterNachname${i}"]`)?.value || "";
-            const gewohnheitB = document.querySelector(`input[name="gewohnheit{i}"]`)?.value || "";
+            const gewohnheitB = document.querySelector(`input[name="begleitergewohnheit{i}"]`)?.value || "";
             const alterB = document.querySelector(`input[name="begleiterAlter${i}"]:checked`)?.value || "";
       
             Begleiter.push({
@@ -652,7 +652,7 @@
           </div>
           <div class="field">
             <label>Gewohnheit ${i}:
-              <input type="text" name="gewohnheitHoch${i}">
+              <input type="text" name="begleitergewohnheitHoch${i}">
             </label>
           </div>
           <div class="field">
@@ -687,7 +687,7 @@
           for (let i = 1; i <= anzahlHoch; i++) {
             const vornameC = document.querySelector(`input[name="begleiterVornameHoch${i}"]`)?.value || "";
             const nachnameC = document.querySelector(`input[name="begleiterNachnameHoch${i}"]`)?.value || "";
-            const gewohnheitC = document.querySelector(`input[name="gewohnheitHoch{i}"]`)?.value || "";
+            const gewohnheitC = document.querySelector(`input[name=""begleitergewohnheitHoch{i}"]`)?.value || "";
             const alterC = document.querySelector(`input[name="begleiterAlterHoch${i}"]:checked`)?.value || "";
       
             BegleiterHoch.push({

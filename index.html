@@ -680,7 +680,7 @@
       if (Begleitung === "Ja") {
           const anzahlHoch = parseInt(AnzahlBegleiter) || 0;
       
-          for (let i = 1; i <= anzahl; i++) {
+          for (let i = 1; i <= anzahlHoch; i++) {
             const vornameC = document.querySelector(`input[name="begleiterVorname${i}"]`)?.value || "";
             const nachnameC = document.querySelector(`input[name="begleiterNachname${i}"]`)?.value || "";
             const gewohnheitC = document.querySelector(`input[name="gewohnheit{i}"]`)?.value || "";

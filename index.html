@@ -248,9 +248,11 @@
     <button class="closeBtn" id="closeformBtn">&times;</button>
     <h2>Anmeldung Polterabend</h3>
     <form id="formPolterabend">
-        <label>Vorname: <input type="text" id="vornamePol" name="vornamePol" required></label><br><br>
-        <label>Nachname: <input type="text" id="nachnamePol" name="nachnamePol" required></label><br><br>
-        <label><input type="checkbox" id="teilnahmePol"> Ich nehme teil</label><br>
+      <label>Vorname: <input type="text" id="vornamePol" name="vornamePol" required></label><br><br>
+      <label>Nachname: <input type="text" id="nachnamePol" name="nachnamePol" required></label><br><br>
+      <label><input type="checkbox" id="teilnahmePol" required> Ich nehme teil</label><br>
+      <div id="TeilnahmePol" class="hidden">
+        <label>Deine Ernährungsform und/oder Unverträglichkeiten: <input type="text" id="gewohnheitPol" name="gewohnheitPol"></label><br><br>
         <label><input type="checkbox" id="begleitungPol"> Ich komme mit Begleitung</label><br>
         <div id="BegleiterPol" class="hidden">
           <label>Anzahl Begleitpersonen:
@@ -259,8 +261,8 @@
           <div id="begleiterFelder"></div>
         </div>
         <label>Übernachtung:</label><br>
-          <label><input type="radio" name="UebernachtungPol" value="Location"> Zelten</label>
-          <label><input type="radio" name="UebernachtungPol" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause</label> <br>
+        <label><input type="radio" name="UebernachtungPol" value="Location"> Zelten</label>
+        <label><input type="radio" name="UebernachtungPol" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause</label> <br>
         <label><input type="checkbox" id="mitbringen"> Ich bringe etwas für das Buffet mit</label><br>
         <div id="MitbringenSection" class="hidden">
           <label>Auswahl:</label><br>
@@ -280,22 +282,36 @@
           <label>Weiteres: <input type="text" id="Weiteres" name="Weiteres" ></label><br>
         </div> 
         <label>Kommentar: <textarea id="kommentarPol" name="kommentar"></textarea></label><br>
+      </div>
       <button type="submit">Absenden</button>
     </form>
   </div>
   </div>
 
-  <div id="popupHochzeit" class="hidden">
+  <div id="popupHochzeit" class="popup">
+    <button class="closeBtn" id="closeformHochBtn">&times;</button>
     <h2>Anmeldung Hochzeit</h3>
     <form id="formHochzeit">
-        <label>Vorname: <input type="text" id="vornameHoch" name="vornameHoch" required></label><br><br>
-        <label>Nachname: <input type="text" id="nachnameHoch" name="nachnameHoch" required></label><br><br>
-        <label><input type="checkbox" id="teilnahmeHoch"> Ich nehme teil</label><br>
+      <label>Vorname: <input type="text" id="vornameHoch" name="vornameHoch" required></label><br><br>
+      <label>Nachname: <input type="text" id="nachnameHoch" name="nachnameHoch" required></label><br><br>
+      <label><input type="checkbox" id="teilnahmeHoch" required> Ich nehme teil</label><br>
+      <div id="TeilnahmeHoch" class="hidden>
+        <label>Deine Ernährungsform und/oder Unverträglichkeiten: <input type="text" id="gewohnheitHoch" name="gewohnheitHoch"></label><br><br>
         <label><input type="checkbox" id="begleitungHoch"> Ich komme mit Begleitung</label><br>
+        <div id="BegleiterHoch" class="hidden">
+          <label>Anzahl Begleitpersonen:
+            <input type="number" id="anzahlBegleiterHoch" min="1" value="1"><br>
+          </label>
+          <div id="begleiterFelder"></div>
+        </div>
         <label>Übernachtung:</label><br>
-        <label><input type="radio" name="UebernachtungHoch" value="Location"> In der Location</label>
+        <label><input type="radio" name="UebernachtungHoch" value="Location"> Ich möchte in der Location übernachten </label>
+        <div id="Zimmer" class="hidden"> 
+          <label>Anzahl Zimmer: <input type="number" id="anzahlZimmer" min="1" value="1"><br> </label>
+        </div>
         <label><input type="radio" name="UebernachtungHoch" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause</label> <br>
         <label>Kommentar: <textarea id="kommentarHoch" name="kommentar"></textarea></label><br>
+      </div>
       <button type="submit">Absenden</button>
     </form>
   </div>
@@ -326,8 +342,6 @@
       const output = document.getElementById("output");
       const openPolterabendBtn = document.getElementById("openPolterabendBtn");          
       const inputHash = await sha256(input);
-
-      
 
       //Subseiten aufbauen je nach Passwort
       if (inputHash === correctPassword1){
@@ -456,6 +470,11 @@
               </label>
             </div>
             <div class="field">
+              <label>Gewohnheit ${i}:
+                <input type="text" name="gewohnheit${i}">
+              </label>
+            </div>
+            <div class="field">
               <span>Begleiter ${i} Alter:</span><br>
               <label><input type="radio" name="begleiterAlter${i}" value="Baby"> 0–3 Jahre</label>
               <label><input type="radio" name="begleiterAlter${i}" value="Kind"> 4–12 Jahre</label>
@@ -474,6 +493,7 @@
         const vorname = document.getElementById("vornamePol")?.value || "";
         const nachname = document.getElementById("nachnamePol")?.value || "";
         const teilnahme = document.getElementById("teilnahmePol")?.checked ? "Ja" : "Nein"; // ✅ korrigiert
+        const gewohnheitA = document.getElementById("gewohnheitPol")?.value || "";
         const Begleitung = begleitungCheckbox.checked ? "Ja" : "Nein";
         const AnzahlBegleiter = anzahlInput.value || "";
         const Uebernachtung = document.querySelector('input[name="UebernachtungPol"]:checked')?.value || "";
@@ -486,11 +506,13 @@
           for (let i = 1; i <= anzahl; i++) {
             const vornameB = document.querySelector(`input[name="begleiterVorname${i}"]`)?.value || "";
             const nachnameB = document.querySelector(`input[name="begleiterNachname${i}"]`)?.value || "";
+            const gewohnheitB = document.querySelector(`input[name="gewohnheit{i}"]`)?.value || "";
             const alterB = document.querySelector(`input[name="begleiterAlter${i}"]:checked`)?.value || "";
       
             Begleiter.push({
               Vorname: vornameB,
               Nachname: nachnameB,
+              Gewohnheit: gewohnheitB,
               Alter: alterB
             });
           }
@@ -510,6 +532,7 @@
               vorname,
               nachname,
               teilnahme,
+              gewohnheit,
               Begleitung,
               AnzahlBegleiter,
               Uebernachtung,

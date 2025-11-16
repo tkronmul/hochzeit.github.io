@@ -621,10 +621,10 @@
     anzahlInput.addEventListener("input", generateFieldsHoch);
       
     function generateFieldsHoch() {
-      container.innerHTML = "";
+      containerHoch.innerHTML = "";
       const anzahl = parseInt(anzahlInputHoch.value) || 0;
       for (let i = 1; i <= anzahl; i++) {
-        container.innerHTML += `
+        containerHoch.innerHTML += `
           <div class="field">
             <label>Begleiter ${i} Vorname:
               <input type="text" name="begleiterVorname${i}">

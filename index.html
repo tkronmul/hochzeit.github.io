@@ -609,16 +609,7 @@
       teilnahmeSectionHoch.style.display = this.checked ? "block" : "none";
     });
 
-    // --- Anzeige der Zimmeranzahl steuern ---
-    zimmerCheckbox.forEach(radio => {
-      radio.addEventListener('change', () => {
-        if (zimmerCheckbox.value = "Location" && radio.checked) {
-          zimmerSection.style.display = "block";
-        } else {
-          zimmerSection.style.display = "none";
-        }
-      });
-    });
+    
 
     // Checkbox „Begleitung“ steuert Anzeige
     begleitungCheckboxHoch.addEventListener("change", function() {
@@ -628,6 +619,17 @@
       } else {
         generateFieldsHoch();
       }
+    });
+
+    // --- Anzeige der Zimmeranzahl steuern ---
+    zimmerCheckbox.forEach(radio => {
+      radio.addEventListener('change', () => {
+        if (zimmerCheckbox.value = "Location" && radio.checked) {
+          zimmerSection.style.display = "block";
+        } else {
+          zimmerSection.style.display = "none";
+        }
+      });
     });
 
     // Dynamisch Begleitfelder erzeugen
@@ -640,28 +642,30 @@
         containerHoch.innerHTML += `
           <div class="field">
             <label>Begleiter ${i} Vorname:
-              <input type="text" name="begleiterVorname${i}">
+              <input type="text" name="begleiterVornameHoch${i}">
             </label>
           </div>
           <div class="field">
             <label>Begleiter ${i} Nachname:
-              <input type="text" name="begleiterNachname${i}">
+              <input type="text" name="begleiterNachnameHoch${i}">
             </label>
           </div>
           <div class="field">
             <label>Gewohnheit ${i}:
-              <input type="text" name="gewohnheit${i}">
+              <input type="text" name="gewohnheitHoch${i}">
             </label>
           </div>
           <div class="field">
             <span>Begleiter ${i} Alter:</span><br>
-            <label><input type="radio" name="begleiterAlter${i}" value="Baby"> 0–3 Jahre</label>
-            <label><input type="radio" name="begleiterAlter${i}" value="Kind"> 4–12 Jahre</label>
-            <label><input type="radio" name="begleiterAlter${i}" value="Jugendlich"> älter als 12</label>
+            <label><input type="radio" name="begleiterAlterHoch${i}" value="Baby"> 0–3 Jahre</label>
+            <label><input type="radio" name="begleiterAlterHoch${i}" value="Kind"> 4–12 Jahre</label>
+            <label><input type="radio" name="begleiterAlterHoch${i}" value="Jugendlich"> älter als 12</label>
           </div>
           <hr>`;
       }
     }
+
+    
     
     // Formular absenden
     formHochzeit.addEventListener("submit", async (e) => {
@@ -681,10 +685,10 @@
           const anzahlHoch = parseInt(AnzahlBegleiter) || 0;
       
           for (let i = 1; i <= anzahlHoch; i++) {
-            const vornameC = document.querySelector(`input[name="begleiterVorname${i}"]`)?.value || "";
-            const nachnameC = document.querySelector(`input[name="begleiterNachname${i}"]`)?.value || "";
-            const gewohnheitC = document.querySelector(`input[name="gewohnheit{i}"]`)?.value || "";
-            const alterC = document.querySelector(`input[name="begleiterAlter${i}"]:checked`)?.value || "";
+            const vornameC = document.querySelector(`input[name="begleiterVornameHoch${i}"]`)?.value || "";
+            const nachnameC = document.querySelector(`input[name="begleiterNachnameHoch${i}"]`)?.value || "";
+            const gewohnheitC = document.querySelector(`input[name="gewohnheitHoch{i}"]`)?.value || "";
+            const alterC = document.querySelector(`input[name="begleiterAlterHoch${i}"]:checked`)?.value || "";
       
             Begleiter.push({
               Vorname: vornameC,

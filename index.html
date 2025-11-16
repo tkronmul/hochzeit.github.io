@@ -611,7 +611,7 @@
 
     // --- Anzeige der Zimmeranzahl steuern ---
     zimmerCheckbox.forEach(radio => {
-      zimmerCheckbox.addEventListener('change', () => {
+      radio.addEventListener('change', () => {
         if (zimmerCheckbox.value = "Location" && radio.checked) {
           zimmerSection.style.display = "block";
         } else {

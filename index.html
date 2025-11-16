@@ -495,7 +495,6 @@
       // =========================
       formPolterabend.addEventListener("submit", async (e) => {
         e.preventDefault();
-      
         const vorname = document.getElementById("vornamePol")?.value || "";
         const nachname = document.getElementById("nachnamePol")?.value || "";
         const teilnahme = document.getElementById("teilnahmePol")?.checked ? "Ja" : "Nein"; // ✅ korrigiert
@@ -575,10 +574,14 @@
         }
       });
 
-
-    //Buttons Hochzeit
+    
+    // =========================
+    // Hochzeit
+    // =========================
     const scriptURLHochzeit = "https://script.google.com/macros/s/AKfycbxBdiQ9ZKrbvlDthfJGVm3SH_pUO7L6w4kYAcRkM4m8E-mbtVZROtC5YvD2CRBXfKke3g/exec";
     const openHochzeitBtn = document.getElementById("openHochzeitBtn");
+    const overlay = document.getElementbyID("overlay");
+    const closeBtn = document.getElemebtById("closeformBtn");
     const popupHochzeit = document.getElementById("popupHochzeit");
     const formHochzeit = document.getElementById("formHochzeit");
 

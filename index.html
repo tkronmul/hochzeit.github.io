@@ -660,6 +660,7 @@
       const Begleitung = document.getElementById("BegleitungHoch")?.checked ? "Ja": "Nein";
       const AnzahlBegleiter = anzahl.Inut.value || "";
       const Uebernachtung = document.querySelector('input[name="UebernachtungHoch"]:checked')?.value || "";
+      const AnzahlZimmer = document.getElementById("anzahlZimmer")?.value || "";
       const Kommentar = document.getElementById("kommentarHoch")?.value || "";
       // Neues Array "Begleiter" erzeugen
       if (Begleitung === "Ja") {
@@ -692,7 +693,8 @@
             gewohnheit,
             Begleitung,
             AnzahlBegleiter,
-            Uebernachtung, 
+            Uebernachtung,
+            Zimmer,
             Kommentar,
             Begleiter }),
         });

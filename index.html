@@ -287,7 +287,8 @@
     </form>
   </div>
   </div>
-
+  
+  <div class="overlay" id="overlayHoch">
   <div id="popupHochzeit" class="popup">
     <button class="closeBtn" id="closeformHochBtn">&times;</button>
     <h2>Anmeldung Hochzeit</h3>
@@ -314,6 +315,7 @@
       </div>
       <button type="submit">Absenden</button>
     </form>
+  </div>
   </div>
 
   <div id="notification" class="notification"> Erfolgreich abgesendet!</div>
@@ -580,7 +582,7 @@
     // =========================
     const scriptURLHochzeit = "https://script.google.com/macros/s/AKfycbxBdiQ9ZKrbvlDthfJGVm3SH_pUO7L6w4kYAcRkM4m8E-mbtVZROtC5YvD2CRBXfKke3g/exec";
     const openHochzeitBtn = document.getElementById("openHochzeitBtn");
-    const overlay = document.getElementbyID("overlay");
+    const overlay = document.getElementbyID("overlayHoch");
     const closeBtn = document.getElemebtById("closeformBtn");
     const popupHochzeit = document.getElementById("popupHochzeit");
     const formHochzeit = document.getElementById("formHochzeit");

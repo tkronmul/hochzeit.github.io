@@ -430,7 +430,7 @@
         overlay.style.display = "block"; 
       });
       
-      closeBtn.addEventListener("click", () => {
+      closePolterabendBtn.addEventListener("click", () => {
         overlay.style.display = "none";
       });
     
@@ -582,14 +582,18 @@
     // =========================
     const scriptURLHochzeit = "https://script.google.com/macros/s/AKfycbxBdiQ9ZKrbvlDthfJGVm3SH_pUO7L6w4kYAcRkM4m8E-mbtVZROtC5YvD2CRBXfKke3g/exec";
     const openHochzeitBtn = document.getElementById("openHochzeitBtn");
-    const overlay = document.getElementbyID("overlayHoch");
+    const overlayHoch = document.getElementbyID("overlayHoch");
     const closeBtn = document.getElemebtById("closeformBtn");
     const popupHochzeit = document.getElementById("popupHochzeit");
     const formHochzeit = document.getElementById("formHochzeit");
 
     //Formular Hochzeit öffnen
     openHochzeitBtn.addEventListener("click", () => {
-      popupHochzeit.style.display = "block";
+      overlayHoch.style.display = "block";
+    });
+
+    closeHochzeitBtn.addEventListener("click", () => {
+      overlayHoch.style.display = "none";
     });
 
     formHochzeit.addEventListener("submit", async (e) => {

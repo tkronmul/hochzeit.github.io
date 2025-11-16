@@ -590,7 +590,7 @@
     const teilnahmeSectionHoch = document.getElementById("TeilnahmeHoch");
     const begleitungCheckboxHoch = document.getElementById("begleitungHoch");
     const begleiterSectionHoch = document.getElementById("BegleiterHoch");
-    const zimmerCheckbox = document.getElementById("UebernachtungHoch");
+    const zimmerCheckbox = document.querySelectorAll('input[name="UebernachtungHoch"]');
     const zimmerSection = document.getElementById("Zimmer");
     const anzahlInputHoch = document.getElementById("anzahlBegleiterHoch");
     const containerHoch = document.getElementById("begleiterFelderHoch");
@@ -610,8 +610,14 @@
     });
 
     // --- Anzeige der Zimmeranzahl steuern ---
-    zimmerCheckbox.addEventListener("change", function() {
-      teilnahmeSectionHoch.style.display = this.checked ? "block" : "none";
+    zimmerCheckbox.forEach(radio => {
+      zimmerCheckbox.addEventListener('change', () => {
+        if (zimmerCheckbox.value = "Location" && radio.checked) {
+          zimmerSection.style.display = "block";
+        } else {
+          zimmerSection.style.display = "none";
+        }
+      });
     });
 
     // Checkbox „Begleitung“ steuert Anzeige

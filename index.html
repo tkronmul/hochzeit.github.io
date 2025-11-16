@@ -48,6 +48,27 @@
       z-index: 1001; /* liegt über Overlay */
       animation: popupFadeIn 0.25s ease;
     }
+    .zweispaltig {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .links {
+      flex: 1;
+    }
+    .rechts {
+      flex: 1;
+      text-align: right;
+    }
+    .rechts img {
+      max-width: 100%;
+      height: auto;
+     }
+    .links ul ul {
+      margin-top: 5px;
+      margin-bottom: 15px;
+    }
+    
     
     @keyframes popupFadeIn {
       from { opacity: 0; transform: scale(0.9); }
@@ -187,7 +208,7 @@
       font-size: 2em;
       color: white;
     }
-    #kap1 {background: #4caf50;}
+    #kap1 {background: #D3D3D3;}
     #kap2 {background: #2196f3;}
     #kap3 {background: #ff9800;}
     #kap10 {background: #4caf50;}
@@ -232,8 +253,35 @@
     Anmeldung <br>
     <button id="openHochzeitBtn" class="event-btn">Anmeldung Hochzeitsfeier</button>
   </section>
-  <section id="kap10" class="hidden">Zeitstrahl Polterabend </section>
-  <section id="kap11" class="hidden">Informationen Polterabend </section>
+  <section id="kap10" class="hidden">
+    <div class="zweispaltig">
+      <div class = "links">
+        <ul>
+          <li><strong>Location:</strong>
+            <ul>
+              Ziegelberg 40 <br>
+              74538 Rosengarten Rieden <br>
+            </ul>
+          </li>
+          <li><strong>Parkplätze:</strong>
+          <ul> vorhanden </ul>
+          </li>
+          <li><strong>Dresscode:</strong>
+          <ul> wie ihr woll </ul>
+          </li>
+          <li><strong>Kontaktdaten</strong>
+          <ul>
+          <li> Max Mustermann</li>
+          <li> Stefanie Super</li>
+          </li>
+        </ul>
+      </div>
+      <div class="rechts">
+        <img src="images/Rieden.png" alt ="Zeitstrahl Bild">
+      </div>
+    </div>
+    </section>
+  <section id="kap11" class="hidden"> </section>
   <section id="kap12" class="hidden">
     Anmeldung <br>
     <button id="openPolterabendBtn" class="hidden">Anmeldung Polterabend</button>
@@ -245,7 +293,7 @@
   //Neue Felder für API
   <div class = "overlay" id="overlay">
   <div id="popupPolterabend" class="popup">
-    <button class="closeBtn" id="closeformPolBtn">&times;</button>
+    <button class="closeBtn" id="closeformPolBtn">&times;</butfstylton>
     <h2>Anmeldung Polterabend</h3>
     <form id="formPolterabend">
       <label>Vorname: <input type="text" id="vornamePol" name="vornamePol" required></label><br><br>

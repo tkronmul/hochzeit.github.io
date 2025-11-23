@@ -195,9 +195,15 @@
       const submenuPol = document.getElementById("submenu-pa);
 
       //Subseiten aufbauen je nach Passwort
+      if (inputHash !== correctPassword1 && inputHash !== correctPassword3 && inputHash !== correctPassword3) {
+        resultDiv.innerHTML = "<p class='error';'>Falsches Passwort </p>";
+        return;
+      }
+      //Eines der Passwörter ist korrekt
+      topMenu.classList.remove("hidden");
+      
       if (inputHash === correctPassword1){
         resultDiv.innerHTML = "<p class='success'> Passwort 1 korrekt </p>";
-        topMenu.classList.remove("hidden");
         tabHoch.classList.remove("hidden");
         tabPol.classList.add("hidden");
         submenuPol.classList.add("hidden"); 
@@ -208,7 +214,6 @@
       } else if (inputHash === correctPassword2) {
         resultDiv.innerHTML = "<p class='success'> Passwort 2 korrekt </p>";
         formPolterabend.style.display = "inline-block";
-        tabs.classList.remove("hidden");
         tabHoch.classList.remove("hidden");
         tabPol.classList.remove("hidden");
         openPolterabendBtn.classList.remove("hidden");
@@ -222,7 +227,6 @@
       } else if(inputHash === correctPassword3) {
         resultDiv.innerHTML = "<p class='success'> Passwort 3 korrekt </p>";
         formPolterabend.style.display ="inline-block";
-        tabs.classList.remove("hidden");
         tabPol.classList.remove("hidden");
         tabHoch.classList.add("hidden");
         submenuHoch.classList.add("hidden"); 
@@ -231,9 +235,23 @@
         kap12.classList.remove("hidden");
         document.getElementById("intro").style.display="none";
       }
-      else {
-        resultDiv.innerHTML = "<p class='error';'>Falsches Passwort </p>";
-      }
+      //Menüband
+      const tabs = document.querySelectorAll(".menuTab");
+      tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            const menu = tab.dataset.menu;
+    
+            // Anzeigen oder ausblenden
+            if (menu === "hf") {
+                submenuHF.classList.toggle("hidden");
+                submenuPA.classList.add("hidden");
+            }
+            if (menu === "pa") {
+                submenuPA.classList.toggle("hidden");
+                submenuHF.classList.add("hidden");
+            }
+          });
+      });
     }
       //Button + Enter
       document.getElementById("checkBtn").addEventListener("click", checkPassword);
@@ -241,23 +259,6 @@
         if (event.key === "Enter") checkPassword();
       });
        
-    //Menüband
-    const tabs = document.querySelectorAll(".menuTab");
-    tabs.forEach(tab => {
-      tab.addEventListener("click", () => {
-          const menu = tab.dataset.menu;
-  
-          // Anzeigen oder ausblenden
-          if (menu === "hf") {
-              submenuHF.classList.toggle("hidden");
-              submenuPA.classList.add("hidden");
-          }
-          if (menu === "pa") {
-              submenuPA.classList.toggle("hidden");
-              submenuHF.classList.add("hidden");
-          }
-        });
-    });
 
     // Submenu-Einträge → Scroll & Menüs schließen
     document.querySelectorAll(".submenu div").forEach(item => {

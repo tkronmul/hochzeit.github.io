@@ -25,6 +25,7 @@
   <div id="topMenuBar" class="hidden">
     <button class="menuTab hidden" data-menu="hf">Hochzeitsfeier</button>
     <button class="menuTab hidden" data-menu="pa">Polterabend</button>
+    <button class="menuTab hidden" data-menu="kon">Kontaktinformationen</button>
   </div>
 
   <!-- SUBMENÜ HOCHZEITSFEIER -->
@@ -187,6 +188,7 @@
     const topMenu = document.getElementById("topMenuBar");
     const tabHoch = document.querySelector('.menuTab[data-menu="hf"]');
     const tabPol = document.querySelector('.menuTab[data-menu="pa"]');
+    const tabKon = document.querySelector('.menuTab[data-menu="kon"]');
     const submenuHoch = document.getElementById("submenu-hf");
     const submenuPol = document.getElementById("submenu-pa");
     const submenuKontakt = document.getElementById("submenu-kontakt");
@@ -223,6 +225,7 @@
         resultDiv.innerHTML = "<p class='success'> Passwort 1 korrekt </p>";
         tabHoch.classList.remove("hidden");
         tabPol.classList.add("hidden");
+        tabKon.classList.remove("hidden");
         submenuPol.classList.add("hidden"); 
         kap1.classList.remove("hidden");
         kap2.classList.remove("hidden"); 
@@ -233,6 +236,7 @@
         formPolterabend.style.display = "inline-block";
         tabHoch.classList.remove("hidden");
         tabPol.classList.remove("hidden");
+        tabKon.classList.remove("hidden");
         openPolterabendBtn.classList.remove("hidden");
         kap1.classList.remove("hidden");
         kap2.classList.remove("hidden");
@@ -246,6 +250,7 @@
         formPolterabend.style.display ="inline-block";
         tabPol.classList.remove("hidden");
         tabHoch.classList.add("hidden");
+        tabKon.classList.remove("hidden");
         submenuHoch.classList.add("hidden"); 
         kap10.classList.remove("hidden");
         kap11.classList.remove("hidden");

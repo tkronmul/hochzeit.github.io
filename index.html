@@ -18,24 +18,25 @@
   </div>
 
   <!-- Menu -->
-    <button id="menuButton" class="hidden">☰ Menü </button>
+  <div id="topMenuBar">
+    <button class="menuTab" data-menu="hf">Hochzeitsfeier</button>
+    <button class="menuTab" data-menu="pa">Polterabend</button>
+  </div>
 
-    <div id="sideMenu" class="hidden">
-      <h3 data-level="Ebene 1">Hochzeitsfeier</h3>
-      <div class="submenu">
-        <div data-target="kap1">Zeitstrahl</div>
-        <div data-target="kap2">Informationen</div>
-        <div data-target="kap3">Anmeldung</div>
-      </div>
-      <h3 data-level="Ebene 2">Polterabend</h3>
-      <div class"submenu">
-        <div data-target="kap10">Zeitstrahl</div>
-        <div data-target="kap11">Informationen</div>
-        <div data-target="kap12">Anmeldung</div>
-      </div>
-    </div>
+  <!-- SUBMENÜ HOCHZEITSFEIER -->
+  <div id="submenu-hf" class="submenu hidden">
+      <div data-target="kap1">Zeitstrahl</div>
+      <div data-target="kap2">Informationen</div>
+      <div data-target="kap3">Anmeldung</div>
+  </div>
 
-    <div id="output" class="hidden"> Bitte wähle eine Option im Menü </div>
+  <!-- SUBMENÜ POLTERABEND -->
+  <div id="submenu-pa" class="submenu hidden">
+      <div data-target="kap10">Zeitstrahl</div>
+      <div data-target="kap11">Informationen</div>
+      <div data-target="kap12">Anmeldung</div>
+  </div>
+
   
   <!-- Bereiche -->
   <section id="kap1" class="hidden">Zeitstrahl Hochzeit </section>
@@ -184,17 +185,19 @@
       const resultDiv = document.getElementById("result");
       const openFormBtn = document.getElementById("openFormBtn");
       const HochzeitButton = document.getElementById("openHochzeitBtn");
-      const menuButton = document.getElementById("menuButton");
-      const sideMenu = document.getElementById("sideMenu");
+      const submenuHF = document.getElementById("submenu-hf");
+      const submenuPA = document.getElementById("submenu-pa");
       const output = document.getElementById("output");
       const openPolterabendBtn = document.getElementById("openPolterabendBtn");          
       const inputHash = await sha256(input);
+      const tabs = document.querySelectorAll(".menuTab");
 
       //Subseiten aufbauen je nach Passwort
       if (inputHash === correctPassword1){
         resultDiv.innerHTML = "<p class='success'> Passwort 1 korrekt </p>";
-        menuButton.classList.remove("hidden");
-        sideMenu.classList.remove("hidden");
+        tabs.classList.remove("hidden");
+        submenuHF.classList.remove("hidden");
+        submenuPA.classList.remove("hidden");
         kap1.classList.remove("hidden");
         kap2.classList.remove("hidden"); 
         kap3.classList.remove("hidden");
@@ -202,8 +205,9 @@
       } else if (inputHash === correctPassword2) {
         resultDiv.innerHTML = "<p class='success'> Passwort 2 korrekt </p>";
         formPolterabend.style.display = "inline-block";
-        menuButton.classList.remove("hidden");
-        sideMenu.classList.remove("hidden");
+        tabs.classList.remove("hidden");
+        submenuHF.classList.remove("hidden");
+        submenuPA.classList.remove("hidden");
         openPolterabendBtn.classList.remove("hidden");
         kap1.classList.remove("hidden");
         kap2.classList.remove("hidden");
@@ -215,8 +219,9 @@
       } else if(inputHash === correctPassword3) {
         resultDiv.innerHTML = "<p class='success'> Passwort 3 korrekt </p>";
         formPolterabend.style.display ="inline-block";
-        menuButton.classList.remove("hidden");
-        sideMenu.classList.remove("hidden");
+        tabs.classList.remove("hidden");
+        submenuHF.classList.remove("hidden");
+        submenuPA.classList.remove("hidden");
         kap10.classList.remove("hidden");
         kap11.classList.remove("hidden");
         kap12.classList.remove("hidden");
@@ -233,19 +238,20 @@
       });
        
     //Menüband
-    menuButton.addEventListener("click", () => {
-      sideMenu.classList.toggle("open");
-    });
-
-    sideMenu.addEventListener("click", (e) => {
-      if (e.target.dataset.target) {
-        const targetId = e.target.dataset.target;
-        const section = document.getElementById(targetId);
-        if (section) {
-          section.scrollIntoView({ behavior: "smooth"});
-        }
-        sideMenu.classList.remove("open");
-      }
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+          const menu = tab.dataset.menu;
+  
+          // Anzeigen oder ausblenden
+          if (menu === "hf") {
+              submenuHF.classList.toggle("hidden");
+              submenuPA.classList.add("hidden");
+          }
+          if (menu === "pa") {
+              submenuPA.classList.toggle("hidden");
+              submenuHF.classList.add("hidden");
+          }
+        });
     });
 
 

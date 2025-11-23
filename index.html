@@ -18,7 +18,7 @@
   </div>
 
   <!-- Menu -->
-  <div id="topMenuBar">
+  <div id="topMenuBar" class="hidden">
     <button class="menuTab" data-menu="hf">Hochzeitsfeier</button>
     <button class="menuTab" data-menu="pa">Polterabend</button>
   </div>
@@ -182,6 +182,7 @@
     } 
     async function checkPassword() {
       const input = document.getElementById("passwordInput").value;
+      const intro = document.getElementById("intro");
       const resultDiv = document.getElementById("result");
       const openFormBtn = document.getElementById("openFormBtn");
       const HochzeitButton = document.getElementById("openHochzeitBtn");
@@ -201,6 +202,7 @@
       }
       //Eines der Passwörter ist korrekt
       topMenu.classList.remove("hidden");
+      intro.style.display = "none";
       
       if (inputHash === correctPassword1){
         resultDiv.innerHTML = "<p class='success'> Passwort 1 korrekt </p>";

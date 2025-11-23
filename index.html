@@ -174,6 +174,12 @@
     const correctPassword2 = "0f19c406623e70f5d55cbf72a5636ca4c0538db997e4edbe22d0b27c70afa591";
     const correctPassword3 = "936a185caaa266bb9cbe981e9e05cb78cd732b0b3280eb944412bb6f8f8f07af";
 
+    const topMenu = document.getElementById("topMenuBar");
+    const tabHoch = document.querySelector('.menuTab[data-menu="hf"]');
+    const tabPol = document.querySelector('.menuTab[data-menu="pa"]');
+    const submenuHoch = document.getElementById("submenu-hf");
+    const submenuPol = document.getElementById("submenu-pa");
+
     async function sha256(message) {
       const msgBuffer = new TextEncoder().encode(message);
       const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
@@ -189,11 +195,7 @@
       const output = document.getElementById("output");
       const openPolterabendBtn = document.getElementById("openPolterabendBtn");          
       const inputHash = await sha256(input);
-      const topMenu = document.getElementById("topMenuBar");
-      const tabHoch = document.querySelector('.menuTab[data-menu="hf"]');
-      const tabPol = document.querySelector('.menuTab[data-menu="pa"]');
-      const submenuHoch = document.getElementById("submenu-hf");
-      const submenuPol = document.getElementById("submenu-pa");
+      
 
       //Subseiten aufbauen je nach Passwort
       if (inputHash !== correctPassword1 && inputHash !== correctPassword2 && inputHash !== correctPassword3) {
@@ -238,7 +240,7 @@
         document.getElementById("intro").style.display="none";
       }
       //Menüband
-      const tabs = document.querySelectorAll(".menuTab");
+      const tabs = document.querySelectorAll(".menuTab:not(.hidden)");
       tabs.forEach(tab => {
         tab.addEventListener("click", () => {
             const menu = tab.dataset.menu;
@@ -254,6 +256,7 @@
             }
           });
       });
+      allSections.forEach(sec => sec.classList.remove("hidden"));
     }
       //Button + Enter
       document.getElementById("checkBtn").addEventListener("click", checkPassword);
@@ -269,7 +272,7 @@
             const target = document.getElementById(targetId);
 
             if (target) {
-                target.scrollIntoView({ behavior: "smooth" });
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
             }
 
             submenuHoch.classList.add("hidden");

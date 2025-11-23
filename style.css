@@ -210,7 +210,7 @@
 
 /* Anfangs ausblenden */
 .hidden {
-    display: none;
+    display: none !important;
 }
     #output {
       margin: 50px;

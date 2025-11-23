@@ -185,19 +185,22 @@
       const resultDiv = document.getElementById("result");
       const openFormBtn = document.getElementById("openFormBtn");
       const HochzeitButton = document.getElementById("openHochzeitBtn");
-      const submenuHF = document.getElementById("submenu-hf");
-      const submenuPA = document.getElementById("submenu-pa");
       const output = document.getElementById("output");
       const openPolterabendBtn = document.getElementById("openPolterabendBtn");          
       const inputHash = await sha256(input);
-      const tabs = document.querySelectorAll(".menuTab");
+      const topMenu = document.getElementById("topMenuBar");
+      const tabHoch = document.querySelector('.menuTab[data-menu="hf"]');
+      const tabPol = document.querySelector('.menuTab[data-menu="pa"]');
+      const submenuHoch = document.getElementById("submenu-hf");
+      const submenuPol = document.getElementById("submenu-pa);
 
       //Subseiten aufbauen je nach Passwort
       if (inputHash === correctPassword1){
         resultDiv.innerHTML = "<p class='success'> Passwort 1 korrekt </p>";
-        tabs.classList.remove("hidden");
-        submenuHF.classList.remove("hidden");
-        submenuPA.classList.remove("hidden");
+        topMenu.classList.remove("hidden");
+        tabHoch.classList.remove("hidden");
+        tabPol.classList.add("hidden");
+        submenuPol.classList.add("hidden"); 
         kap1.classList.remove("hidden");
         kap2.classList.remove("hidden"); 
         kap3.classList.remove("hidden");
@@ -206,8 +209,8 @@
         resultDiv.innerHTML = "<p class='success'> Passwort 2 korrekt </p>";
         formPolterabend.style.display = "inline-block";
         tabs.classList.remove("hidden");
-        submenuHF.classList.remove("hidden");
-        submenuPA.classList.remove("hidden");
+        tabHoch.classList.remove("hidden");
+        tabPol.classList.remove("hidden");
         openPolterabendBtn.classList.remove("hidden");
         kap1.classList.remove("hidden");
         kap2.classList.remove("hidden");
@@ -220,8 +223,9 @@
         resultDiv.innerHTML = "<p class='success'> Passwort 3 korrekt </p>";
         formPolterabend.style.display ="inline-block";
         tabs.classList.remove("hidden");
-        submenuHF.classList.remove("hidden");
-        submenuPA.classList.remove("hidden");
+        tabPol.classList.remove("hidden");
+        tabHoch.classList.add("hidden");
+        submenuHoch.classList.add("hidden"); 
         kap10.classList.remove("hidden");
         kap11.classList.remove("hidden");
         kap12.classList.remove("hidden");
@@ -238,6 +242,7 @@
       });
        
     //Menüband
+    const tabs = document.querySelectorAll(".menuTab");
     tabs.forEach(tab => {
       tab.addEventListener("click", () => {
           const menu = tab.dataset.menu;
@@ -252,6 +257,26 @@
               submenuHF.classList.add("hidden");
           }
         });
+    });
+
+    // Submenu-Einträge → Scroll & Menüs schließen
+    document.querySelectorAll(".submenu div").forEach(item => {
+        item.addEventListener("click", () => {
+            const targetId = item.dataset.target;
+            const target = document.getElementById(targetId);
+
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+            }
+
+            submenuHoch.classList.add("hidden");
+            submenuPol.classList.add("hidden");
+        });
+    });
+
+    // Sections freischalten
+    document.querySelectorAll("section.hidden").forEach(sec => {
+        sec.classList.remove("hidden");
     });
 
 

@@ -178,7 +178,6 @@
 
 /* SUBMENÜ-STIL */
 .submenu {
-    position: fixed;
     top: 70px;      /* direkt unter der Menüleiste */
     left: 50%;
     transform: translateX(-50%);
@@ -228,8 +227,7 @@
     }
 
     section {
-      width: 90%;
-      height: 500px;
+      width: 90%;       
       margin: 50px auto;
       padding: 30px;
       background: rgba(255,255,255,0.85);

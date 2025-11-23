@@ -94,12 +94,11 @@
     Anmeldung <br>
     <button id="openPolterabendBtn" class="hidden">Anmeldung Polterabend</button>
   </section>
-  <section id="Kontakt" class="hidden"> </section>
+  <section id="Kontakt" class="hidden"> Kontaktdaten </section>
 
   <!-- Formular Polterabend -->
   
 
-  //Neue Felder für API
   <div class = "overlay" id="overlay">
   <div id="popupPolterabend" class="popup">
     <button class="closeBtn" id="closeformPolBtn">&times;</butfstylton>
@@ -273,6 +272,11 @@
                 submenuPol.classList.toggle("hidden");
                 submenuKontakt.classList.toggle("hidden");
                 submenuHoch.classList.add("hidden");
+            }
+          if (menu === "kon") {
+                tabKon.classList.add("hidden");
+                submenuKontakt.classList.toggle("hidden");
+                submenuHoch.classList.toggle("hidden");
             }
           });
       });

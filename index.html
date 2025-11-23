@@ -265,7 +265,7 @@
             // Anzeigen oder ausblenden
             if (menu === "hf") {
                 submenuHoch.classList.toggle("hidden");
-                submenuKontakt.classList.toggle("hidden");
+                submenuKontakt.classList.add("hidden");
                 submenuPol.classList.add("hidden");
             }
             if (menu === "pa") {
@@ -274,9 +274,9 @@
                 submenuHoch.classList.add("hidden");
             }
           if (menu === "kon") {
-                tabKon.classList.add("hidden");
+                submenuPol.classList.toggle("hidden");
                 submenuKontakt.classList.toggle("hidden");
-                submenuHoch.classList.toggle("hidden");
+                submenuHoch.classList.add("hidden");
             }
           });
       });

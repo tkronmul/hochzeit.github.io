@@ -41,6 +41,11 @@
       <div data-target="kap12">Anmeldung</div>
   </div>
 
+  <!-- SUBMENÜ Kontakte -->
+  <div id="submenu-kontakt" class="submenu hidden">
+      <div data-target="kap10">Kontaktdaten</div>
+  </div>
+
   
   <!-- Bereiche -->
   <section id="kap1" class="hidden">Zeitstrahl Hochzeit </section>
@@ -88,6 +93,7 @@
     Anmeldung <br>
     <button id="openPolterabendBtn" class="hidden">Anmeldung Polterabend</button>
   </section>
+  <section id="Kontakt" class="hidden"> </section>
 
   <!-- Formular Polterabend -->
   
@@ -183,6 +189,7 @@
     const tabPol = document.querySelector('.menuTab[data-menu="pa"]');
     const submenuHoch = document.getElementById("submenu-hf");
     const submenuPol = document.getElementById("submenu-pa");
+    const submenuKontakt = document.getElementById("submenu-kontakt");
 
     async function sha256(message) {
       const msgBuffer = new TextEncoder().encode(message);
@@ -254,10 +261,12 @@
             // Anzeigen oder ausblenden
             if (menu === "hf") {
                 submenuHoch.classList.toggle("hidden");
+                submenuKontakt.classList.toggle("hidden");
                 submenuPol.classList.add("hidden");
             }
             if (menu === "pa") {
                 submenuPol.classList.toggle("hidden");
+                submenuKontakt.classList.toggle("hidden");
                 submenuHoch.classList.add("hidden");
             }
           });
@@ -282,6 +291,7 @@
 
             submenuHoch.classList.add("hidden");
             submenuPol.classList.add("hidden");
+            submenuKontakt.classList.add("hidden");
         });
     });
 

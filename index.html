@@ -179,7 +179,13 @@
     const tabPol = document.querySelector('.menuTab[data-menu="pa"]');
     const submenuHoch = document.getElementById("submenu-hf");
     const submenuPol = document.getElementById("submenu-pa");
-    const allSections = document.querySelectorAll("section.hidden");
+    
+    const kap1 = document.getElementById("kap1");
+    const kap2 = document.getElementById("kap2");
+    const kap3 = document.getElementById("kap3");
+    const kap10 = document.getElementById("kap10");
+    const kap11 = document.getElementById("kap11");
+    const kap12 = document.getElementById("kap12");
 
     async function sha256(message) {
       const msgBuffer = new TextEncoder().encode(message);

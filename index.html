@@ -39,13 +39,13 @@
 
   
   <!-- Bereiche -->
-  <section id="kap1" class="section hidden">Zeitstrahl Hochzeit </section>
-  <section id="kap2" class="section hidden">Informationen Hochzeit </section>
-  <section id="kap3" class="section hidden">
+  <section id="kap1" class="hidden">Zeitstrahl Hochzeit </section>
+  <section id="kap2" class="hidden">Informationen Hochzeit </section>
+  <section id="kap3" class="hidden">
     Anmeldung <br>
     <button id="openHochzeitBtn" class="event-btn">Anmeldung Hochzeitsfeier</button>
   </section>
-  <section id="kap10" class="section hidden">
+  <section id="kap10" class="hidden">
     <div class="zweispaltig">
       <div class = "links">
         <ul>
@@ -79,8 +79,8 @@
       </div>
     </div>
     </section>
-  <section id="kap11" class="section hidden"> </section>
-  <section id="kap12" class="section hidden">
+  <section id="kap11" class="hidden"> </section>
+  <section id="kap12" class="hidden">
     Anmeldung <br>
     <button id="openPolterabendBtn" class="hidden">Anmeldung Polterabend</button>
   </section>
@@ -179,13 +179,6 @@
     const tabPol = document.querySelector('.menuTab[data-menu="pa"]');
     const submenuHoch = document.getElementById("submenu-hf");
     const submenuPol = document.getElementById("submenu-pa");
-    
-    const kap1 = document.getElementById("kap1");
-    const kap2 = document.getElementById("kap2");
-    const kap3 = document.getElementById("kap3");
-    const kap10 = document.getElementById("kap10");
-    const kap11 = document.getElementById("kap11");
-    const kap12 = document.getElementById("kap12");
 
     async function sha256(message) {
       const msgBuffer = new TextEncoder().encode(message);

@@ -208,10 +208,7 @@
     color: #0077cc;
 }
 
-/* Anfangs ausblenden */
-.hidden {
-    display: none !important;
-}
+
     #output {
       margin: 50px;
       font-size: 1.2em;
@@ -244,4 +241,9 @@
       font-size: 2em;
       color: black;
     }
+
+/* Anfangs ausblenden */
+.hidden {
+    display: none !important;
+}
   </style>

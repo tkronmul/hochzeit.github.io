@@ -179,6 +179,7 @@
     const tabPol = document.querySelector('.menuTab[data-menu="pa"]');
     const submenuHoch = document.getElementById("submenu-hf");
     const submenuPol = document.getElementById("submenu-pa");
+    const allSections = document.querySelectorAll("section.hidden");
 
     async function sha256(message) {
       const msgBuffer = new TextEncoder().encode(message);

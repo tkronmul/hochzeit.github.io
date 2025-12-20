@@ -270,7 +270,7 @@
     margin: 40px 0;
     opacity: 0;
     transform: translateY(30px);
-    transition: all 5s ease;
+    transition: all 15s ease;
   }
 
   .event.visible {

@@ -270,7 +270,7 @@
     margin: 40px 0;
     opacity: 0;
     transform: translateY(30px);
-    transition: all 30s ease;
+    transition: all 10s ease;
   }
 
   .event.visible {
@@ -282,13 +282,13 @@
   .left {
     left: 0;
     text-align: right;
-      width: 5 cm;
+      width: 7cm;
   }
 
   .right {
     left: 55%;
     text-align: left;
-      width: 5 cm;
+      width: 7cm;
   }
 
   h3 {

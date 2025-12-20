@@ -230,6 +230,69 @@
         padding-top: 120px;
     }
 
+    .timeline {
+    position: relative;
+    width: 600px;
+    margin: 50px auto;
+  }
+
+  /* Pfeil / Linie */
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: black;
+    transform: translateX(-50%);
+  }
+
+  .arrow {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  /* Eintrag */
+  .event {
+    position: relative;
+    width: 45%;
+    padding: 15px;
+    background: white;
+    border-radius: 6px;
+    margin: 40px 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+  }
+
+  .event.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* links / rechts */
+  .left {
+    left: 0;
+    text-align: right;
+  }
+
+  .right {
+    left: 55%;
+    text-align: left;
+  }
+
+  h3 {
+    margin: 0 0 5px;
+  }
+
+  .meta {
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.4;
+  }
+
     section {
       width: 90%;       
       margin: 50px auto;

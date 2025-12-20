@@ -247,12 +247,18 @@
     background: black;
     transform: translateX(-50%);
   }
-
-  .arrow {
-    text-align: center;
-    font-size: 30px;
-    margin-bottom: 20px;
-  }
+    .timeline::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 0;
+        heigth: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 15px solid black;
+        transform: translateX(-50%);
+    }
 
   /* Eintrag */
   .event {

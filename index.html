@@ -56,7 +56,30 @@
 
   
   <!-- Bereiche -->
-  <section id="kap1" class="hidden">Zeitstrahl Hochzeit </section>
+  <section id="kap1" class="hidden">
+    <h2 style="text-align:center;">Zeitstrahl Hochzeit </h2>
+    <div class = "timeline">
+      <div class="arrow">⬇️</div>
+      <div class="event left">
+        <h3>Zeitpunkt 1</h3>
+        <div class="meta">
+          Uhrzeit 1<br>
+          Ort 1 <br>
+          Beschreibung 1 <br>
+          Beschreibung 1 - zweite Zeile
+        </div>
+      </div>
+      <div class="event right">
+        <h3>Zeitpunkt 2</h3>
+        <div class="meta">
+          Uhrzeit 2<br>
+          Ort 2 <br>
+          Beschreibung 2 <br>
+          Beschreibung 2 - zweite Zeile
+        </div>
+      </div>
+  </section>
+  
   <section id="kap2" class="hidden">Informationen Hochzeit </section>
   <section id="kap3" class="hidden">
     Anmeldung <br>
@@ -312,6 +335,19 @@
             submenuPol.classList.add("hidden");
             submenuKontakt.classList.add("hidden");
         });
+    });
+
+    //Zeitstrahl erscheinen
+    const observer = new InersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {threshold: 0.3 });
+
+    document.querySelectorAll(".event").forEach(event => {
+      observer.observe(event);
     });
 
     

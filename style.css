@@ -218,6 +218,17 @@
     position: relative;
 }
 
+body {
+      margin: 0;
+      padding: 0;
+      background-image: url("images/Hintergrund.jpg");
+      background.size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+    padding-top: 120px;
+    }
+
     #output {
       margin: 50px;
       font-size: 1.2em;

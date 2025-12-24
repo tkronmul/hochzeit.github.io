@@ -659,7 +659,7 @@
       begleitungCheckboxHoch.addEventListener("change", () => {
         begleitungCheckboxHoch.classList.toggle(
           "hidden",
-          generateFieldsHoch();
+          generateFieldsHoch(),
           !begleitungCheckboxHoch.checked
         );
       });

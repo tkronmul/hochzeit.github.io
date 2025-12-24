@@ -30,29 +30,32 @@
 
   <!-- Menu -->
   <div id="topMenuBar" class="hidden">
-    <button class="menuTab hidden" data-menu="hf">Hochzeitsfeier</button>
-    <button class="menuTab hidden" data-menu="pa">Polterabend</button>
-    <button class="menuTab hidden" data-menu="kon">Kontaktinformationen</button>
-  </div>
+    <div class="menu-wrapper">
+      <button class="menuTab hidden" data-menu="hf">Hochzeitsfeier</button>
 
-  <!-- SUBMENÜ HOCHZEITSFEIER -->
-  <div id="submenu-hf" class="submenu hidden">
-      <div data-target="kap1">Zeitstrahl</div>
-      <div data-target="kap2">Informationen</div>
-      <div data-target="kap3">Anmeldung</div>
-  </div>
+      <div id="submenu-hf" class="submenu hidden">
+        <div data-target="kap1">Zeitstrahl</div>
+        <div data-target="kap2">Informationen</div>
+        <div data-target="kap3">Anmeldung</div>
+      </div>
+    </div>
 
-  <!-- SUBMENÜ POLTERABEND -->
-  <div id="submenu-pa" class="submenu hidden">
-      <div data-target="kap10">Zeitstrahl</div>
-      <div data-target="kap11">Informationen</div>
-      <div data-target="kap12">Anmeldung</div>
+    <div class="menu-wrapper">
+      <button class="menuTab hidden" data-menu="pa">Polterabend</button>
+      <div id="submenu-pa" class="submenu hidden">
+          <div data-target="kap10">Zeitstrahl</div>
+          <div data-target="kap11">Informationen</div>
+          <div data-target="kap12">Anmeldung</div>
+      </div>
+    </div>
+    <div class="menu-wrapper">
+      <button class="menuTab hidden" data-menu="kon">Kontaktinformationen</button>
+      <div id="submenu-kontakt" class="submenu hidden">
+          <div data-target="kap13">Kontaktdaten</div>
+      </div>
   </div>
-
-  <!-- SUBMENÜ Kontakte -->
-  <div id="submenu-kontakt" class="submenu hidden">
-      <div data-target="kap13">Kontaktdaten</div>
   </div>
+  
 
   
   <!-- Bereiche -->

@@ -325,66 +325,6 @@
     display: none !important;
 }
 
-/* --- Mobile-Optimierungen --- */
-@media (max-width: 768px) { /* Tablet und kleine Laptops */
-    /* Popup */
-    .popup {
-        width: 90vw;           /* MOBILE: Popup an Bildschirmbreite anpassen */
-        height: auto;          /* MOBILE: Höhe dynamisch */
-        max-height: 90vh;      /* MOBILE: nicht größer als Viewport */
-        padding: 16px;         /* MOBILE: Padding verkleinert */
-    }
 
-    /* Zweispaltige Bereiche aufspalten */
-    .zweispaltig {
-        flex-direction: column; /* MOBILE: Spalten untereinander */
-    }
-
-    .links, .rechts {
-        flex: 1 1 100%;         /* MOBILE: volle Breite */
-        text-align: left;       /* MOBILE: Text linksbündig */
-    }
-
-    /* Timeline */
-    .timeline {
-        width: 95%;             /* MOBILE: flexiblere Breite */
-    }
-
-    /* Event-Einträge */
-    .event {
-        width: 100%;            /* MOBILE: volle Breite */
-        margin: 20px 0;         /* MOBILE: geringerer Abstand */
-    }
-
-    /* Top Menu */
-    #topMenuBar {
-        flex-wrap: wrap;        /* MOBILE: Menü umbrechen */
-        gap: 15px;              /* MOBILE: kleinerer Abstand */
-        padding: 10px 15px;     /* MOBILE: kompakteres Padding */
-    }
-
-    .menuTab {
-        width: 100%;            /* MOBILE: Buttons volle Breite */
-        font-size: 14px;        /* MOBILE: kleinere Schrift */
-        padding: 10px;
-    }
-}
-
-@media (max-width: 480px) { /* Smartphones */
-    .popup {
-        width: 95vw;            /* MOBILE: fast volle Bildschirmbreite */
-        padding: 12px;          /* MOBILE: weniger Padding */
-    }
-
-    #topMenuBar {
-        flex-direction: column; /* MOBILE: Menü vertikal */
-        gap: 10px;              /* MOBILE: kleiner Abstand */
-    }
-
-    input, select, textarea, button {
-        font-size: 13px;        /* MOBILE: kleinere Schrift */
-        padding: 6px;           /* MOBILE: kompaktere Inputs */
-    }
-}
     
 </style>

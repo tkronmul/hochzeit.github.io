@@ -643,26 +643,37 @@
     
     // --- Anzeige der Teilnahme-Section steuern ---
     document.addEventListener("DOMContentLoaded", () => {
-    if (!teilnahmeCheckboxHoch || !teilnahmeSectionHoch) return;
-
-    teilnahmeCheckboxHoch.addEventListener("change", () => {
-      teilnahmeSectionHoch.classList.toggle(
-        "hidden",
-        !teilnahmeCheckboxHoch.checked
-      );
-    });
+      if (!teilnahmeCheckboxHoch || !teilnahmeSectionHoch) return;
+  
+      teilnahmeCheckboxHoch.addEventListener("change", () => {
+        teilnahmeSectionHoch.classList.toggle(
+          "hidden",
+          !teilnahmeCheckboxHoch.checked
+        );
       });
-    
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!begleitungCheckboxHoch || !begleiterSectionHoch) return;
+  
+      begleitungCheckboxHoch.addEventListener("change", () => {
+        begleitungCheckboxHoch.classList.toggle(
+          "hidden",
+          generateFieldsHoch();
+          !begleitungCheckboxHoch.checked
+        );
+      });
+    });
 
     // Checkbox „Begleitung“ steuert Anzeige
-    begleitungCheckboxHoch.addEventListener("change", function() {
-      begleiterSectionHoch.style.display = this.checked ? "block" : "none";
-      if (!this.checked) {
-        containerHoch.innerHTML = "";
-      } else {
-        generateFieldsHoch();
-      }
-    });
+    // begleitungCheckboxHoch.addEventListener("change", function() {
+    //  begleiterSectionHoch.style.display = this.checked ? "block" : "none";
+    //  if (!this.checked) {
+    //    containerHoch.innerHTML = "";
+    //  } else {
+    //    generateFieldsHoch();
+    //  }
+    // });
 
     // --- Anzeige der Zimmeranzahl steuern ---
     zimmerCheckbox.forEach(radio => {

@@ -263,7 +263,7 @@ o<!DOCTYPE html>
   <div class="overlay hidden" id="overlayHoch">
   <div id="popupHochzeit" class="popup hidden">
     <button class="closeBtn" id="closeformHochBtn">&times;</button>
-    <h2>Anmeldung Hochzeit</h3>
+    <h2>Anmeldung Hochzeit</h2>
     <form id="formHochzeit">
       <label>Vorname: <input type="text" id="vornameHoch" name="vornameHoch" required></label><br><br>
       <label>Nachname: <input type="text" id="nachnameHoch" name="nachnameHoch" required></label><br><br>
@@ -618,118 +618,121 @@ o<!DOCTYPE html>
     // =========================
     // Hochzeit
     // =========================
-    const scriptURLHochzeit = "https://script.google.com/macros/s/AKfycbx3h2rCI6mfJL7RBFHa2auPNvNhvOQFXG287V30FL8SlnTBNY17arxjfYlkLGjsjWcq1Q/exec";
-    const openHochzeitBtn = document.getElementById("openHochzeitBtn");
-    const overlayHoch = document.getElementById("overlayHoch");
-    const closeHochzeitBtn = document.getElementById("closeformHochBtn");
-    const popupHochzeit = document.getElementById("popupHochzeit");
-    const formHochzeit = document.getElementById("formHochzeit");
-    const teilnahmeCheckboxHoch = document.getElementById("teilnahmeHoch");
-    const teilnahmeSectionHoch = document.getElementById("InformationenHoch");
-    const begleitungCheckboxHoch = document.getElementById("begleitungHoch");
-    const begleiterSectionHoch = document.getElementById("BegleiterHoch");
-    const zimmerCheckbox = document.querySelectorAll('input[name="UebernachtungHoch"]');
-    const zimmerSection = document.getElementById("Zimmer");
-    const anzahlInputHoch = document.getElementById("anzahlBegleiterHoch");
-    const containerHoch = document.getElementById("begleiterFelderHoch");
-
-    //Formular Hochzeit öffnen
-    openHochzeitBtn.addEventListener("click", () => {
-      overlayHoch.classList.remove("hidden");
-      popupHochzeit.classList.remove("hidden");
-    });
-
-    //Formular Hochzeit schließen
-    closeHochzeitBtn.addEventListener("click", () => {
-      overlayHoch.classList.add("hidden");
-      popupHochzeit.classList.add("hidden");
-      formHochzeit.reset();
-    });
     
-    // --- Anzeige der Teilnahme-Section steuern ---
+    const scriptURLHochzeit = "https://script.google.com/macros/s/AKfycbx3h2rCI6mfJL7RBFHa2auPNvNhvOQFXG287V30FL8SlnTBNY17arxjfYlkLGjsjWcq1Q/exec";
+
     document.addEventListener("DOMContentLoaded", () => {
-      if (!teilnahmeCheckboxHoch || !teilnahmeSectionHoch) return;
-  
-      teilnahmeCheckboxHoch.addEventListener("change", () => {
-        teilnahmeSectionHoch.classList.toggle(
-          "hidden",
-          !teilnahmeCheckboxHoch.checked
-        );
+      const openHochzeitBtn = document.getElementById("openHochzeitBtn");
+      const overlayHoch = document.getElementById("overlayHoch");
+      const closeHochzeitBtn = document.getElementById("closeformHochBtn");
+      const popupHochzeit = document.getElementById("popupHochzeit");
+      const formHochzeit = document.getElementById("formHochzeit");
+      const teilnahmeCheckboxHoch = document.getElementById("teilnahmeHoch");
+      const teilnahmeSectionHoch = document.getElementById("InformationenHoch");
+      const begleitungCheckboxHoch = document.getElementById("begleitungHoch");
+      const begleiterSectionHoch = document.getElementById("BegleiterHoch");
+      const zimmerCheckbox = document.querySelectorAll('input[name="UebernachtungHoch"]');
+      const zimmerSection = document.getElementById("Zimmer");
+      const anzahlInputHoch = document.getElementById("anzahlBegleiterHoch");
+      const containerHoch = document.getElementById("begleiterFelderHoch");
+
+      //Formular Hochzeit öffnen
+      openHochzeitBtn.addEventListener("click", () => {
+        overlayHoch.classList.remove("hidden");
+        popupHochzeit.classList.remove("hidden");
       });
-    });
 
-    document.addEventListener("DOMContentLoaded", () => {
-  const begleitungCheckboxHoch = document.getElementById("begleitungHoch");
-  const begleiterSectionHoch = document.getElementById("BegleiterHoch");
-  const anzahlInputHoch = document.getElementById("anzahlBegleiterHoch");
-  const containerHoch = document.getElementById("begleiterFelderHoch");
-
-  if (
-    !begleitungCheckboxHoch ||
-    !begleiterSectionHoch ||
-    !anzahlInputHoch ||
-    !containerHoch
-  ) return;
-
-  // Checkbox steuert Sichtbarkeit
-  begleitungCheckboxHoch.addEventListener("change", () => {
-    const checked = begleitungCheckboxHoch.checked;
-
-    begleiterSectionHoch.classList.toggle("hidden", !checked);
-
-    if (!checked) {
-      containerHoch.innerHTML = "";
-    } else {
-      generateFieldsHoch();
-    }
-  });
-
-    // --- Anzeige der Zimmeranzahl steuern ---
-    zimmerCheckbox.forEach(radio => {
-      radio.addEventListener('change', () => {
-        if (zimmerCheckbox.value = "Location" && radio.checked) {
-          zimmerSection.style.display = "block";
-        } else {
-          zimmerSection.style.display = "none";
+      //Formular Hochzeit schließen
+      closeHochzeitBtn.addEventListener("click", () => {
+        overlayHoch.classList.add("hidden");
+        popupHochzeit.classList.add("hidden");
+      });
+      // Schließen bei Klick auf Overlay
+      overlayHoch.addEventListener("click", (e) => {
+        if (e.target === overlayHoch) {
+          overlayHoch.classList.add("hidden");
+          popupHochzeit.classList.add("hidden");
         }
       });
-    });
-
-    // Dynamisch Begleitfelder erzeugen
-    anzahlInputHoch.addEventListener("input", generateFieldsHoch);
-      
-    function generateFieldsHoch() {
-      containerHoch.innerHTML = "";
-      const anzahlHoch = parseInt(anzahlInputHoch.value) || 0;
-      for (let i = 1; i <= anzahlHoch; i++) {
-        containerHoch.innerHTML += `
-          <div class="field">
-            <label>Begleiter ${i} Vorname:
-              <input type="text" name="begleiterVornameHoch${i}">
-            </label>
-          </div>
-          <div class="field">
-            <label>Begleiter ${i} Nachname:
-              <input type="text" name="begleiterNachnameHoch${i}">
-            </label>
-          </div>
-          <div class="field">
-            <label>Gewohnheit ${i}:
-              <input type="text" name="begleitergewohnheitHoch${i}">
-            </label>
-          </div>
-          <div class="field">
-            <span>Begleiter ${i} Alter:</span><br>
-            <label><input type="radio" name="begleiterAlterHoch${i}" value="Baby"> 0–3 Jahre</label>
-            <label><input type="radio" name="begleiterAlterHoch${i}" value="Kind"> 4–12 Jahre</label>
-            <label><input type="radio" name="begleiterAlterHoch${i}" value="Jugendlich"> älter als 12</label>
-          </div>
-          <hr>`;
-      }
-    }
-    });
-
     
+      // --- Anzeige der Teilnahme-Section steuern ---
+      if (!teilnahmeCheckboxHoch || !teilnahmeSectionHoch) return;
+        teilnahmeCheckboxHoch.addEventListener("change", () => {
+          teilnahmeSectionHoch.classList.toggle(
+            "hidden",
+            !teilnahmeCheckboxHoch.checked
+          );
+        });
+
+        const begleitungCheckboxHoch = document.getElementById("begleitungHoch");
+        const begleiterSectionHoch = document.getElementById("BegleiterHoch");
+        const anzahlInputHoch = document.getElementById("anzahlBegleiterHoch");
+        const containerHoch = document.getElementById("begleiterFelderHoch");
+      
+        if (
+          !begleitungCheckboxHoch ||
+          !begleiterSectionHoch ||
+          !anzahlInputHoch ||
+          !containerHoch
+        ) return;
+      
+        // Checkbox steuert Sichtbarkeit
+        begleitungCheckboxHoch.addEventListener("change", () => {
+          const checked = begleitungCheckboxHoch.checked;
+      
+          begleiterSectionHoch.classList.toggle("hidden", !checked);
+      
+          if (!checked) {
+            containerHoch.innerHTML = "";
+          } else {
+            generateFieldsHoch();
+          }
+        });
+
+        // --- Anzeige der Zimmeranzahl steuern ---
+        zimmerCheckbox.forEach(radio => {
+          radio.addEventListener('change', () => {
+            if (zimmerCheckbox.value = "Location" && radio.checked) {
+              zimmerSection.style.display = "block";
+            } else {
+              zimmerSection.style.display = "none";
+            }
+          });
+        });
+
+        // Dynamisch Begleitfelder erzeugen
+        anzahlInputHoch.addEventListener("input", generateFieldsHoch);
+      
+        function generateFieldsHoch() {
+          containerHoch.innerHTML = "";
+          const anzahlHoch = parseInt(anzahlInputHoch.value) || 0;
+          for (let i = 1; i <= anzahlHoch; i++) {
+            containerHoch.innerHTML += `
+              <div class="field">
+                <label>Begleiter ${i} Vorname:
+                  <input type="text" name="begleiterVornameHoch${i}">
+                </label>
+              </div>
+              <div class="field">
+                <label>Begleiter ${i} Nachname:
+                  <input type="text" name="begleiterNachnameHoch${i}">
+                </label>
+              </div>
+              <div class="field">
+                <label>Gewohnheit ${i}:
+                  <input type="text" name="begleitergewohnheitHoch${i}">
+                </label>
+              </div>
+              <div class="field">
+                <span>Begleiter ${i} Alter:</span><br>
+                <label><input type="radio" name="begleiterAlterHoch${i}" value="Baby"> 0–3 Jahre</label>
+                <label><input type="radio" name="begleiterAlterHoch${i}" value="Kind"> 4–12 Jahre</label>
+                <label><input type="radio" name="begleiterAlterHoch${i}" value="Jugendlich"> älter als 12</label>
+              </div>
+              <hr>`;
+          }
+        }
+        });    
     
     // Formular absenden
     formHochzeit.addEventListener("submit", async (e) => {

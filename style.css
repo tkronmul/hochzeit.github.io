@@ -39,7 +39,12 @@
       overflow-y: auto;
       transform: scale(0.95);
       z-index: 2101;
-      animation: popupFadeIn 0.25s ease;
+      
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+    .popup:not(.hidden) {
+        opacity: 1;
     }
     .zweispaltig {
       display: flex;

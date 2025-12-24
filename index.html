@@ -270,7 +270,7 @@
       <label>Vorname: <input type="text" id="vornameHoch" name="vornameHoch" required></label><br><br>
       <label>Nachname: <input type="text" id="nachnameHoch" name="nachnameHoch" required></label><br><br>
       <label><input type="checkbox" id="teilnahmeHoch" required> Ich nehme teil</label><br>
-      <div id="TeilnahmeHoch" class="hidden">
+      <div id="InformationenHoch" class="hidden">
         <label>Deine Ernährungsform und/oder Unverträglichkeiten: <input type="text" id="gewohnheitHoch" name="gewohnheitHoch"></label><br><br>
         <label><input type="checkbox" id="begleitungHoch"> Ich komme mit Begleitung</label><br>
         <div id="BegleiterHoch" class="hidden">
@@ -625,7 +625,7 @@
     const popupHochzeit = document.getElementById("popupHochzeit");
     const formHochzeit = document.getElementById("formHochzeit");
     const teilnahmeCheckboxHoch = document.getElementById("teilnahmeHoch");
-    const teilnahmeSectionHoch = document.getElementById("TeilnahmeHoch");
+    const teilnahmeSectionHoch = document.getElementById("InformationenHoch");
     const begleitungCheckboxHoch = document.getElementById("begleitungHoch");
     const begleiterSectionHoch = document.getElementById("BegleiterHoch");
     const zimmerCheckbox = document.querySelectorAll('input[name="UebernachtungHoch"]');
@@ -638,6 +638,7 @@
       overlayHoch.style.display = "block";
     });
 
+    //Formular Hochzeit schließen
     closeHochzeitBtn.addEventListener("click", () => {
       overlayHoch.style.display = "none";
     });
@@ -646,7 +647,6 @@
     teilnahmeCheckboxHoch.addEventListener("change", function() {
       teilnahmeSectionHoch.style.display = this.checked ? "block" : "none";
     });
-
     
 
     // Checkbox „Begleitung“ steuert Anzeige

@@ -215,8 +215,6 @@
   <section id="kap13" class="hidden"> Kontaktdaten </section>
 
   <!-- Formular Polterabend -->
-  
-
   <div class = "overlay" id="overlay">
   <div id="popupPolterabend" class="popup">
     <button class="closeBtn" id="closeformPolBtn">&times;</butfstylton>
@@ -644,8 +642,13 @@
     });
     
     // --- Anzeige der Teilnahme-Section steuern ---
-    teilnahmeCheckboxHoch.addEventListener("change", function() {
-      teilnahmeSectionHoch.style.display = this.checked ? "block" : "none";
+    if (!teilnahmeCheckboxHoch || !teilnahmeSectionHoch) return;
+
+    teilnahmeCheckboxHoch.addEventListener("change", () => {
+      teilnahmeSectionHoch.classList.toggle(
+        "hidden",
+        !teilnahmeCheckboxHoch.checked
+      );
     });
     
 

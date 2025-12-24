@@ -471,12 +471,14 @@ o<!DOCTYPE html>
       closeformPolBtn.addEventListener("click", () => {
         overlay.classList.add("hidden");
         popupPolterabend.classList.add("hidden");
+        formPolterabend.reset();        
       });
       // Schließen bei Klick auf Overlay
       overlay.addEventListener("click", (e) => {
         if (e.target === overlayHoch) {
           overlay.classList.add("hidden");
           popupPolterabend.classList.add("hidden");
+          formPolterabend.reset();  
         }
       });
     
@@ -655,12 +657,14 @@ o<!DOCTYPE html>
       closeHochzeitBtn.addEventListener("click", () => {
         overlayHoch.classList.add("hidden");
         popupHochzeit.classList.add("hidden");
+        formHochzeit.reset();
       });
       // Schließen bei Klick auf Overlay
       overlayHoch.addEventListener("click", (e) => {
         if (e.target === overlayHoch) {
           overlayHoch.classList.add("hidden");
           popupHochzeit.classList.add("hidden");
+          formHochzeit.reset();
         }
       });
     

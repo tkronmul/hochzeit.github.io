@@ -146,13 +146,23 @@
       background-color: #218838;
     }
     #topMenuBar {
-      display: flex;
-      gap: 1rem;
+      position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2000;
+        background: transparent;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: center;
+        padding: 10px 20px;        
     }
     
     .menu-wrapper {
       position: relative;     /* WICHTIG */
-      display: inline-block;
+      display: flex;
+        justify-content: center;
     }
     
     .submenu {
@@ -160,9 +170,10 @@
       top: 100%;
       left: 0;
       background: white;
+        width: 100%;
       border: 1px solid #ccc;
       min-width: 180px;
-      z-index: 1000;
+      z-index: 3000;
     }
     
     .submenu div {
@@ -187,6 +198,8 @@
     cursor: pointer;
     font-size: 16px;
     transition: 0.2s;
+    width: 180px;
+    text-align: center;
 }
 
 .menuTab:hover {

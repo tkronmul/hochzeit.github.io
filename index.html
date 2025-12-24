@@ -215,8 +215,8 @@ o<!DOCTYPE html>
   <section id="kap13" class="hidden"> Kontaktdaten </section>
 
   <!-- Formular Polterabend -->
-  <div class = "overlay" id="overlay">
-  <div id="popupPolterabend" class="popup">
+  <div class = "overlay hidden" id="overlay">
+  <div id="popupPolterabend" class="popup hidden">
     <button class="closeBtn" id="closeformPolBtn">&times;</butfstylton>
     <h2>Anmeldung Polterabend</h3>
     <form id="formPolterabend">
@@ -446,8 +446,8 @@ o<!DOCTYPE html>
     // POLTERABEND
     // =========================
     const scriptURLPolterabend = "https://script.google.com/macros/s/AKfycbxy6wG3-Wyb27Arg1f5BR0uOrGgjuHhU0pkiiwDaTMQJMIVz7YvFKclwxnedEDwg0cIgw/exec";
-
-    const openPolterabendBtn = document.getElementById("openPolterabendBtn");
+     document.addEventListener("DOMContentLoaded", () => {
+      const openPolterabendBtn = document.getElementById("openPolterabendBtn");
       const overlay = document.getElementById("overlay");
       const closePolterabendBtn = document.getElementById("closeformPolBtn");
       const popupPolterabend = document.getElementById("popupPolterabend");
@@ -460,16 +460,24 @@ o<!DOCTYPE html>
       const container = document.getElementById("begleiterFelder");
       const mitbringenCheckbox = document.getElementById("mitbringen");
       const mitbringenSection = document.getElementById("MitbringenSection");
-      
-      // Formular Polterabend öffnen/schließen
+
+       //Formular Hochzeit öffnen
       openPolterabendBtn.addEventListener("click", () => {
         overlay.classList.remove("hidden");
-        popupHochzeit.classList.remove("hidden");
+        popupPolterabend.classList.remove("hidden");
       });
-      
-      closePolterabendBtn.addEventListener("click", () => {
+
+      //Formular Hochzeit schließen
+      closeformPolBtn.addEventListener("click", () => {
         overlay.classList.add("hidden");
-        popupHochzeit.classList.add("hidden");
+        popupPolterabend.classList.add("hidden");
+      });
+      // Schließen bei Klick auf Overlay
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlayHoch) {
+          overlay.classList.add("hidden");
+          popupPolterabend.classList.add("hidden");
+        }
       });
     
       // --- Anzeige der Teilnahme-Section steuern ---

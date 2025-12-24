@@ -776,11 +776,11 @@
             BegleiterHoch }),
         });
 
-        popupHochzeit.style.display ="none";
-        notification.style.display = "block";
+        popupHochzeit.classList.add("hidden");
+        notification.classList.remove("hidden");
         setTimeout(() => {
-          notification.style.display = "none";
-          overlay.style.display ="none";
+          notification.classList.add("hidden");
+          overlay.classList.add("hidden");
           formHochzeit.reset();
           container.innerHTML = ""; //Felder nach dem Reset löschen
         }, 3000);
@@ -791,10 +791,14 @@
     
     // Klick außerhalb des Popups schließt es
     window.addEventListener("click", (e) => {
-      if (popupHochzeit.style.display === "block" &&
-            !popupHochzeit.contains(e.target) &&
-            e.target !== openHochzeitBtn) {
-        popupHochzeit.style.display ="none";
+      const popupIsOpen = !popupHochzeit.classList.contains("hidden");
+      if (
+        popupIsOpen &&
+        !popupHochzeit.contains(e.target) &&
+        e.target !== openHochzeitBtn
+      ) {
+        popupHochzeit.classList.add("hidden");
+        overlay.classList.add("hidden");
       }
     });
     

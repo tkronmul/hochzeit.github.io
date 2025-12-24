@@ -1,323 +1,175 @@
 <style>
-    #openFormBtn {
-      display: none;
-      position: absolute;
-      background: #fff;
-      padding: 16 px;
-      border: 1px sold #ccc;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      z-index: 2100;
-    }
-    .notification {
-      display: none;
-      position: fixed;
-      top: 20px; right: 20px;
-      background: #4caf50;
-      color: white; 
-      padding: 12px 20px;
-      border-radius: 8px;
-      z-index: 3000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 2099;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .popup {
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      width: 75vw;
-        max-width: 600px;
-      height: 75vh;
-        max-height: 80vh;
-      overflow-y: auto;
-      transform: scale(0.95);
-      z-index: 2101;
-        opacity: 0;
-        transition: opacity 0.25s ease;
-    }
-    .popup:not(.hidden) {
-        opacity: 1;
-    }
-    .zweispaltig {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-    .links {
-      flex: 1;
-    }
-    .rechts {
-      flex: 1;
-      text-align: right;
-    }
-    .rechts img {
-      max-width: 90%;
-      height: auto;
-     }
-    .links ul ul {
-      margin-top: 5px;
-      margin-bottom: 15px;
-    }
-    
-    
-    @keyframes popupFadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    .closeBtn {
-      position: absolute;
-      top: 10px;
-      right: 14px;
-      font-size: 22px;
-      color: #555;
-      cursor: pointer;
-      border: none;
-      background: none;
-    }
-    .closeBtn:hover {
-      color: #000;
-    }
-    .event-btn {
-      margin-right: 10 px;
-      padding: 8px 16px;
-      border: 1px solid #333;
-      border-radius: 5px;
-      cursor: pointer;
-    } 
-    .event-btn:hover {
-      background-color: #f0f0f0;
-    }
-    #formSection{
-      margin-top: 20px;
-      display: none;
-      border: 1px solid #aaa;
-      padding: 15px;
-      border-radius: 5px;
-      background: #fafafa;
-    }
-    .field {
-      margin-button: 10px;
-    }
-    form label {
-      display: block;
-      margin-top: 12px;
-      font-weight: 600;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 4px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-
-    input, select, textarea, button {
-      padding: 8px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-    }
-
-    button[type="submit"] {
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    button[type="submit"] {
-      margin-top: 16px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 15px;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #218838;
-    }
-    #topMenuBar {
-      position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 2150;
-        background: transparent;
-        padding: 10px 0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        display: flex;
-        justify-content: center;
-        padding: 10px 20px;  
-        gap: 40px;
-    }
-    
-    .menu-wrapper {
-      position: relative;     /* WICHTIG */
-      display: flex;
-        justify-content: center;
-    }
-    
-    .submenu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: white;
-        width: 100%;
-      border: 1px solid #ccc;
-      min-width: 180px;
-      z-index: 2151;
-    }
-    
-    .submenu div {
-      padding: 8px 12px;
-      cursor: pointer;
-    }
-    
-    .submenu div:hover {
-      background-color: #f0f0f0;
-    }
-/* Buttons oben */
-.menuTab {
-    background: #0077cc;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.2s;
-    width: 180px;
-    text-align: center;
+/* Allgemein */
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("images/Hintergrund.jpg");
+    background-size: cover;  /* ANPASSUNG: typo behoben von background.size */
+    background-position: center;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    padding-top: 120px;
 }
 
-.menuTab:hover {
-    background: #005fa3;
-}
-.menu-button.wrapper {
-    position: relative;
-}
-
-    #output {
-      margin: 50px;
-      font-size: 1.2em;
-      font-weight: bold;
-      color:#333;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      background-image: url("images/Hintergrund.jpg");
-      background.size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      font-family: Arial, sans-serif;
-        padding-top: 120px;
-    }
-
-    .timeline {
-    position: relative;
-    width: 600px;
-    margin: 50px auto;
-  }
-
-  /* Pfeil / Linie */
-  .timeline::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: black;
-    transform: translateX(-50%);
-  }
-    .timeline::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        width: 0;
-        heigth: 0;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-top: 15px solid black;
-        transform: translateX(-50%);
-    }
-
-  /* Eintrag */
-  .event {
-    position: relative;
-    width: 45%;
-    padding: 15px;
-    background: transparent;
-    border-radius: 6px;
-    margin: 40px 0;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 5s ease;
-  }
-
-  .event.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* links / rechts */
-  .left {
-    left: 0;
-    text-align: right;
-      width: 7cm;
-  }
-
-  .right {
-    left: 55%;
-    text-align: left;
-      width: 7cm;
-  }
-
-  h3 {
-    margin: 0 0 5px;
-  }
-
-  .meta {
-    font-size: 0.9em;
-    color: #555;
-    line-height: 1.4;
-  }
-
-    section {
-      width: 90%;       
-      margin: 50px auto;
-      padding: 30px;
-      background: rgba(255,255,255,0.85);
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      align-items: center;
-      justify-content: center;
-      font-size: 2em;
-      color: black;
-    }
-
-/* Anfangs ausblenden */
+/* Hidden */
 .hidden {
     display: none !important;
 }
-  </style>
+
+/* Overlay und Popup */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2099;
+    display: flex;               /* ANPASSUNG: Flexbox hinzugefügt für Zentrierung */
+    justify-content: center;     /* ANPASSUNG: horizontal zentrieren */
+    align-items: center;         /* ANPASSUNG: vertikal zentrieren */
+    padding: 10px;               /* NEU: Abstand für kleine Bildschirme */
+}
+
+.popup {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    width: 75vw;                 /* ANPASSUNG: relative Breite */
+    max-width: 600px;             /* ANPASSUNG: max-width */
+    max-height: 80vh;             /* ANPASSUNG: max-height */
+    overflow-y: auto;             /* ANPASSUNG: scrollbar für kleine Screens */
+    transform: scale(0.95);
+    z-index: 2101;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease; /* NEU: Transition für sanftes Einblenden */
+}
+
+.popup:not(.hidden) {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Zweispaltige Bereiche */
+.zweispaltig {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap; /* NEU: Spalten umbrechen auf kleinen Screens */
+}
+
+.links, .rechts {
+    flex: 1 1 100%; /* ANPASSUNG: Standard auf 100% Breite bei kleinen Screens */
+}
+
+/* Buttons */
+.event-btn, .menuTab, button[type="submit"] {
+    min-width: 100px; /* NEU: Buttons für Touch größer */
+    font-size: 14px;  /* ANPASSUNG: Schriftgröße kleiner für mobile */
+    padding: 8px 12px;
+}
+
+/* Forms */
+form input, form select, form textarea, form button {
+    width: 100%;      /* ANPASSUNG: volle Breite für mobile */
+    box-sizing: border-box; /* NEU: verhindert Überlauf */
+    font-size: 14px;
+    margin-top: 4px;
+    padding: 8px;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    width: 90%;       /* ANPASSUNG: responsive Breite */
+    max-width: 600px; /* NEU: max-width */
+    margin: 50px auto;
+}
+
+.timeline::before {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Events */
+.event {
+    width: 100%;       /* ANPASSUNG: volle Breite auf kleinen Screens */
+    padding: 15px;
+    margin: 30px 0;    /* ANPASSUNG: weniger Margin für Mobile */
+}
+
+.left, .right {
+    width: 100%;       /* ANPASSUNG: volle Breite */
+    text-align: left;  /* ANPASSUNG: Links/Rechts auf links ausrichten für Mobile */
+}
+
+/* Top Menu */
+#topMenuBar {
+    flex-wrap: wrap;   /* NEU: Menü umbrechen bei kleinen Screens */
+    justify-content: center;
+    padding: 10px 15px; /* ANPASSUNG: padding kleiner */
+    gap: 15px;          /* ANPASSUNG: kleinerer Abstand */
+}
+
+.submenu {
+    position: static; /* ANPASSUNG: Untermenüs auf kleinen Screens inline */
+    width: 100%;      /* ANPASSUNG: volle Breite */
+}
+
+/* Media Queries für mobile Screens */
+@media (max-width: 768px) {
+    .popup {
+        width: 90vw;      /* ANPASSUNG: Popup breiter auf Tablets/kleinen Laptops */
+        height: auto;     /* ANPASSUNG: Höhe an Inhalt anpassen */
+        max-height: 90vh; /* ANPASSUNG: max-height erhöhen */
+        padding: 16px;    /* ANPASSUNG: Padding verkleinert */
+    }
+
+    .zweispaltig {
+        flex-direction: column; /* ANPASSUNG: Spalten untereinander */
+    }
+
+    .links, .rechts {
+        flex: 1 1 100%;
+        text-align: left;
+    }
+
+    .timeline {
+        width: 95%;
+    }
+
+    .event {
+        margin: 20px 0; /* NEU: weniger Abstand */
+    }
+
+    .menuTab {
+        width: 100%;       /* ANPASSUNG: Buttons auf volle Breite */
+        font-size: 14px;   /* ANPASSUNG: Schriftgröße kleiner */
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .popup {
+        width: 95vw;      /* ANPASSUNG: fast volle Breite auf Smartphones */
+        padding: 12px;    /* ANPASSUNG: weniger Padding */
+    }
+
+    #topMenuBar {
+        flex-direction: column; /* ANPASSUNG: vertikal */
+        gap: 10px;              /* ANPASSUNG: kleiner Abstand */
+    }
+
+    input, select, textarea, button {
+        font-size: 13px;  /* ANPASSUNG: kleinere Schrift auf Smartphones */
+        padding: 6px;     /* ANPASSUNG: weniger Padding */
+    }
+}
+    
+</style>

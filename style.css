@@ -21,7 +21,6 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
     .overlay {
-      display: none; /* wird per JS sichtbar */
       position: fixed;
       top: 0;
       left: 0;
@@ -39,7 +38,7 @@
       height: 75vh;
       overflow-y: auto;
       transform: scale(0.95);
-      z-index: 2101; /* liegt über Overlay */
+      z-index: 2101;
       animation: popupFadeIn 0.25s ease;
     }
     .zweispaltig {

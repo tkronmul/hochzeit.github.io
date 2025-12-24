@@ -642,6 +642,7 @@
     });
     
     // --- Anzeige der Teilnahme-Section steuern ---
+    document.addEventListener("DOMContentLoaded", () => {
     if (!teilnahmeCheckboxHoch || !teilnahmeSectionHoch) return;
 
     teilnahmeCheckboxHoch.addEventListener("change", () => {
@@ -650,6 +651,7 @@
         !teilnahmeCheckboxHoch.checked
       );
     });
+      });
     
 
     // Checkbox „Begleitung“ steuert Anzeige

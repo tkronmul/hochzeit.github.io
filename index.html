@@ -655,6 +655,7 @@ o<!DOCTYPE html>
 
       //Formular Hochzeit schließen
       closeHochzeitBtn.addEventListener("click", () => {
+        InformationenHoch.classlist.add("hidden");
         overlayHoch.classList.add("hidden");
         popupHochzeit.classList.add("hidden");
         formHochzeit.reset();
@@ -662,6 +663,7 @@ o<!DOCTYPE html>
       // Schließen bei Klick auf Overlay
       overlayHoch.addEventListener("click", (e) => {
         if (e.target === overlayHoch) {
+          InformationenHoch.classlist.add("hidden");
           overlayHoch.classList.add("hidden");
           popupHochzeit.classList.add("hidden");
           formHochzeit.reset();

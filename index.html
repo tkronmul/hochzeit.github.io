@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+o<!DOCTYPE html>
 <html lang="de">
 <head> 
   <meta charset="UTF-8">
@@ -260,8 +260,8 @@
   </div>
   </div>
   
-  <div class="overlay" id="overlayHoch">
-  <div id="popupHochzeit" class="popup">
+  <div class="overlay hidden" id="overlayHoch">
+  <div id="popupHochzeit" class="popup hidden">
     <button class="closeBtn" id="closeformHochBtn">&times;</button>
     <h2>Anmeldung Hochzeit</h3>
     <form id="formHochzeit">
@@ -463,11 +463,13 @@
       
       // Formular Polterabend öffnen/schließen
       openPolterabendBtn.addEventListener("click", () => {
-        overlay.style.display = "block"; 
+        overlay.classList.remove("hidden");
+        popupHochzeit.classList.remove("hidden");
       });
       
       closePolterabendBtn.addEventListener("click", () => {
-        overlay.style.display = "none";
+        overlay.classList.add("hidden");
+        popupHochzeit.classList.add("hidden");
       });
     
       // --- Anzeige der Teilnahme-Section steuern ---
@@ -633,12 +635,15 @@
 
     //Formular Hochzeit öffnen
     openHochzeitBtn.addEventListener("click", () => {
-      overlayHoch.style.display = "block";
+      overlayHoch.classList.remove("hidden");
+      popupHochzeit.classList.remove("hidden");
     });
 
     //Formular Hochzeit schließen
     closeHochzeitBtn.addEventListener("click", () => {
-      overlayHoch.style.display = "none";
+      overlayHoch.classList.add("hidden");
+      popupHochzeit.classList.add("hidden");
+      formHochzeit.reset();
     });
     
     // --- Anzeige der Teilnahme-Section steuern ---
@@ -799,6 +804,8 @@
       ) {
         popupHochzeit.classList.add("hidden");
         overlay.classList.add("hidden");
+        formHochzeit.reset();
+        container.innerHTML = "";
       }
     });
     

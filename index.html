@@ -654,26 +654,30 @@
     });
 
     document.addEventListener("DOMContentLoaded", () => {
-      if (!begleitungCheckboxHoch || !begleiterSectionHoch) return;
-  
-      begleitungCheckboxHoch.addEventListener("change", () => {
-        begleitungCheckboxHoch.classList.toggle(
-          "hidden",
-          generateFieldsHoch(),
-          !begleitungCheckboxHoch.checked
-        );
-      });
-    });
+  const begleitungCheckboxHoch = document.getElementById("begleitungHoch");
+  const begleiterSectionHoch = document.getElementById("BegleiterHoch");
+  const anzahlInputHoch = document.getElementById("anzahlBegleiterHoch");
+  const containerHoch = document.getElementById("begleiterFelderHoch");
 
-    // Checkbox „Begleitung“ steuert Anzeige
-    // begleitungCheckboxHoch.addEventListener("change", function() {
-    //  begleiterSectionHoch.style.display = this.checked ? "block" : "none";
-    //  if (!this.checked) {
-    //    containerHoch.innerHTML = "";
-    //  } else {
-    //    generateFieldsHoch();
-    //  }
-    // });
+  if (
+    !begleitungCheckboxHoch ||
+    !begleiterSectionHoch ||
+    !anzahlInputHoch ||
+    !containerHoch
+  ) return;
+
+  // Checkbox steuert Sichtbarkeit
+  begleitungCheckboxHoch.addEventListener("change", () => {
+    const checked = begleitungCheckboxHoch.checked;
+
+    begleiterSectionHoch.classList.toggle("hidden", !checked);
+
+    if (!checked) {
+      containerHoch.innerHTML = "";
+    } else {
+      generateFieldsHoch();
+    }
+  });
 
     // --- Anzeige der Zimmeranzahl steuern ---
     zimmerCheckbox.forEach(radio => {

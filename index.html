@@ -532,9 +532,13 @@
       });
 
       // --- Anzeige der Mitbringen-Section steuern ---
-      mitbringenCheckbox.addEventListener("change", function() {
-        mitbringenSection.style.display = this.checked ? "block" : "none";
-      });
+       if (!mitbringenCheckbox || !mitbringenSection) return;
+        mitbringenCheckbox.addEventListener("change", () => {
+          mitbringenSection.classList.toggle(
+            "hidden",
+            !mitbringenCheckbox.checked
+          );
+        });
       
       // =========================
       // Dynamisch Begleitfelder erzeugen

@@ -51,13 +51,11 @@
     .popup:not(.hidden) {
         opacity: 1;
     }
-    .zweispaltig {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
+    .einspaltig {
+      display: block;
     }
     .links {
-      flex: 1 1 100%
+      padding: 1 1 100%
     }
     .rechts {
       flex: 1 1 100%;
@@ -67,9 +65,19 @@
       max-width: 90%;
       height: auto;
      }
+    .links ul {
+        padding-left: 2.5rem;
+    }
     .links ul ul {
-      margin-top: 5px;
-      margin-bottom: 15px;
+      padding-left: 2rem;
+    }
+    .bild-zentriert {
+        margin-top: 2rem;
+        text-align: center;
+    }
+    .bild-zentriert img {
+        max-width: 90%;
+        height: auto;
     }
     
     

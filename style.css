@@ -79,6 +79,9 @@
         max-width: 90%;
         height: auto;
     }
+    .einzug-bullets {
+        padding-left: 2rem;
+    }
     
     
     @keyframes popupFadeIn {

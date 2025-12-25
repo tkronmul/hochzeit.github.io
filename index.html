@@ -225,13 +225,13 @@
   <!-- Formular Polterabend -->
   <div class = "overlay hidden" id="overlay">
   <div id="popupPolterabend" class="popup hidden">
-    <button class="closeBtn" id="closeformPolBtn">&times;</butfstylton>
-    <h2>Anmeldung Polterabend</h3>
+    <button class="closeBtn" id="closeformPolBtn">&times;</button>
+    <h2>Anmeldung Polterabend</h2>
     <form id="formPolterabend">
       <label>Vorname: <input type="text" id="vornamePol" name="vornamePol" required></label><br><br>
       <label>Nachname: <input type="text" id="nachnamePol" name="nachnamePol" required></label><br><br>
       <label><input type="checkbox" id="teilnahmePol" required> Ich nehme teil</label><br>
-      <div id="TeilnahmePol" class="hidden">
+      <div id="InformationenPol" class="hidden">
         <label>Deine Ernährungsform und/oder Unverträglichkeiten: <input type="text" id="gewohnheitPol" name="gewohnheitPol"></label><br><br>
         <label><input type="checkbox" id="begleitungPol"> Ich komme mit Begleitung</label><br>
         <div id="BegleiterPol" class="hidden">
@@ -461,7 +461,7 @@
       const popupPolterabend = document.getElementById("popupPolterabend");
       const formPolterabend = document.getElementById("formPolterabend");
       const teilnahmeCheckbox = document.getElementById("teilnahmePol");
-      const teilnahmeSection = document.getElementById("TeilnahmePol");
+      const teilnahmeSection = document.getElementById("InformationenPol");
       const begleitungCheckbox = document.getElementById("begleitungPol");
       const begleiterSection = document.getElementById("BegleiterPol");
       const anzahlInput = document.getElementById("anzahlBegleiterPol");
@@ -491,9 +491,33 @@
       });
     
       // --- Anzeige der Teilnahme-Section steuern ---
-      teilnahmeCheckbox.addEventListener("change", function() {
-        teilnahmeSection.style.display = this.checked ? "block" : "none";
-      });
+       if (!teilnahmeCheckbox || !teilnahmeSection) return;
+        teilnahmeCheckbox.addEventListener("change", () => {
+          teilnahmeSection.classList.toggle(
+            "hidden",
+            !teilnahmeCheckbox.checked
+          );
+        });
+
+       if (
+          !begleitungCheckbox ||
+          !begleiterSection ||
+          !anzahlInput ||
+          !container
+        ) return;
+
+       // Checkbox steuert Sichtbarkeit
+        begleitungCheckbox.addEventListener("change", () => {
+          const checked = begleitungCheckbox.checked;
+      
+          begleiterSection.classList.toggle("hidden", !checked);
+      
+          if (!checked) {
+            container.innerHTML = "";
+          } else {
+            generateFields();
+          }
+        });
     
       // =========================
       // Checkbox „Begleitung“ steuert Anzeige
@@ -547,7 +571,7 @@
             <hr>`;
         }
       }
-        });  
+    });  
       
       // =========================
       // Formular absenden

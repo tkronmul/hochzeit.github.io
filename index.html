@@ -233,16 +233,19 @@
       <label><input type="checkbox" id="teilnahmePol" required> Ich nehme teil</label><br>
       <div id="InformationenPol" class="hidden">
         <label>Deine Ernährungsform und/oder Unverträglichkeiten: <input type="text" id="gewohnheitPol" name="gewohnheitPol"></label><br><br>
+        <hr>
         <label><input type="checkbox" id="begleitungPol"> Ich komme mit Begleitung</label><br>
         <div id="BegleiterPol" class="hidden">
           <label>Anzahl Begleitpersonen:
             <input type="number" id="anzahlBegleiterPol" min="1" value="1"><br>
+            <hr>
           </label>
           <div id="begleiterFelder"></div>
         </div>
         <label>Übernachtung:</label><br>
         <label><input type="radio" name="UebernachtungPol" value="Location"> Zelten</label>
         <label><input type="radio" name="UebernachtungPol" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause</label> <br>
+        <hr>
         <label><input type="checkbox" id="mitbringen"> Ich bringe etwas für das Buffet mit</label><br>
         <div id="MitbringenSection" class="hidden">
           <label>Auswahl:</label><br>
@@ -261,6 +264,7 @@
           <label><input type="checkbox" name="Buffet" value="Brownies"> Brownies </label><br>
           <label>Weiteres: <input type="text" id="Weiteres" name="Weiteres" ></label><br>
         </div> 
+        <hr>
         <label>Kommentar: <textarea id="kommentarPol" name="kommentar"></textarea></label><br>
       </div>
       <button type="submit">Absenden</button>
@@ -278,6 +282,7 @@
       <label><input type="checkbox" id="teilnahmeHoch" required> Ich nehme teil</label><br>
       <div id="InformationenHoch" class="hidden">
         <label>Deine Ernährungsform und/oder Unverträglichkeiten: <input type="text" id="gewohnheitHoch" name="gewohnheitHoch"></label><br><br>
+        <hr>
         <label><input type="checkbox" id="begleitungHoch"> Ich komme mit Begleitung</label><br>
         <div id="BegleiterHoch" class="hidden">
           <label>Anzahl Begleitpersonen:
@@ -285,12 +290,14 @@
           </label>
           <div id="begleiterFelderHoch"></div>
         </div>
+        <hr>
         <label>Übernachtung:</label><br>
         <label><input type="radio" name="UebernachtungHoch" value="Location"> Ich möchte in der Location übernachten </label>
         <div id="Zimmer" class="hidden"> 
           <label>Anzahl Zimmer: <input type="number" id="anzahlZimmer" min="1" value="1"><br> </label>
         </div>
         <label><input type="radio" name="UebernachtungHoch" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause</label> <br>
+        <hr>
         <label>Kommentar: <textarea id="kommentarHoch" name="kommentar"></textarea></label><br>
       </div>
       <button type="submit">Absenden</button>
@@ -572,7 +579,7 @@
               <label><input type="radio" name="begleiterAlter${i}" value="Kind"> 4–12 Jahre</label>
               <label><input type="radio" name="begleiterAlter${i}" value="Jugendlich"> älter als 12</label>
             </div>
-            <hr>`;
+            <hr>;
         }
       }
     });  

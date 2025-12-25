@@ -324,6 +324,119 @@ body {
     .hidden {
         display: none !important;
     }
+/* ============================= */
+/* ===== MOBILE ERWEITERUNGEN ===== */
+/* ============================= */
 
+/* === Allgemein für kleinere Displays === */
+@media (max-width: 768px) {
+
+  /* Top-Menü untereinander statt nebeneinander */
+  #topMenuBar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .menuTab {
+    width: 100%;
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  /* Popup nutzt mehr Bildschirmbreite */
+  .popup {
+    width: 95vw;
+    height: auto;
+    max-height: 90vh;
+    padding: 16px;
+  }
+
+  /* Zweispaltige Inhalte stapeln */
+  .zweispaltig {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .rechts {
+    text-align: center;
+  }
+
+  .rechts img {
+    max-width: 100%;
+  }
+
+  /* Timeline wird einspaltig */
+  .timeline {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Linie links statt mittig */
+  .timeline::before,
+  .timeline::after {
+    left: 20px;
+    transform: none;
+  }
+
+  /* Events alle gleich ausrichten */
+  .event {
+    width: 100%;
+    margin-left: 40px;
+    text-align: left;
+  }
+
+  .left,
+  .right {
+    left: 0;
+    width: auto;
+    text-align: left;
+  }
+
+  /* Section Text nicht zu groß */
+  section {
+    font-size: 1.2em;
+    padding: 20px;
+  }
+
+  /* Buttons besser klickbar */
+  .event-btn,
+  button {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  /* Formularabstände */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  /* Notification besser sichtbar */
+  .notification {
+    right: 10px;
+    left: 10px;
+    text-align: center;
+  }
+}
+
+/* === Sehr kleine Geräte (z. B. Smartphones < 480px) === */
+@media (max-width: 480px) {
+
+  body {
+    padding-top: 160px; /* mehr Platz fürs Menü */
+  }
+
+  h3 {
+    font-size: 1.1em;
+  }
+
+  .meta {
+    font-size: 0.85em;
+  }
+}
     
 </style>

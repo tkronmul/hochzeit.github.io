@@ -747,7 +747,7 @@
         zimmerCheckbox.forEach(radio => {
           radio.addEventListener('change', () => {
             const selected = document.querySelector('input[name="UebernachtungHoch"]:checked');
-            zimmer.Section.classList.toggle('hidden', selected?.value !== "Location");
+            zimmerSection.classList.toggle('hidden', selected?.value !== "Location");
           });
         });
 

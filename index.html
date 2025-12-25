@@ -631,13 +631,12 @@
             }),
           });
       
-          popupPolterabend.style.display = "none";
-          notification.style.display = "block";
+          popupPolterabend.classList.add("hidden");
+          notification.classList.add("hidden");
           setTimeout(() => {
-            notification.style.display = "none";
-            overlay.style.display = "none";
+            notification.classlist.add("hidden");
+            overlay.classlist.add("hidden");
             formPolterabend.reset();
-            container.innerHTML = ""; // Felder nach dem Reset löschen
           }, 3000);
         } catch (error) {
           alert("Fehler beim Senden: " + error);
@@ -647,15 +646,18 @@
       // =========================
       // Klick außerhalb des Popups schließt es
       // =========================
-      window.addEventListener("click", (e) => {
-        if (
-          popupPolterabend.style.display === "block" &&
-          !popupPolterabend.contains(e.target) &&
-          e.target !== openPolterabendBtn
-        ) {
-          popupPolterabend.style.display = "none";
-        }
-      });
+    window.addEventListener("click", (e) => {
+      const popupIsOpen = !popupPolterabend.classList.contains("hidden");
+      if (
+        popupIsOpen &&
+        !popupPolterabend.contains(e.target) &&
+        e.target !== openPolterabendBtn
+      ) {
+        popupPolterabend.classList.add("hidden");
+        overlay.classList.add("hidden");
+        formPolterabend.reset();
+      }
+    });
 
     
     // =========================
@@ -847,7 +849,7 @@
         e.target !== openHochzeitBtn
       ) {
         popupHochzeit.classList.add("hidden");
-        overlay.classList.add("hidden");
+        overlayHoch.classList.add("hidden");
         formHochzeit.reset();
       }
     });

@@ -734,9 +734,7 @@
         // Checkbox steuert Sichtbarkeit
         begleitungCheckboxHoch.addEventListener("change", () => {
           const checked = begleitungCheckboxHoch.checked;
-      
           begleiterSectionHoch.classList.toggle("hidden", !checked);
-      
           if (!checked) {
             containerHoch.innerHTML = "";
           } else {
@@ -745,14 +743,12 @@
         });
 
         // --- Anzeige der Zimmeranzahl steuern ---
-        zimmerCheckbox.forEach(radio => {
-          radio.addEventListener('change', () => {
-            if (zimmerCheckbox.value = "Location" && radio.checked) {
-              zimmerSection.style.display = "block";
-            } else {
-              zimmerSection.style.display = "none";
-            }
-          });
+      if (!zimmerCheckbox || !zimmerSection) return;
+        zimmerCheckbox.addEventListener("change", () => {
+          zimmerSection.classList.toggle(
+            "hidden",
+            !zimmerCheckbox.checked
+          );
         });
 
         // Dynamisch Begleitfelder erzeugen

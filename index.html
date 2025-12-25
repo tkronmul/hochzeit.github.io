@@ -742,13 +742,13 @@
           }
         });
 
-        // --- Anzeige der Zimmeranzahl steuern ---
-      if (!zimmerCheckbox || !zimmerSection) return;
-        zimmerCheckbox.addEventListener("change", () => {
-          zimmerSection.classList.toggle(
-            "hidden",
-            !zimmerCheckbox.checked
-          );
+        // --- Anzeige der Zimmeranzahl steuern ---            
+      if (!zimmerCheckbox.length && !zimmerSection) return;
+        zimmerCheckbox.forEach(radio => {
+          radio.addEventListener('change', () => {
+            const selected = document.querySelector('input[name="UebernachtungHoch"]:checked');
+            zimmer.Section.classList.toggle('hidden', selected?.value !== "Location");
+          });
         });
 
         // Dynamisch Begleitfelder erzeugen

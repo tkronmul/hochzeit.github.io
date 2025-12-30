@@ -295,11 +295,11 @@
         </div> <br><br>
         <hr>
         <label>Übernachtung:</label><br>
-        <label><input type="radio" name="UebernachtungHoch" value="Location"> Ich möchte in der Location übernachten </label>
+        <label><input type="radio" name="UebernachtungHoch" value="Location"> Ich möchte in der Location übernachten (Ein Zimmer kosten 130€ pro Nacht). </label>
         <div id="Zimmer" class="hidden"> 
           <label>Anzahl Zimmer: <input type="number" id="anzahlZimmer" min="1" value="1"><br> </label>
         </div>
-        <label><input type="radio" name="UebernachtungHoch" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause</label> <br><br>
+        <label><input type="radio" name="UebernachtungHoch" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause. </label> <br><br>
         <hr>
         <label>Kommentar: <textarea id="kommentarHoch" name="kommentar"></textarea></label><br>
       </div>
@@ -562,22 +562,22 @@
         for (let i = 1; i <= anzahl; i++) {
           container.innerHTML += `
             <div class="field">
-              <label>Begleiter ${i} Vorname:
+              <label>Vorname von Person ${i}:
                 <input type="text" name="begleiterVorname${i}">
               </label>
             </div>
             <div class="field">
-              <label>Begleiter ${i} Nachname:
+              <label>Nachname von Person ${i}:
                 <input type="text" name="begleiterNachname${i}">
               </label>
             </div>
             <div class="field">
-              <label>Gewohnheit ${i}:
+              <label> Die Ernährungsform und/oder Unverträglichkeiten von Person ${i}:
                 <input type="text" name="begleitergewohnheit${i}">
               </label>
             </div>
             <div class="field">
-              <span>Begleiter ${i} Alter:</span><br>
+              <span>Das Alter von Person ${i}:</span><br>
               <label><input type="radio" name="begleiterAlter${i}" value="Baby"> 0–3 Jahre</label>
               <label><input type="radio" name="begleiterAlter${i}" value="Kind"> 4–12 Jahre</label>
               <label><input type="radio" name="begleiterAlter${i}" value="Jugendlich"> älter als 12</label>
@@ -763,22 +763,22 @@
           for (let i = 1; i <= anzahlHoch; i++) {
             containerHoch.innerHTML += `
               <div class="field">
-                <label>Begleiter ${i} Vorname:
+                <label>Vorname von Person ${i}:
                   <input type="text" name="begleiterVornameHoch${i}">
                 </label>
               </div>
               <div class="field">
-                <label>Begleiter ${i} Nachname:
+                <label>Nachname von Person ${i}:
                   <input type="text" name="begleiterNachnameHoch${i}">
                 </label>
               </div>
               <div class="field">
-                <label>Gewohnheit ${i}:
+                <label>Die Ernährungsform und/oder Unverträglichkeiten von Person ${i}:
                   <input type="text" name="begleitergewohnheitHoch${i}">
                 </label>
               </div>
               <div class="field">
-                <span>Begleiter ${i} Alter:</span><br>
+                <span>Das Alter von Person ${i}:</span><br>
                 <label><input type="radio" name="begleiterAlterHoch${i}" value="Baby"> 0–3 Jahre</label>
                 <label><input type="radio" name="begleiterAlterHoch${i}" value="Kind"> 4–12 Jahre</label>
                 <label><input type="radio" name="begleiterAlterHoch${i}" value="Jugendlich"> älter als 12</label>

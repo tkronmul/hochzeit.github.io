@@ -415,9 +415,16 @@ body {
   /* Buttons besser klickbar */
   .event-btn,
   button {
-    width: 100%;
+    background: #0077cc;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
     font-size: 16px;
-    padding: 12px;
+    transition: 0.2s;
+    width: 220px;
+    text-align: center;
   }
 
   /* Formularabstände */

@@ -55,11 +55,13 @@
       display: block;
     }
     .links {
-      padding: 1 1 100%
+      padding: 1 1 100%;
+        width: 40%;
     }
     .rechts {
       flex: 1 1 100%;
       text-align: right;
+        width: 40%;
     }
     .rechts img {
       max-width: 90%;

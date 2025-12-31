@@ -177,7 +177,7 @@
     .option {
         display: table;
         width: 100%;
-        max-width: 500px;
+        max-width: 300px;
         cursor: pointer
     }
     

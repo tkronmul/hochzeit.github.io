@@ -175,18 +175,17 @@
     }
 
     .option {
-        display: flex;
+        display: grid;
+        grid-template-columns: 30px 1fr;
         align-items: center;          /* vertikal zentriert */
         gap: 16px;
         width: 100%;
         max-width: 700px;
         cursor: pointer;
-        padding: 6px 0;
     }
     
     /* Text */
     .option-text {
-        flex: 1;
         line-height: 1.4;
         word-break: break-word;
     }
@@ -194,8 +193,6 @@
     /* Input */
     .option input {
         margin: 0;
-        transform: scale(1.1);       /* etwas größer, besser klickbar */
-        flex-shrink: 0;
     }
 
     #topMenuBar {

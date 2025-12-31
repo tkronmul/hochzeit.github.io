@@ -175,25 +175,27 @@
     }
 
     .option {
-        display: grid;
-        grid-template-columns: 30px minmax(0, 1fr);
-        align-items: center;          /* vertikal zentriert */
-        gap: 16px;
-        width: 100%;
+        display: block;
+        width: 100vw;
         max-width: 600px;
-        cursor: pointer;
+        margin-left: 0;
+    }
+    .option {
+        display: grid;
+        grid-template-columns: 30px auto;
+        column-gap: 16px;
+        align-items: start;
     }
     
     /* Text */
     .option-text {
         line-height: 1.4;
-        word-break: break-word;
+        white-space: normal;
     }
     
     /* Input */
     .option input {
-        margin: 0;
-        align-self: center;
+        margin-top: 3px;
     }
 
     #topMenuBar {

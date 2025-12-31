@@ -180,7 +180,7 @@
         align-items: center;          /* vertikal zentriert */
         gap: 16px;
         width: 100%;
-        max-width: 700px;
+        max-width: 900px;
         cursor: pointer;
     }
     
@@ -188,7 +188,7 @@
     .option-text {
         line-height: 1.4;
         word-break: break-word;
-        min-width: 80%;
+        min-width: 800px;
     }
     
     /* Input */

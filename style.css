@@ -176,7 +176,7 @@
 
     .option {
         display: grid;
-        grid-template-columns: 30px 1fr;
+        grid-template-columns: 30px minmax(0, 1fr);
         align-items: center;          /* vertikal zentriert */
         gap: 16px;
         width: 100%;
@@ -188,12 +188,12 @@
     .option-text {
         line-height: 1.4;
         word-break: break-word;
-        min-width: 800px;
     }
     
     /* Input */
     .option input {
         margin: 0;
+        align-self: center;
     }
 
     #topMenuBar {

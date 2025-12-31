@@ -188,6 +188,7 @@
     .option-text {
         line-height: 1.4;
         word-break: break-word;
+        min-width: 300px;
     }
     
     /* Input */

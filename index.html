@@ -758,17 +758,18 @@
               weitereGerichte
             }),
           });
-      
+
           popupPolterabend.classList.add("hidden");
           notification.classList.remove("hidden");
           setTimeout(() => {
-            //notification.classlist.add("hidden");
-            overlay.classlist.add("hidden");
-            formPolterabend.reset();
-          }, 3000);
-        } catch (error) {
-          alert("Fehler beim Senden: " + error);
-        }
+              notification.classList.add("hidden");
+              overlay.classList.add("hidden");
+              formPolterabend.reset();
+            }, 3000);
+          } catch (error) {
+            alert("Fehler beim Senden: " + error);
+          }
+      
       });
 
        });

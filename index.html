@@ -255,6 +255,7 @@
           <hr>
           <div id="begleiterFelder"></div>
         </div>
+        <hr>
         <label>Übernachtung:</label><br>
         <label class="option">
           <span class="option-text">
@@ -267,7 +268,10 @@
             <input type="radio" name="UebernachtungPol" value="SelbstorgHoch">
         </label>
         <hr>
-        <label><input type="checkbox" id="mitbringen" style="vertical-align:middle;"> Ich bringe etwas für das Buffet mit</label><br>
+        <label class="option">
+          <span class="option-text">
+            Ich bringe etwas für das Buffet mit. </span>
+            <input type="checkbox" id="mitbringen" style="vertical-align:middle;">
         <div id="MitbringenSection" class="hidden">
           <label>Auswahl:</label><br>
           <label><input type="checkbox" name="Buffet" value="Kartoffelsalat" style="vertical-align:middle;"> Kartoffelsalat </label>
@@ -282,9 +286,9 @@
           <label><input type="checkbox" name="Buffet" value="Trauben-Käse-Spieße" style="vertical-align:middle;"> Trauben-Käse-Spieße </label>
           <label><input type="checkbox" name="Buffet" value="Gemüse mit Dip" style="vertical-align:middle;"> Gemüse mit Dip </label>
           <label><input type="checkbox" name="Buffet" value="Muffins" style="vertical-align:middle;"> Muffins </label>
-          <label><input type="checkbox" name="Buffet" value="Brownies" style="vertical-align:middle;"> Brownies </label>
-          <label>Weiteres: <input type="text" id="Weiteres" name="Weiteres" ></label><br>
-        </div> <br><br>
+          <label><input type="checkbox" name="Buffet" value="Brownies" style="vertical-align:middle;"> Brownies </label><br>
+          <label>Weiteres: <input type="text" id="Weiteres" name="Weiteres" ></label>
+        </div> <br>
         <hr>
         <label>Kommentar: <textarea id="kommentarPol" name="kommentar"></textarea></label><br>
       </div>
@@ -617,10 +621,25 @@
               </label>
             </div>
             <div class="field">
-              <span>Das Alter von Person ${i}:</span><br>
-              <label><input type="radio" name="begleiterAlter${i}" value="Baby"> 0–3 Jahre</label>
-              <label><input type="radio" name="begleiterAlter${i}" value="Kind"> 4–12 Jahre</label>
-              <label><input type="radio" name="begleiterAlter${i}" value="Jugendlich"> älter als 12</label>
+              <label>Das Alter von Person ${i}:</label><br>
+                <label class="option">
+                    <span class="option-text">
+                       0–3 Jahre
+                    </span>
+                    <input type="radio" name="begleiterAlter${i}" value="Baby">
+                </label>
+                <label class="option">
+                    <span class="option-text">
+                       4–12 Jahre
+                    </span>
+                    <input type="radio" name="begleiterAlter${i}" value="Kind">
+                </label>
+                <label class="option">
+                    <span class="option-text">
+                       älter als 12
+                    </span>
+                    <input type="radio" name="begleiterAlter${i}" value="Jugendlich"> 
+                </label>
             </div>`
         }
       }
@@ -834,7 +853,7 @@
                     <span class="option-text">
                        älter als 12
                     </span>
-                    <input type="radio" name="begleiterAlterHoch${i}" value="Jugendlich"
+                    <input type="radio" name="begleiterAlterHoch${i}" value="Jugendlich">
                 </label>
               </div>`
           }

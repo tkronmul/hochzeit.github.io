@@ -57,7 +57,7 @@
   
   <!-- Bereiche -->
   <section id="kap2" class="hidden">
-    <h2 style="text-align:center;">Informationen Hochzeit </h2> 
+    <h2 style="text-align:center;">Informationen zu unserer Hochzeit </h2> 
   <div class="einspaltig">
       <div class = "links">
         <ul>
@@ -75,7 +75,7 @@
             </ul>
           </li>
           <li class="einzug-bullets"><strong>Übernachtungen:</strong>
-            <ul> Über Anmeldemaske im Schlosshotel Horneck möglich (siehe unten) </ul>
+            <ul> Über Anmeldemaske direkt in der Hochzeitslocation, im Schloshotel Horneck, möglich (siehe unten) </ul>
             <ul> Hotel zum Lamm Gundelsheim: <a href="https://www.lamm-gundelsheim.de/" target="_blank">https://www.lamm-gundelsheim.de/</a></ul>
             <ul> Hotel Garni: <a href="https://schell-schokoladen.de/hotel/" target="_blank">https://schell-schokoladen.de/hotel/</a></ul>
           </li>
@@ -97,15 +97,15 @@
   </div>
   </section>
   <section id="kap1" class="hidden">
-    <h2 style="text-align:center;">Zeitstrahl Hochzeit </h2>
+    <h2 style="text-align:center;">Zeitstrahl Hochzeit (vorläufig) </h2>
     <div class = "timeline">
       <div class="arrow"></div>
       <div class="event left">
         <h3>Check-in</h3>
         <div class="meta">
           ab 14:00 Uhr<br>
-          Hotel Horneck<br>
-          Selbstständiger Check-in im Hotel
+          Schlosshotel Horneck<br>
+          Selbstständiger Check-in
         </div>
       </div>
       <div class="event right">
@@ -282,7 +282,11 @@
     <form id="formHochzeit">
       <label>Vorname: <input type="text" id="vornameHoch" name="vornameHoch" required></label><br><br>
       <label>Nachname: <input type="text" id="nachnameHoch" name="nachnameHoch" required></label><br><br>
-      <label><input type="checkbox" id="teilnahmeHoch" required style="vertical-align:middle;"> Ich nehme teil</label><br>
+      <label class="option">
+          <span class="option-text">
+            Ich nehme teil. </span>
+            <input type="checkbox" id="teilnahmeHoch" required style="vertical-align:middle;">  
+        </label>
       <div id="InformationenHoch" class="hidden">
         <label>Deine Ernährungsform und/oder Unverträglichkeiten: <input type="text" id="gewohnheitHoch" name="gewohnheitHoch"></label><br><br>
         <hr>
@@ -297,7 +301,7 @@
         <label>Übernachtung:</label><br>
         <label class="option">
           <span class="option-text">
-            Ich möchte in der Location übernachten (Ein Zimmer kosten 130€ pro Nacht).
+            Ich möchte in der Location übernachten (Ein Zimmer kosten 130€ pro Nacht).</span>
             <input type="radio" name="UebernachtungHoch" value="Location">  
         </label>
         <div id="Zimmer" class="hidden"> 

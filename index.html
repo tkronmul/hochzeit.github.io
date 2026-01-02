@@ -312,7 +312,7 @@
             <input type="radio" name="UebernachtungHoch" value="Location">  
         </label>
         <div id="Zimmer" class="hidden">
-          <label> Es ist möglich für zusätzliche Kosten von 35€ ein Zustellbett und für 20€ ein Kinderbett zu erhalten.
+          <label> Es ist möglich für zusätzliche Kosten von 35€ ein Zustellbett und für 20€ ein Kinderbett zu erhalten. Bitte hinterlasst uns hierfür im Kommentarfeld weiter unten einen Hinweis darauf.
           <label>Anzahl Zimmer: <input type="number" id="anzahlZimmer" min="1" value="1"><br> </label>
         </div>
         <label class="option">
@@ -798,10 +798,25 @@
                 </label>
               </div>
               <div class="field">
-                <span>Das Alter von Person ${i}:</span><br>
-                <label><input type="radio" name="begleiterAlterHoch${i}" value="Baby"> 0–3 Jahre</label>
-                <label><input type="radio" name="begleiterAlterHoch${i}" value="Kind"> 4–12 Jahre</label>
-                <label><input type="radio" name="begleiterAlterHoch${i}" value="Jugendlich"> älter als 12</label>
+                <label>Das Alter von Person ${i}:</label><br>
+                <label class="option">
+                    <span class="option-text">
+                       0–3 Jahre
+                    </span>
+                    <input type="radio" name="begleiterAlterHoch${i}" value="Baby"> 
+                </label>
+                <label class="option">
+                    <span class="option-text">
+                       4–12 Jahre
+                    </span>
+                    <input type="radio" name="begleiterAlterHoch${i}" value="Kind">
+                </label>
+                <label class="option">
+                    <span class="option-text">
+                       älter als 12
+                    </span>
+                    <input type="radio" name="begleiterAlterHoch${i}" value="Jugendlich"
+                </label>
               </div>`
           }
         }

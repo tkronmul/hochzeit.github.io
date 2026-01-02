@@ -794,7 +794,7 @@
               </div>
               <div class="field">
                 <label>Die Ernährungsform und/oder Unverträglichkeiten von Person ${i}:
-                  <input type="text" name="begleitergewohnheitHoch${i}">
+                  <input type="text" name="Test${i}">
                 </label>
               </div>
               <div class="field">
@@ -842,7 +842,7 @@
           for (let i = 1; i <= anzahlHoch; i++) {
             const vornameC = document.querySelector(`input[name="begleiterVornameHoch${i}"]`)?.value || "";
             const nachnameC = document.querySelector(`input[name="begleiterNachnameHoch${i}"]`)?.value || "";
-            const gewohnheitC = document.querySelector(`input[name="begleitergewohnheitHoch${i}"]`)?.value || "X";
+            const gewohnheitC = document.querySelector(`input[name="Test${i}"]`)?.value || "X";
             const alterC = document.querySelector(`input[name="begleiterAlterHoch${i}"]:checked`)?.value || "";
       
             BegleiterHoch.push({

@@ -935,6 +935,44 @@
           }
         }
 
+      /* ===============================
+             📥 DOWNLOAD (TXT)
+          =============================== */
+          let textContent = `
+              Hochzeitsanmeldung
+              
+              Name: ${vorname} ${nachname}
+              Teilnahme: ${teilnahme}
+              Essgewohnheiten: ${gewohnheit}
+              Begleitung: ${Begleitung}
+              Anzahl Begleiter: ${AnzahlBegleiter}
+              Übernachtung: ${Uebernachtung}
+              Zimmer: ${Zimmer}
+              
+              Kommentar:
+              ${Kommentar}
+              
+              Begleiter:
+              `;
+              
+                BegleiterHoch.forEach((b, i) => {
+                  textContent += `
+              ${i + 1}. ${b.Vorname} ${b.Nachname}
+                 Alter: ${b.Alter}
+                 Ernährung: ${b.Gewohnheit}
+              `;
+                });
+              
+                const blob = new Blob([textContent], { type: "text/plain;charset=utf-8" });
+                const url = URL.createObjectURL(blob);
+              
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = `Hochzeit_${vorname}_${nachname}.txt`;
+                a.click();
+              
+                URL.revokeObjectURL(url);    
+
       try {
         await fetch(scriptURLHochzeit, {
           method: "POST",

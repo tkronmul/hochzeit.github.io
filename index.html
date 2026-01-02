@@ -965,18 +965,7 @@
     });
     
     // Klick außerhalb des Popups schließt es
-    window.addEventListener("click", (e) => {
-      const popupIsOpen = !popupHochzeit.classList.contains("hidden");
-      if (
-        popupIsOpen &&
-        !popupHochzeit.contains(e.target) &&
-        e.target !== openHochzeitBtn
-      ) {
-        popupHochzeit.classList.add("hidden");
-        overlayHoch.classList.add("hidden");
-        formHochzeit.reset();
-      }
-    });
+    
     });
   </script>
 </body>

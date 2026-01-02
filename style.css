@@ -182,25 +182,25 @@
     }
 
     .option {
-        display: table;
+        display: flex;
+        align-items: center;       /* vertikale Zentrierung */
         width: 100%;
         max-width: 400px;
-        cursor: pointer
+        cursor: pointer;
+        gap: 12px;
     }
     
-    /* Text */
+    /* Textbereich */
     .option-text {
-        display: table-cell;
-        vertical-align: middle;
+        flex: 0 0 80%;              /* nimmt 80% der Breite ein */
         line-height: 1.4;
-        white-space: normal;
     }
     
-    /* Input */
-    .option input {
-        display: table-cell;
-        vertical-align: middle;
-        width: 30px;
+    /* Checkbox / Radio */
+    .option input[type="checkbox"],
+    .option input[type="radio"] {
+        flex: 0 0 auto;
+        margin-left: auto;          /* schiebt Button nach rechts */
     }
 
     #topMenuBar {

@@ -757,7 +757,7 @@
           });
       
           popupPolterabend.classList.add("hidden");
-          notification.classList.add("hidden");
+          notification.classList.remove("hidden");
           setTimeout(() => {
             notification.classlist.add("hidden");
             overlay.classlist.add("hidden");
@@ -782,6 +782,8 @@
         overlay.classList.add("hidden");
         formPolterabend.reset();
       }
+
+      
     });
   });
     

@@ -192,7 +192,7 @@
     
     /* Textbereich */
     .option-text {
-        flex: 0 0 80%;              /* nimmt 80% der Breite ein */
+        flex: 0 0 60%;              /* nimmt 80% der Breite ein */
         line-height: 1.4;
     }
     

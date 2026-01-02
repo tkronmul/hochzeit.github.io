@@ -770,20 +770,7 @@
         }
       });
       
-      // =========================
-      // Klick außerhalb des Popups schließt es
-      // =========================
-    window.addEventListener("click", (e) => {
-      const popupIsOpen = !popupPolterabend.classList.contains("hidden");
-      if (
-        popupIsOpen &&
-        !popupPolterabend.contains(e.target) &&
-        e.target !== openPolterabendBtn
-      ) {
-        popupPolterabend.classList.add("hidden");
-        overlay.classList.add("hidden");
-        formPolterabend.reset();
-      }
+      
 
       
     });

@@ -233,11 +233,21 @@
     <form id="formPolterabend">
       <label>Vorname: <input type="text" id="vornamePol" name="vornamePol" required></label><br><br>
       <label>Nachname: <input type="text" id="nachnamePol" name="nachnamePol" required></label><br><br>
-      <label><input type="checkbox" id="teilnahmePol" required style="vertical-align:middle;"> Ich nehme teil</label><br>
+      <label class="option">
+          <span class="option-text">
+            Ich nehme teil. 
+          </span>
+          <input type="checkbox" id="teilnahmePol" required style="vertical-align:middle;">  
+      </label>
       <div id="InformationenPol" class="hidden">
         <label>Deine Ernährungsform und/oder Unverträglichkeiten: <input type="text" id="gewohnheitPol" name="gewohnheitPol"></label><br><br>
         <hr>
-        <label><input type="checkbox" id="begleitungPol" style="vertical-align:middle;"> Ich komme mit Begleitung</label><br>
+        <label class="option">
+          <span class="option-text">
+            Ich komme mit Begleitung. 
+          </span>
+          <input type="checkbox" id="begleitungPol" style="vertical-align:middle;"> 
+        </label>
         <div id="BegleiterPol" class="hidden">
           <label>Anzahl Begleitpersonen:
             <input type="number" id="anzahlBegleiterPol" min="1" value="1">
@@ -246,8 +256,16 @@
           <div id="begleiterFelder"></div>
         </div>
         <label>Übernachtung:</label><br>
-        <label><input type="radio" name="UebernachtungPol" value="Location"> Zelten</label>
-        <label><input type="radio" name="UebernachtungPol" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause</label> <br><br>
+        <label class="option">
+          <span class="option-text">
+            Ich möchte gerne Zelten. </span>
+            <input type="radio" name="UebernachtungPol" value="Location">
+        </label>
+        <label class="option">
+          <span class="option-text">
+            Ich kümmere mich selbst darum / fahre nach Hause. </span>
+            <input type="radio" name="UebernachtungPol" value="SelbstorgHoch">
+        </label>
         <hr>
         <label><input type="checkbox" id="mitbringen" style="vertical-align:middle;"> Ich bringe etwas für das Buffet mit</label><br>
         <div id="MitbringenSection" class="hidden">
@@ -297,7 +315,7 @@
             Ich komme mit Begleitung. 
           </span>
           <input type="checkbox" id="begleitungHoch" style="vertical-align:middle;"> 
-      </label>
+        </label>
       <div id="BegleiterHoch" class="hidden">
           <label>Anzahl Begleitpersonen:
             <input type="number" id="anzahlBegleiterHoch" min="1" value="1"><br>
@@ -308,7 +326,7 @@
         <label>Übernachtung:</label><br>
         <label class="option">
           <span class="option-text">
-            Ich möchte in der Location übernachten </span>
+            Ich möchte in der Location übernachten. </span>
             <input type="radio" name="UebernachtungHoch" value="Location">
         </label><br>
         <p> Wir haben für die Übernachtungen ein festes Kontingent an Zimmer gebucht. Wir würden uns freuen, wenn Ihr dieses Angebot annehmen würden. Ein Zimmer kostet hierbei 130€ pro Nacht. </p>

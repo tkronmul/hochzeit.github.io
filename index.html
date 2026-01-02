@@ -274,7 +274,8 @@
     </form>
   </div>
   </div>
-  
+
+  <!-- Formular Hochzeit -->
   <div class="overlay hidden" id="overlayHoch">
   <div id="popupHochzeit" class="popup hidden">
     <button class="closeBtn" id="closeformHochBtn">&times;</button>
@@ -284,18 +285,24 @@
       <label>Nachname: <input type="text" id="nachnameHoch" name="nachnameHoch" required></label><br><br>
       <label class="option">
           <span class="option-text">
-            Ich nehme teil. </span>
-            <input type="checkbox" id="teilnahmeHoch" required style="vertical-align:middle;">  
-        </label>
+            Ich nehme teil. 
+          </span>
+          <input type="checkbox" id="teilnahmeHoch" required style="vertical-align:middle;">  
+      </label>
       <div id="InformationenHoch" class="hidden">
         <label>Deine Ernährungsform und/oder Unverträglichkeiten: <input type="text" id="gewohnheitHoch" name="gewohnheitHoch"></label><br><br>
         <hr>
-        <label><input type="checkbox" id="begleitungHoch" style="vertical-align:middle;"> Ich komme mit Begleitung</label><br>
-        <div id="BegleiterHoch" class="hidden">
+        <label class="option">
+          <span class="option-text">
+            Ich komme mit Begleitung. 
+          </span>
+          <input type="checkbox" id="begleitungHoch" style="vertical-align:middle;"> 
+      </label>
+      <div id="BegleiterHoch" class="hidden">
           <label>Anzahl Begleitpersonen:
             <input type="number" id="anzahlBegleiterHoch" min="1" value="1"><br>
           </label>
-          <div id="begleiterFelderHoch"></div>
+        <div id="begleiterFelderHoch"></div>
         </div> <br><br>
         <hr>
         <label>Übernachtung:</label><br>
@@ -304,12 +311,18 @@
             Ich möchte in der Location übernachten (Ein Zimmer kosten 130€ pro Nacht).</span>
             <input type="radio" name="UebernachtungHoch" value="Location">  
         </label>
-        <div id="Zimmer" class="hidden"> 
+        <div id="Zimmer" class="hidden">
+          <label> Es ist möglich für zusätzliche Kosten von 35€ ein Zustellbett und für 20€ ein Kinderbett zu erhalten.
           <label>Anzahl Zimmer: <input type="number" id="anzahlZimmer" min="1" value="1"><br> </label>
         </div>
-        <label><input type="radio" name="UebernachtungHoch" value="SelbstorgHoch"> Ich kümmere mich selbst darum / fahre nach Hause. </label> <br><br>
+        <label class="option">
+          <span class="option-text">
+            Ich kümmere mich selbst darum / fahre nach Hause.</span>
+            <input type="radio" name="UebernachtungHoch" value="SelbstorgHoch"> 
+        </label>
         <hr>
-        <label>Kommentar: <textarea id="kommentarHoch" name="kommentar"></textarea></label><br>
+        <label>Kommentar: <br>
+          <textarea id="kommentarHoch" name="kommentar"></textarea></label><br>
       </div>
       <button type="submit">Absenden</button>
     </form>

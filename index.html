@@ -576,18 +576,20 @@
       const mitbringenCheckbox = document.getElementById("mitbringen");
       const mitbringenSection = document.getElementById("MitbringenSection");
 
-       //Formular Hochzeit öffnen
+       //Formular Polterabend öffnen
       openPolterabendBtn.addEventListener("click", () => {
         overlay.classList.remove("hidden");
         popupPolterabend.classList.remove("hidden");
       });
 
-      //Formular Hochzeit schließen
+       //Formular Polterabend schließen
       closeformPolBtn.addEventListener("click", () => {
+        //InformationenHoch.classlist.add("hidden");
         overlay.classList.add("hidden");
         popupPolterabend.classList.add("hidden");
-        formPolterabend.reset();        
+        formPolterabend.reset();
       });
+
       // Schließen bei Klick auf Overlay
       overlay.addEventListener("click", (e) => {
         if (e.target === overlayHoch) {

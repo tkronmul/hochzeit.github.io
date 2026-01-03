@@ -385,16 +385,18 @@ body {
   }
 
   .menuTab {
-    width: 100%;
-    font-size: 16px;          /* etwas größer für bessere Lesbarkeit */
-    padding: 14px 16px;       /* angenehme Touch-Fläche */
-    margin-bottom: 10px;      /* Abstand zwischen den Buttons */
-    border-radius: 10px;      /* etwas runder wirkt mobiler */
-    line-height: 1.4;         /* bessere Textlesbarkeit */
+    width: auto;          /* 100% entfernen */
+    flex: 1 1 45%;        /* zwei Buttons pro Zeile */
+    max-width: 48%;       /* verhindert Überbreite */
+    font-size: 15px;
+    padding: 12px 10px;
+    text-align: center;
   }
 
   .menu-button.wrapper {
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;      /* erlaubt Umbruch falls nötig */
+    justify-content: center;
   }
 
   /* Popup nutzt mehr Bildschirmbreite */

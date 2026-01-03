@@ -386,8 +386,15 @@ body {
 
   .menuTab {
     width: 100%;
-    font-size: 15px;
-    padding: 12px;
+    font-size: 16px;          /* etwas größer für bessere Lesbarkeit */
+    padding: 14px 16px;       /* angenehme Touch-Fläche */
+    margin-bottom: 10px;      /* Abstand zwischen den Buttons */
+    border-radius: 10px;      /* etwas runder wirkt mobiler */
+    line-height: 1.4;         /* bessere Textlesbarkeit */
+  }
+
+  .menu-button.wrapper {
+    width: 100%;
   }
 
   /* Popup nutzt mehr Bildschirmbreite */

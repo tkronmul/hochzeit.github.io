@@ -276,10 +276,10 @@ body {
         font-size: 16px;
     }
 h1 {
-    font-size: 20px;
+    font-size: 36px;
 }
 h2 {
-    font-size: 18px;
+    font-size: 30px;
 }
 
     #output {
@@ -357,7 +357,7 @@ h2 {
   }
 
   .meta {
-    font-size: 14px;
+    font-size: 24px;
     color: #555;
     line-height: 1.4;
   }

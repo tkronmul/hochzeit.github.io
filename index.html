@@ -226,8 +226,11 @@
   </section>
   <section id="kap13" class="hidden"> 
     <h2 style="text-align:center;">Kontaktdaten </h2>
-    Nehmt bei Fragen gerne direkt Kontakt zu uns auf (Nummern solltet ihr haben) oder schreibt unseren Trauzeugen Eure Frage an die folgende Mailadresse: <br>
-    trauzeugen.von.tim.und.anna@gmail.com
+    Nehmt bei Fragen gerne direkt Kontakt zu uns auf (Nummern solltet ihr haben) oder schreibt unseren Trauzeugen Eure Frage an die folgende Mailadresse:
+    <span class="email"
+      data-email="trauzeugen.von.tim.und.anna@gmail.com">
+      Trauzeugen
+    </span>
   </section>
 
   <!-- Formular Polterabend -->
@@ -525,7 +528,15 @@
       document.getElementById("passwordInput").addEventListener("keypress", function(event) {
         if (event.key === "Enter") checkPassword();
       });
-       
+       //Email
+
+      document.querySelectorAll('.email').forEach(el => {
+        el.addEventListener('click', () => {
+          navigator.clipboard.writeText(el.dataset.email);
+          alert('E-Mail-Adresse kopiert');
+        });
+      });
+
 
     // Submenu-Einträge → Scroll & Menüs schließen
     document.querySelectorAll(".submenu div").forEach(item => {

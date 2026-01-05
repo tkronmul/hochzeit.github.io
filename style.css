@@ -281,6 +281,9 @@ h1 {
 h2 {
     font-size: 30px;
 }
+h3 {
+    font-size: 28px;
+}
 
     #output {
       margin: 50px;
@@ -496,14 +499,21 @@ h2 {
 
   body {
     padding-top: 160px; /* mehr Platz fürs Menü */
+      font-size: 16px;
   }
+    h1 {
+        font-size: 26px;
+    }
+    h2 {
+        font-size: 24px;
+    }
 
   h3 {
-    font-size: 1.1em;
+    font-size: 20px;
   }
 
   .meta {
-    font-size: 0.85em;
+    font-size: 16px;
   }
 }
 @media (max-width: 600px) {

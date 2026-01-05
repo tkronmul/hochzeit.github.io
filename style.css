@@ -498,7 +498,7 @@ h3 {
 @media (max-width: 480px) {
 
   body {
-    padding-top: 0; /*100px mehr Platz fürs Menü */
+    padding-top: 20px; /*100px mehr Platz fürs Menü */
       font-size: 16px;
   }
     h1 {

@@ -67,15 +67,15 @@
      }
     .links ul {
         padding-left: 1rem;
-        font-size: 16px;
+        font-size: 1em;
     }
     .links ul ul {
       padding-left: 1rem;
-        font-size: 16px;
+        font-size: 1em;
     }
     .links ul ul li {
       padding-left: 1rem;
-        font-size: 16px;
+        font-size: 1.2em;
     }
     .bild-zentriert {
         margin-top: 2rem;

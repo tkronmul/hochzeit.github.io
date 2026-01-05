@@ -67,15 +67,15 @@
      }
     .links ul {
         padding-left: 1rem;
-        font-size: 1em;
+        font-size: 1rem;
     }
     .links ul ul {
       padding-left: 1rem;
-        font-size: 1em;
+        font-size: 1rem;
     }
     .links ul ul li {
       padding-left: 1rem;
-        font-size: 1em;
+        font-size: 1rem;
     }
     .bild-zentriert {
         margin-top: 2rem;
@@ -501,7 +501,7 @@ h3 {
 @media (max-width: 480px) {
 
   body {
-    padding-top: 160px; /* mehr Platz fürs Menü */
+    padding-top: 100px; /* mehr Platz fürs Menü */
       font-size: 16px;
   }
     h1 {

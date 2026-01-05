@@ -391,13 +391,18 @@ h3 {
 
   /* Top-Menü untereinander statt nebeneinander */
   #topMenuBar {
-      position: sticky;
+      position: fixed;
       top: 0;
       z-index: 1000;
       flex-direction: column;
       gap: 4px;
       padding: 10px;
+      transition: transform 0.3s ease;
+      transform: translate(0);
   }
+    #topMenuBar.hide {
+        transform: translateY(-100%);
+    }
 
   .menuTab {
     width: auto;          /* 100% entfernen */

@@ -399,7 +399,7 @@ h3 {
       padding: 10px;
       transition: transform 0.3s ease;
       transform: translate(0);
-      height: 80px;
+      height: 120px;
   }
     #topMenuBar.hide {
         transform: translateY(-100%);

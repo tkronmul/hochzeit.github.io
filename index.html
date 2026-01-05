@@ -543,6 +543,27 @@
         });
     });
 
+    //Scrollen und Topmenu verschwindet
+    
+    let lastScrollY = window.scrollY;
+    const menu = document.getElementById('topMenuBar');
+  
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+  
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        // Scroll nach unten → Menü verstecken
+        menu.classList.add('hide');
+      } else {
+        // Scroll nach oben → Menü zeigen
+        menu.classList.remove('hide');
+      }
+  
+      lastScrollY = currentScrollY;
+    });
+
+
+
     //Zeitstrahl erscheinen
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {

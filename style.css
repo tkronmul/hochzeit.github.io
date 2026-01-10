@@ -206,7 +206,7 @@ html {
     .option input[type="checkbox"],
     .option input[type="radio"] {
         flex: 0 0 auto;
-        margin-left: auto;          /* schiebt Button nach rechts */
+        margin-left: 60&; /*auto;          schiebt Button nach rechts */
     }
 
     #topMenuBar {
@@ -399,7 +399,7 @@ h3 {
       padding: 10px;
       transition: transform 0.3s ease;
       transform: translate(0);
-      min-height: 200px;
+      min-height: 220px;
   }
     #topMenuBar.hide {
         transform: translateY(-100%);
@@ -499,6 +499,7 @@ h3 {
     text-align: center;
   }
 }
+
 
 /* === Sehr kleine Geräte (z. B. Smartphones < 480px) === */
 @media (max-width: 480px) {

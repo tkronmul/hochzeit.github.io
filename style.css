@@ -55,7 +55,7 @@
       display: block;
     }
     .links {
-        margin-left: 2rem;
+        margin-left: 4rem;
       /*padding: 1 1 100%;*/
     }
 .liste-ebene-1 {
@@ -65,11 +65,11 @@
 }
 .liste-ebene-2 {
     list-style-type: square;
-    padding-left: 1.5rem;
+    padding-left: 2.5rem;
     margin-top: 0.3rem;
 }
 .liste-ebene-2 li {
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.25rem;
 }
     .rechts {
       flex: 1 1 100%;

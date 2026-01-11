@@ -55,7 +55,7 @@
       display: block;
     }
     .links {
-        margin-left: 10rem;
+        margin-left: 20rem;
       /*padding: 1 1 100%;*/
     }
 .liste-ebene-1 {
@@ -83,14 +83,17 @@
     .links ul {
         padding-left: 1rem;
         font-size: 1rem;
+        margin-left: 3rem;
     }
     .links ul ul {
       padding-left: 1rem;
         font-size: 1rem;
+        margin-left: 3rem;
     }
     .links ul ul li {
       padding-left: 1rem;
         font-size: 1rem;
+        margin-left: 3rem;
     }
     .bild-zentriert {
         margin-top: 2rem;

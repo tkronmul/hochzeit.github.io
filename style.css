@@ -407,9 +407,8 @@ h3 {
 /* ===== MOBILE ERWEITERUNGEN ===== */
 /* ============================= */
 
-/* === Allgemein für kleinere Displays === 
+/* === Allgemein für kleinere Displays === */
 @media (max-width: 768px) {
-    
   /* Top-Menü untereinander statt nebeneinander */
   #topMenuBar {
       position: fixed;

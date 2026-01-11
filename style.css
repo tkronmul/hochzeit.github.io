@@ -465,6 +465,18 @@ h3 {
         margin-left: 1rem;
         font-size: 1rem;
     }
+    #hamburger {
+        display: block; /* Nur im Mobilbereich sichtbar */
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        font-size: 28px;
+        cursor: pointer;
+        z-index: 2200;
+    }
+    .menu-wrapper {
+        display: none; /* Menü standardmäßig verstecken, wird per JS geöffnet */
+    }
 
 
   /* Popup nutzt mehr Bildschirmbreite */

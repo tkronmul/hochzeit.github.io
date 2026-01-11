@@ -614,6 +614,37 @@
       lastScrollY = currentScrollY;
     });
 
+    //Menü mobile Variante
+    if (hamburger && mobileMenu) {
+        // Hamburger Klick → Mobile Menü ein-/ausblenden
+        hamburger.addEventListener('click', () => {
+            mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+    
+        // Klick auf mobile Menüpunkt → Submenu ein/ausklappen oder scrollen
+        mobileMenu.querySelectorAll('.mobile-menu-item').forEach(item => {
+            const submenu = item.querySelector('.submenu');
+    
+            item.addEventListener('click', (e) => {
+                // Wenn Klick auf Submenu-Item
+                if (e.target.closest('.submenu div')) {
+                    const targetId = e.target.dataset.target;
+                    const target = document.getElementById(targetId);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    // Mobile Menü nach Klick optional schließen
+                    mobileMenu.style.display = 'none';
+                    return;
+                }
+    
+                // Klick auf Hauptmenü → Submenu ein/ausklappen
+                if (submenu) {
+                    item.classList.toggle('open');
+                }
+            });
+        });
+    }
 
 
     //Zeitstrahl erscheinen

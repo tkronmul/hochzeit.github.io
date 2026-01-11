@@ -664,7 +664,10 @@
     
                 // Klick auf Hauptmenü → Submenu ein/ausklappen
                 if (submenu) {
-                    item.classList.toggle('open');
+                  document.querySelectorAll('.mobile-menu-item').forEach(i => {
+                    if (i=!==item) i.classList.remove('open');
+                  });
+                  item.classList.toggle('open');
                 }
             });
         });

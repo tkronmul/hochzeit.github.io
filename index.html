@@ -657,18 +657,9 @@
                     if (target) {
                         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
-                    // Mobile Menü nach Klick optional schließen
-                    mobileMenu.style.display = 'none';
-                    return;
                 }
-    
-                // Klick auf Hauptmenü → Submenu ein/ausklappen
-                if (submenu) {
-                  document.querySelectorAll('.mobile-menu-item').forEach(i => {
-                    if (i !== item) i.classList.remove('open');
-                  });
-                  item.classList.toggle('open');
-                }
+              mobileMenu.style.display='none';
+              document.querySelectorAll('mobile-menu-item').forEach(i => i.classList.remove('open'));
             });
         });
     }

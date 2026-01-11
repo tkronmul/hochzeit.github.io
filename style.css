@@ -403,6 +403,9 @@ h3 {
     .hidden {
         display: none !important;
     }
+#hamburger {
+    display: none;
+}
 /* ============================= */
 /* ===== MOBILE ERWEITERUNGEN ===== */
 /* ============================= */

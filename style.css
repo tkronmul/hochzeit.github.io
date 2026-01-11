@@ -423,39 +423,42 @@ h3 {
     /* Einzug Aufzählung an Mobil angepasst */
     .links {
         margin-left: 0rem;
-        padding-right: 0rem;
+        padding-right: 0.1rem;
       /*padding: 1 1 100%;*/
     }
     .links ul {
         padding-left: 0rem;
-        margin-left: 0rem;
+        margin-left: 0.1rem;
+        padding-right: 0.1rem;
         font-size: 1rem; /* optional, kann gleich bleiben */
     }
     .links ul ul {
         padding-left: 0rem;
-        margin-left: 0rem;
+        padding-right: 0.1rem;
+        margin-left: 0.1rem;
         font-size: 1rem;
     }
     .links ul ul li {
         padding-left: 0rem;
-        margin-left: 0rem;
+        padding-right: 0.1rem;
+        margin-left: 0.1rem;
         font-size: 1rem;
     }
     .liste-ebene-1 {
         list-style-type: disc;
-        padding-left: 0rem;
-        padding-right: 0rem;
+        padding-left: 0.1rem;
+        padding-right: 0.1rem;
         font-size: 1.2rem;
     }
     .liste-ebene-2 {
         list-style-type: square;
-        padding-left: 0rem;
-        padding-right: 0rem;
+        padding-left: 0.1rem;
+        padding-right: 0.1rem;
         margin-top: 0.3rem;
         margin-left: 3rem;
     }
     .liste-ebene-2 li {
-        margin-bottom: 0rem;
+        margin-bottom: 0.1rem;
     }
     #hamburger {
         display: block; /* Nur im Mobilbereich sichtbar */

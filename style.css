@@ -451,18 +451,18 @@ h3 {
     /* Einzug Aufzählung an Mobil angepasst */
 
     .links ul {
-        padding-left: 0.5rem;
-        margin-left: 1rem;
+        padding-left: 0.1rem;
+        margin-left: 0.2rem;
         font-size: 1rem; /* optional, kann gleich bleiben */
     }
     .links ul ul {
-        padding-left: 0.5rem;
-        margin-left: 1rem;
+        padding-left: 0.1rem;
+        margin-left: 0.2rem;
         font-size: 1rem;
     }
     .links ul ul li {
-        padding-left: 0.5rem;
-        margin-left: 1rem;
+        padding-left: 0.1rem;
+        margin-left: 0.2rem;
         font-size: 1rem;
     }
     #hamburger {
@@ -476,6 +476,25 @@ h3 {
     }
     .menu-wrapper {
         display: none; /* Menü standardmäßig verstecken, wird per JS geöffnet */
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        position: fixed;
+        top: 60px; /* Höhe deiner Top-Bar */
+        left: 0;
+        z-index: 2150;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .submenu {
+        position: relative;
+        top: 0;
+        border: none;
+        width: 100%;
+    }
+
+    .submenu div {
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
     }
 
 

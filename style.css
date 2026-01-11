@@ -195,7 +195,7 @@ html {
       box-sizing: border-box;
     }
     input[type="text"] {
-        width: 70%;          /* nimmt 70% des Containers ein */
+        width: 80%;          /* nimmt 70% des Containers ein */
         max-width: 300px;    /* nie breiter als 300px */
         padding: 8px;
         border-radius: 6px;
@@ -232,12 +232,12 @@ html {
         width: 80%;
         max-width: 400px;
         cursor: pointer;
-        gap: 4px;
+        gap: 1rem;
     }
     
     /* Textbereich */
     .option-text {
-        flex: 0 0 50%;              /* nimmt 80% der Breite ein */
+        flex:1;              /* nimmt 80% der Breite ein */
         line-height: 1.4;
     }
     
@@ -245,7 +245,7 @@ html {
     .option input[type="checkbox"],
     .option input[type="radio"] {
         flex: 0 0 auto;
-        margin-left: 1rem; /*auto;          schiebt Button nach rechts */
+        margin-left: 0; /*auto;          schiebt Button nach rechts */
     }
 
     #topMenuBar {

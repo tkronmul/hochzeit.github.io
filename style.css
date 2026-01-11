@@ -101,6 +101,10 @@
     .bild-zentriert {
         margin-top: 2rem;
         text-align: center;
+        max-width: 80%;  /* Bild passt sich maximal der Containerbreite an */
+        width: 50%;       /* optional: feste Prozentbreite, z.B. 50% der Containerbreite */
+        height: auto;     /* Höhe wird proportional zur Breite skaliert */
+        margin: 0 auto;   /* zentriert das Bild horizontal */
     }
     .bild-zentriert img {
         max-width: 90%;

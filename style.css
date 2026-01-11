@@ -194,6 +194,15 @@ html {
       font-size: 14px;
       box-sizing: border-box;
     }
+    input[type="text"] {
+        width: 70%;          /* nimmt 70% des Containers ein */
+        max-width: 300px;    /* nie breiter als 300px */
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        box-sizing: border-box; /* wichtig: Padding wird zur Gesamtbreite hinzugerechnet */
+    }
 
     button[type="submit"] {
       background-color: #007BFF;

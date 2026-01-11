@@ -441,6 +441,23 @@ h3 {
     justify-content: center;
       gap: 10px;
   }
+    /* Einzug Aufzählung an Mobil angepasst */
+
+    .links ul {
+        padding-left: 0.5rem;
+        margin-left: 1rem;
+        font-size: 1rem; /* optional, kann gleich bleiben */
+    }
+    .links ul ul {
+        padding-left: 0.5rem;
+        margin-left: 1rem;
+        font-size: 1rem;
+    }
+    .links ul ul li {
+        padding-left: 0.5rem;
+        margin-left: 1rem;
+        font-size: 1rem;
+    }
 
 
   /* Popup nutzt mehr Bildschirmbreite */

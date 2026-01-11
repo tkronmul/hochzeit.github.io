@@ -55,8 +55,22 @@
       display: block;
     }
     .links {
-      padding: 1 1 100%;
+        margin-left: 2rem;
+      /*padding: 1 1 100%;*/
     }
+.liste-ebene-1 {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    font-size: 1rem;
+}
+.liste-ebene-2 {
+    list-style-type: square;
+    padding-left: 1.5rem;
+    margin-top: 0.3rem;
+}
+.liste-ebene-2 li {
+    margin-bottom: 0.2rem;
+}
     .rechts {
       flex: 1 1 100%;
       text-align: right;

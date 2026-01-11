@@ -187,7 +187,7 @@ html {
     }
     textarea {
       width: 70%;
-      max-width: 400px;
+      max-width: 300px;
       padding: 8px;
       border-radius: 6px;
       border: 1px solid #ccc;
@@ -219,10 +219,10 @@ html {
     .option {
         display: flex;
         align-items: center;       /* vertikale Zentrierung */
-        width: 100%;
+        width: 90%;
         max-width: 400px;
         cursor: pointer;
-        gap: 12px;
+        gap: 4px;
     }
     
     /* Textbereich */
@@ -235,7 +235,7 @@ html {
     .option input[type="checkbox"],
     .option input[type="radio"] {
         flex: 0 0 auto;
-        margin-left: 2rem; /*auto;          schiebt Button nach rechts */
+        margin-left: 1rem; /*auto;          schiebt Button nach rechts */
     }
 
     #topMenuBar {

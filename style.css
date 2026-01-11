@@ -418,35 +418,7 @@ h3 {
 @media (max-width: 768px) {
   /* Top-Menü untereinander statt nebeneinander */
   #topMenuBar {
-      position: fixed;
-      top: 0;
-      z-index: 1000;
-      flex-direction: column;
-      gap: 4px;
-      padding: 10px;
-      transition: transform 0.3s ease;
-      transform: translate(0);
-      min-height: 220px;
-  }
-    #topMenuBar.hide {
-        transform: translateY(-100%);
-    }
-
-  .menuTab {
-    width: auto;          /* 100% entfernen */
-    flex: 1 1 45%;        /* zwei Buttons pro Zeile */
-    max-width: 48%;       /* verhindert Überbreite */
-    font-size: 12px;
-    padding: 12px 10px;
-    text-align: center;
-      box-sizing: border-box;
-  }
-
-  .menu-button.wrapper {
-    display: flex;
-    flex-wrap: wrap;      /* erlaubt Umbruch falls nötig */
-    justify-content: center;
-      gap: 10px;
+      display: none;
   }
     /* Einzug Aufzählung an Mobil angepasst */
 

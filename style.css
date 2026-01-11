@@ -423,18 +423,18 @@ h3 {
     /* Einzug Aufzählung an Mobil angepasst */
 
     .links ul {
-        padding-left: 0.1rem;
-        margin-left: 0.2rem;
+        padding-left: 0.5rem;
+        margin-left: 0rem;
         font-size: 1rem; /* optional, kann gleich bleiben */
     }
     .links ul ul {
-        padding-left: 0.1rem;
-        margin-left: 0.2rem;
+        padding-left: 1rem;
+        margin-left: 0rem;
         font-size: 1rem;
     }
     .links ul ul li {
-        padding-left: 0.1rem;
-        margin-left: 0.2rem;
+        padding-left: 0rem;
+        margin-left: 0rem;
         font-size: 1rem;
     }
     #hamburger {

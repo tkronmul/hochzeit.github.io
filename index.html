@@ -38,6 +38,8 @@
         <div data-target="kap3">Anmeldung</div>
       </div>
     </div>
+    <!-- Menu mobil -->
+    <button id="hamburger">☰</button>
 
     <div class="menu-wrapper">
       <button class="menuTab hidden" data-menu="pa">Polterabend</button>
@@ -526,7 +528,15 @@
         kap13.classList.remove("hidden");
         document.getElementById("intro").style.display="none";
       }
+      //Menu mobil
+      const hamburger = document.getElementById("hamburger");
+      const menu = document.getElementById("topMenuBar");
+    
+      hamburger.addEventListener("click", () => {
+        menu.classList.toggle("open");
+      });
       //Menüband
+        
       const tabs = document.querySelectorAll(".menuTab:not(.hidden)");
       tabs.forEach(tab => {
         tab.addEventListener("click", () => {

@@ -196,7 +196,7 @@ html {
     }
     input[type="text"] {
         width: 80%;          /* nimmt 70% des Containers ein */
-        max-width: 300px;    /* nie breiter als 300px */
+        max-width: 500px;    /* nie breiter als 300px */
         padding: 8px;
         border-radius: 6px;
         border: 1px solid #ccc;
@@ -230,7 +230,7 @@ html {
         display: flex;
         align-items: center;       /* vertikale Zentrierung */
         width: 80%;
-        max-width: 400px;
+        max-width: 500px;
         cursor: pointer;
         gap: 1rem;
     }

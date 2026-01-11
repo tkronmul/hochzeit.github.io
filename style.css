@@ -56,16 +56,19 @@
     }
     .links {
         margin-left: 20rem;
+        padding-right: 20rem;
       /*padding: 1 1 100%;*/
     }
 .liste-ebene-1 {
     list-style-type: disc;
     padding-left: 1.5rem;
+    padding-right: 1.5rem;
     font-size: 1.2rem;
 }
 .liste-ebene-2 {
     list-style-type: square;
     padding-left: 1.5rem;
+    padding-right: 1.5rem;
     margin-top: 0.3rem;
     margin-left: 3rem;
 }

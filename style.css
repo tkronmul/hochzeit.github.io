@@ -61,12 +61,13 @@
 .liste-ebene-1 {
     list-style-type: disc;
     padding-left: 1.5rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 .liste-ebene-2 {
     list-style-type: square;
-    padding-left: 5rem;
+    padding-left: 1.5rem;
     margin-top: 0.3rem;
+    margin-left: 3rem;
 }
 .liste-ebene-2 li {
     margin-bottom: 0.25rem;

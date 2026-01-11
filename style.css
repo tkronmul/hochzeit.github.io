@@ -192,6 +192,7 @@ html {
       border-radius: 6px;
       border: 1px solid #ccc;
       font-size: 14px;
+      box-sizing: border-box;
     }
 
     button[type="submit"] {
@@ -219,7 +220,7 @@ html {
     .option {
         display: flex;
         align-items: center;       /* vertikale Zentrierung */
-        width: 90%;
+        width: 80%;
         max-width: 400px;
         cursor: pointer;
         gap: 4px;
@@ -227,7 +228,7 @@ html {
     
     /* Textbereich */
     .option-text {
-        flex: 0 0 60%;              /* nimmt 80% der Breite ein */
+        flex: 0 0 50%;              /* nimmt 80% der Breite ein */
         line-height: 1.4;
     }
     

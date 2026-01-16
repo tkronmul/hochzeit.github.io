@@ -124,7 +124,7 @@ html {
       to { opacity: 1; transform: scale(1); }
     }
     .closeBtn {
-      position: fixed;
+      position: absolute;
       top: 10px;
       right: 14px;
       font-size: 16px;
@@ -538,6 +538,14 @@ h3 {
     box-sizing: border-box; /* Padding wird zur Größe hinzugerechnet */
     overflow-y: auto;       /* Scrollbar, falls Inhalt zu hoch */
     overflow-x: hidden;     /* keine horizontale Scrollbar */
+      position: relative;
+  }
+.closeBtn {
+    position: absolute;  /* relativ zum Popup */
+    top: 10px;
+    right: 10px;
+    font-size: 16px;
+    z-index: 2110;
   }
 
   /* Zweispaltige Inhalte stapeln */

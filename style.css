@@ -47,7 +47,6 @@
         z-index: 2101;
         opacity: 0;
         transition: opacity 0.25s ease, transform 0.25s ease;
-        position: relative;
     }
     .popup:not(.hidden) {
         opacity: 1;

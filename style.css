@@ -231,7 +231,7 @@ html {
         display: flex;
         align-items: flex-start;       /* vertikale Zentrierung */
         gap: 0.5rem;
-        width: 100%;
+        width: 80%;
         /*max-width: 500px;*/
         /*cursor: pointer;*/
     }

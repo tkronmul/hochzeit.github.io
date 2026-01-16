@@ -699,7 +699,24 @@
     
         // 1️⃣ Hamburger Klick → Mobile Menü ein-/ausblenden
         hamburger.addEventListener('click', () => {
-            mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+            // 👉 Sichtbarkeit der Mobile-Menüpunkte an Tabs anpassen
+            mobileMenu.querySelectorAll('.mobile-menu-item').forEach(item => {
+                const menu = item.dataset.menu;
+    
+                if (
+                    (menu === "hf" && tabHoch.classList.contains("hidden")) ||
+                    (menu === "pa" && tabPol.classList.contains("hidden")) ||
+                    (menu === "kon" && tabKon.classList.contains("hidden"))
+                ) {
+                    item.style.display = "none";
+                } else {
+                    item.style.display = "block";
+                }
+            });
+    
+            // Menü ein-/ausblenden
+            mobileMenu.style.display =
+                mobileMenu.style.display === 'flex' ? 'none' : 'flex';
         });
     
         // 2️⃣ Klick auf mobile Menüpunkt → Submenu ein/ausklappen oder scrollen

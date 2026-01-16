@@ -226,28 +226,35 @@ html {
       background-color: #218838;
     }
 
+    /* Text mit Radio-Button oder Checkbox */
     .option {
         display: flex;
-        align-items: center;       /* vertikale Zentrierung */
-        width: 80%;
-        max-width: 500px;
-        cursor: pointer;
-        gap: 1rem;
+        align-items: flex-start;       /* vertikale Zentrierung */
+        gap: 0.5rem;
+        width: 100%;
+        /*max-width: 500px;*/
+        /*cursor: pointer;*/
     }
     
     /* Textbereich */
     .option-text {
-        flex:1;              /* nimmt 80% der Breite ein */
+        flex: 1 1 auto;              /* nimmt 80% der Breite ein */
         line-height: 1.4;
+        /*display: flex;*/
+        /*align.items: 1.4;*/
+    }
+    .option-control {
+        flex: 0 0 auto;
         display: flex;
-        align.items: 1.4;
+        align-items: center;
+        margin-left: auto;
     }
     
     /* Checkbox / Radio */
     .option input[type="checkbox"],
     .option input[type="radio"] {
-        flex: 0 0 auto;
-        margin-left: 0; /*auto;          schiebt Button nach rechts */
+        /*flex: 0 0 auto;*/
+        margin: 0; /*auto;          schiebt Button nach rechts */
     }
 
     #topMenuBar {

@@ -302,7 +302,9 @@
           <span class="option-text">
             Ich nehme teil. 
           </span>
-          <input type="checkbox" id="teilnahmePol" required style="vertical-align:middle;">  
+          <span class="option-control">
+            <input type="checkbox" id="teilnahmePol">
+          </span>
       </label>
       <div id="InformationenPol" class="hidden">
         <hr>
@@ -312,7 +314,9 @@
           <span class="option-text">
             Ich komme mit Begleitung. 
           </span>
-          <input type="checkbox" id="begleitungPol" style="vertical-align:middle;"> 
+          <span class="option-control">
+            <input type="checkbox" id="begleitungPol">
+          </span>
         </label>
         <div id="BegleiterPol" class="hidden">
           <label>Anzahl Begleitpersonen:
@@ -325,85 +329,117 @@
         <label class="option">
           <span class="option-text">
             Ich möchte gerne Zelten. </span>
+          <span class="option-control">
             <input type="radio" name="UebernachtungPol" value="Location">
+          </span>
         </label>
         <label class="option">
           <span class="option-text">
             Ich kümmere mich selbst darum / fahre nach Hause. </span>
+          <span class="option-control">
             <input type="radio" name="UebernachtungPol" value="SelbstorgHoch">
+            </span>
         </label>
         <hr>
         <label class="option">
           <span class="option-text">
             Ich bringe etwas für das Buffet mit. </span>
-            <input type="checkbox" id="mitbringen" style="vertical-align:middle;">
+          <span class="option-control">
+            <input type="checkbox" id="mitbringen">
+            </span>
         </label>
         <div id="MitbringenSection" class="hidden">
           <label>Auswahl:</label><br>
           <label class="option">
             <span class="option-text">
               Kartoffelsalat </span>
-              <input type="checkbox" name="Buffet" value="Kartoffelsalat" style="vertical-align:middle;"> 
+            <span class="option-control">
+              <input type="checkbox" name="Buffet" value="Kartoffelsalat">
+              </span>
           </label>
           <label class="option">
             <span class="option-text">
               Tomate-Mazzarella </span>
-              <input type="checkbox" name="Buffet" value="Tomate-Mozzarella" style="vertical-align:middle;">
+            <span class="option-control">
+              <input type="checkbox" name="Buffet" value="Tomate-Mozzarella">
+              </span>
           </label>
           <label class="option">
             <span class="option-text">
               Nudelsalat </span>
-              <input type="checkbox" name="Buffet" value="Nudelsalat" style="vertical-align:middle;"> 
+            <span class="option-control">
+              <input type="checkbox" name="Buffet" value="Nudelsalat"> 
+              </span>
           </label>
           <label class="option">
             <span class="option-text">
               Krautsalat </span>
-              <input type="checkbox" name="Buffet" value="Krautsalat" style="vertical-align:middle;">
+            <span class="option-control">
+              <input type="checkbox" name="Buffet" value="Krautsalat">
+              </span>
           </label>
           <label class="option">
             <span class="option-text">
               Grüner Salat </span>
-              <input type="checkbox" name="Buffet" value="Grüner Salat" style="vertical-align:middle;">
+            <span class="option-control">
+              <input type="checkbox" name="Buffet" value="Grüner Salat">
+              </span>
           </label>
           <label class="option">
             <span class="option-text">
              Gurkensalat </span>
-              <input type="checkbox" name="Buffet" value="Gurkensalat" style="vertical-align:middle;">
+            <span class="option-control">
+              <input type="checkbox" name="Buffet" value="Gurkensalat">
+              </span>
           </label>
           <label class="option">
             <span class="option-text">
               Pizzaschnecken </span>
-              <input type="checkbox" name="Buffet" value="Pizzaschnecken" style="vertical-align:middle;">
+            <span class="option-control">
+              <input type="checkbox" name="Buffet" value="Pizzaschnecken">
+              </span>
           </label>
           <label class="option">
             <span class="option-text">
               Tzatziki </span>
-              <input type="checkbox" name="Buffet" value="Tzatziki" style="vertical-align:middle;">
+            <span class="option-control">
+              <input type="checkbox" name="Buffet" value="Tzatziki">
+              </span>
           </label>
           <label class="option">
             <span class="option-text">
               Hummus </span>
-              <input type="checkbox" name="Buffet" value="Hummus" style="vertical-align:middle;">
+            <span class="option-control">
+              <input type="checkbox" name="Buffet" value="Hummus">
+              </span>
           </label>
           <label class="option">
             <span class="option-text">
               Trauben-Käse-Spieße </span>
-              <input type="checkbox" name="Buffet" value="Trauben-Käse-Spieße" style="vertical-align:middle;">
+            <span class="option-control">
+              <input type="checkbox" name="Buffet" value="Trauben-Käse-Spieße">
+              </span>
           </label>
           <label class="option">
             <span class="option-text">
               Gemüse mit Dip </span>
-              <input type="checkbox" name="Buffet" value="Gemüse mit Dip" style="vertical-align:middle;">
+            <span class="option-control">
+              <input type="checkbox" name="Buffet" value="Gemüse mit Dip">
+              </span>
           </label>
           <label class="option">
             <span class="option-text">
               Muffins </span>
-              <input type="checkbox" name="Buffet" value="Muffins" style="vertical-align:middle;">
+            <span class="option-control">
+              <input type="checkbox" name="Buffet" value="Muffins">
+              </span>
           </label>
           <label class="option">
             <span class="option-text">
               Brownies </span>
-              <input type="checkbox" name="Buffet" value="Brownies" style="vertical-align:middle;">
+            <span class="option-control">
+              <input type="checkbox" name="Buffet" value="Brownies">
+              </span>
           </label>
           <label>Weiteres: <input type="text" id="Weiteres" name="Weiteres" ></label>
         </div> <br>
@@ -432,7 +468,9 @@
           <span class="option-text">
             Ich nehme teil. 
           </span>
-          <input type="checkbox" id="teilnahmeHoch" required style="vertical-align:middle;">  
+        <span class="option-control">
+          <input type="checkbox" id="teilnahmeHoch" required>  
+          </span>
       </label>
       <div id="InformationenHoch" class="hidden">
         <hr>
@@ -442,7 +480,9 @@
           <span class="option-text">
             Ich komme mit Begleitung. 
           </span>
-          <input type="checkbox" id="begleitungHoch" style="vertical-align:middle;"> 
+          <span class="option-control">
+          <input type="checkbox" id="begleitungHoch"> 
+            </span>
         </label>
       <div id="BegleiterHoch" class="hidden">
           <label>Anzahl Begleitpersonen:
@@ -455,7 +495,9 @@
         <label class="option">
           <span class="option-text">
             Ich möchte in der Location übernachten. </span>
+          <span class="option-control">
             <input type="radio" name="UebernachtungHoch" value="Location">
+            </span>
         </label><br>
         <p> Wir haben für die Übernachtungen ein festes Kontingent an Zimmer gebucht. Wir würden uns freuen, wenn Ihr dieses Angebot annehmen würdet. Ein Zimmer kostet hierbei 130€ pro Nacht. </p>
         <div id="Zimmer" class="hidden">
@@ -465,7 +507,9 @@
         <label class="option">
           <span class="option-text">
             Ich kümmere mich selbst darum / fahre nach Hause.</span>
+          <span class="option-control">
             <input type="radio" name="UebernachtungHoch" value="SelbstorgHoch"> 
+            </span>
         </label>
         <hr>
         Für das Katerfrühstück am Sonntag werden kostet pro Person 15€ für Übernachtungsgäste im Schlosshotel Horneck und 23,90€ für Gäste, die extern übernachten, fällig.

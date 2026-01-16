@@ -489,6 +489,9 @@ h3 {
         cursor: pointer;
         z-index: 2200;
     }
+    #hamburger.hidden {
+        display: none;
+    }
     #mobileMenu {
         display: none; /* wird per JS geöffnet */
         flex-direction: column;

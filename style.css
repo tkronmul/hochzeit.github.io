@@ -668,13 +668,10 @@ li::marker {
 }
 
 @media (prefers-color-scheme: dark) {
-    .liste-ebene-1, .liste-ebene-2 {
+    .liste-ebene-1, .liste-ebene-2, .liste-ebene-1 li, .liste-ebene-2 li {
         color: white;
     }
-    li::marker  {
-        color: white;
-    }
-   .liste-ebene-1::marker, .liste-ebene-2::marker, li::webkit-marker {
+   .liste-ebene-1 li::marker, .liste-ebene-2 li::marker, .liste-ebene-1 li::webkit-marker, .liste-ebene-2 li::webkit-marker {
         color: white;
     }
 }

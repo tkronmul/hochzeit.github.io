@@ -541,7 +541,7 @@ h3 {
     position: relative;
   }
 .closeBtn {
-    position: ansolute; /*  relativ zum Popup */
+    position: absolute; /*  relativ zum Popup */
     top: 10px;
     right: 10px;
     font-size: 16px;

@@ -526,6 +526,9 @@ h3 {
     .mobile-menu-item.open .submenu {
         display: flex;
     }
+    .overlay {
+        position: fixed;
+    }
 
 
   /* Popup nutzt mehr Bildschirmbreite */

@@ -455,7 +455,7 @@ h3 {
     }
     .links ul {
         padding-left: 5rem;
-        margin-left: 5rem;
+        margin-left: 1rem;
         padding-right: 0.2rem;
         font-size: 1rem; /* optional, kann gleich bleiben */
     }

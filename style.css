@@ -671,7 +671,7 @@ li::marker {
     .liste-ebene-1, .liste-ebene-2, .liste-ebene-1 li, .liste-ebene-2 li {
         color: white;
     }
-   .liste-ebene-1 li::marker, .liste-ebene-2 li::marker, .liste-ebene-1 li::-webkit-marker, .liste-ebene-2 li::-webkit-marker {
+   .liste-ebene-1 li::before, .liste-ebene-2 li::before, .liste-ebene-1 li::-webkit-marker, .liste-ebene-2 li::-webkit-marker {
         color: white;
     }
 }

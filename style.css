@@ -431,6 +431,12 @@ h3 {
     .hidden {
         display: none !important;
     }
+
+@media (prefers-color-scheme: dark) {
+    li::marker {
+        color: white;
+    }
+}
 /* ============================= */
 /* ===== MOBILE ERWEITERUNGEN ===== */
 /* ============================= */
@@ -473,7 +479,7 @@ h3 {
     }
     .liste-ebene-2 {
         list-style-type: square;
-        padding-left: 1rem;
+        padding-left: 2rem;
         padding-right: 0.1rem;
         margin-top: 0.3rem;
         margin-left: 3rem;

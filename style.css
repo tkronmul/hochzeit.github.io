@@ -438,14 +438,7 @@ li::marker {
     color: black;
 }
 
-@media (prefers-color-scheme: dark) {
-    li {
-        color: white;
-    }
-    li::marker {
-        color: white;
-    }
-}
+
 /* ============================= */
 /* ===== MOBILE ERWEITERUNGEN ===== */
 /* ============================= */
@@ -671,6 +664,21 @@ li::marker {
 
     .option input {
         transform: scale(1.3);   /* besser für Touch */
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .liste-ebene-1 {
+        color: white;
+    }
+   .liste-ebene-1::marker {
+        color: white;
+    }
+    .liste-ebene-2 {
+        color: white;
+    }
+   .liste-ebene-2::marker {
+        color: white;
     }
 }
     

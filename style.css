@@ -539,6 +539,7 @@ h3 {
     overflow-y: auto;       /* Scrollbar, falls Inhalt zu hoch */
     overflow-x: hidden;     /* keine horizontale Scrollbar */
     position: relative;
+      transform: none;
   }
 .closeBtn {
     position: absolute; /*  relativ zum Popup */

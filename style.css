@@ -47,7 +47,9 @@
         z-index: 2101;
         opacity: 0;
         transition: opacity 0.25s ease, transform 0.25s ease;
-        position: relative;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        grid-template-areas: "close" "content";
     }
     .popup:not(.hidden) {
         opacity: 1;
@@ -125,9 +127,12 @@ html {
       to { opacity: 1; transform: scale(1); }
     }
     .closeBtn {
-      position: absolute;
-      top: 10px;
-      right: 14px;
+      /*position: absolute;*/
+        grid-area: close;
+        justify-self: end;
+        justify-self: start;
+      /*top: 10px;*/
+      /*right: 14px;*/
       font-size: 16px;
       color: #555;
       cursor: pointer;
@@ -137,6 +142,9 @@ html {
     .closeBtn:hover {
       color: #000;
     }
+.popup > :not(.closeBtn){
+    grid-area: content;
+}
     .event-btn {
         background: #0077cc;
         color: white;

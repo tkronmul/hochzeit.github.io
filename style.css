@@ -541,7 +541,7 @@ h3 {
     box-sizing: border-box; /* Padding wird zur Größe hinzugerechnet */
     overflow-y: auto;       /* Scrollbar, falls Inhalt zu hoch */
     overflow-x: hidden;     /* keine horizontale Scrollbar */
-      position: relative;
+     /* position: relative;*/
   }
 .closeBtn {
     position: fixed;  /* relativ zum Popup */

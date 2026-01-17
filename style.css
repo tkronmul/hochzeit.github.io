@@ -671,7 +671,10 @@ li::marker {
     .liste-ebene-1, .liste-ebene-2 {
         color: white;
     }
-   .li::marker, liste-ebene-1::marker, .liste-ebene-2::marker, li::webkit-marker {
+    li::marker  {
+        color: white;
+    }
+   .liste-ebene-1::marker, .liste-ebene-2::marker, li::webkit-marker {
         color: white;
     }
 }

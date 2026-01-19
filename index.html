@@ -1211,7 +1211,39 @@
           }
         }
 
-      /* ===============================
+        
+
+      try {
+        await fetch(scriptURLHochzeit, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ 
+            vorname, 
+            nachname, 
+            teilnahme,
+            gewohnheit,
+            Begleitung,
+            AnzahlBegleiter,
+            Uebernachtung,
+            Zimmer,
+            Kommentar,
+            BegleiterHoch }),
+        });
+
+        popupHochzeit.classList.add("hidden");
+        notification.classList.remove("hidden");
+        setTimeout(() => {
+          notification.classList.add("hidden");
+          overlayHoch.classList.add("hidden");
+          formHochzeit.reset();
+        }, 3000);
+      } catch (error) {
+        alert("Fehler beim Senden: " + error);
+      }
+    });
+
+       /* ===============================
              📥 DOWNLOAD (TXT)
           =============================== */
           let textContent = `
@@ -1247,37 +1279,7 @@
                 a.download = `Hochzeit_${vorname}_${nachname}.txt`;
                 a.click();
               
-                URL.revokeObjectURL(url);    
-
-      try {
-        await fetch(scriptURLHochzeit, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ 
-            vorname, 
-            nachname, 
-            teilnahme,
-            gewohnheit,
-            Begleitung,
-            AnzahlBegleiter,
-            Uebernachtung,
-            Zimmer,
-            Kommentar,
-            BegleiterHoch }),
-        });
-
-        popupHochzeit.classList.add("hidden");
-        notification.classList.remove("hidden");
-        setTimeout(() => {
-          notification.classList.add("hidden");
-          overlayHoch.classList.add("hidden");
-          formHochzeit.reset();
-        }, 3000);
-      } catch (error) {
-        alert("Fehler beim Senden: " + error);
-      }
-    });
+                URL.revokeObjectURL(url); 
     
     // Klick außerhalb des Popups schließt es
     

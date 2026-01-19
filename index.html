@@ -964,6 +964,37 @@
         });
         const weitereGerichte = document.getElementById("Weiteres")?.value || "";
 
+        
+        try {
+          await fetch(scriptURLPolterabend, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              vorname,
+              nachname,
+              teilnahme,
+              gewohnheit,
+              Begleitung,
+              AnzahlBegleiter,
+              Uebernachtung,
+              Kommentar,
+              Begleiter,
+              Buffetmitbringen,
+              weitereGerichte
+            }),
+          });
+
+          popupPolterabend.classList.add("hidden");
+          notification.classList.remove("hidden");
+          setTimeout(() => {
+              notification.classList.add("hidden");
+              overlay.classList.add("hidden");
+              formPolterabend.reset();
+            }, 3000);
+          } catch (error) {
+            alert("Fehler beim Senden: " + error);
+          }
         /* ===============================
              📥 DOWNLOAD (TXT)
           =============================== */
@@ -1008,36 +1039,6 @@
           a.click();
         
           URL.revokeObjectURL(url);
-        try {
-          await fetch(scriptURLPolterabend, {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              vorname,
-              nachname,
-              teilnahme,
-              gewohnheit,
-              Begleitung,
-              AnzahlBegleiter,
-              Uebernachtung,
-              Kommentar,
-              Begleiter,
-              Buffetmitbringen,
-              weitereGerichte
-            }),
-          });
-
-          popupPolterabend.classList.add("hidden");
-          notification.classList.remove("hidden");
-          setTimeout(() => {
-              notification.classList.add("hidden");
-              overlay.classList.add("hidden");
-              formPolterabend.reset();
-            }, 3000);
-          } catch (error) {
-            alert("Fehler beim Senden: " + error);
-          }
       
       });
 

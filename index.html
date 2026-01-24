@@ -1026,7 +1026,7 @@
             weitereGerichte
           };
 
-          popupPolterabend.classList.add("hidden");
+          formPolterabend.classList.add("hidden");
           downloadViewPol.classList.remove("hidden");
           /*notification.classList.remove("hidden");
           setTimeout(() => {
@@ -1105,6 +1105,7 @@
 
         function cleanup() {
           downloadViewPol.classList.add("hidden");
+          popupPolterabend.classList.add("hidden");
           overlay.classList.add("hidden");
           formPolterabend.reset();
           formDataCache = null;

@@ -800,7 +800,8 @@
     // =========================
     // FORMULARE ANMELDUNGEN
     // =========================
-    const notification = document.getElementById("notification");
+    const notification = document.getElementById("notification");    
+      
 
     // =========================
     // POLTERABEND
@@ -825,6 +826,10 @@
       openPolterabendBtn.addEventListener("click", () => {
         overlay.classList.remove("hidden");
         popupPolterabend.classList.remove("hidden");
+        formPolterabend.classList.remove("hidden");
+        downloadViewPol.classList.add("hidden");
+        formPolterabend.reset();
+        formDataCache=null;
       });
 
        //Formular Polterabend schließen
@@ -832,7 +837,10 @@
         //InformationenHoch.classlist.add("hidden");
         overlay.classList.add("hidden");
         popupPolterabend.classList.add("hidden");
+        formPolterabend.classList.add("hidden");
+        downloadViewPol.classList.add("hidden");
         formPolterabend.reset();
+        formDataCache=null;
       });
 
       // Schließen bei Klick auf Overlay

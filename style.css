@@ -356,13 +356,22 @@ html {
 body {
       margin: 0;
       padding: 0;
-      background-image: url("images/Hintergrund.jpg");
-      background.size: cover;
-      background-position: center;
-      background-attachment: fixed;
+     
       font-family: Arial, sans-serif;
         padding-top: 120px;
     }
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+     background-image: url("images/Hintergrund.jpg");
+     background.size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+    z-index: -1;
+}
+    
+    
 h1 {
     font-size: 28px;
 }

@@ -451,14 +451,14 @@
     </form>
 
     <!-- Download-View -->
-    <div id="downloadView" class="hidden">
+    <div id="downloadViewPol" class="hidden">
       <h2> Danke für Deine Anmeldung!</h2>
       <p>Möchtest Du Deine Angaben als txt-File herunterlande? (Note: Bei iOS-Geräten könnte der Download blockiert sein)</p>
       <div class="modal-buttons">
-        <button type="button" id="downloadBtn" class="btn-primary">
+        <button type="button" id="downloadPolBtn" class="btn-primary">
           Herunterladen
         </button>
-        <button type"button" id="closeDownloadBtn" class"btn-secondary">
+        <button type"button" id="closeDownloadPolBtn" class"btn-secondary">
           Schließen
         </button>
       </div>
@@ -533,6 +533,19 @@
       </div>      
       <button type="submit">Absenden</button>
     </form>
+    <!-- Download-View -->
+    <div id="downloadViewHoch" class="hidden">
+      <h2> Danke für Deine Anmeldung!</h2>
+      <p>Möchtest Du Deine Angaben als txt-File herunterlande? (Note: Bei iOS-Geräten könnte der Download blockiert sein)</p>
+      <div class="modal-buttons">
+        <button type="button" id="downloadHochBtn" class="btn-primary">
+          Herunterladen
+        </button>
+        <button type"button" id="closeDownloadHochBtn" class"btn-secondary">
+          Schließen
+        </button>
+      </div>
+  </div>
   </div>
   </div>
 
@@ -1014,7 +1027,7 @@
           };
 
           popupPolterabend.classList.add("hidden");
-          downloadOverlay.classList.remove("hidden")
+          downloadViewPol.classList.remove("hidden");
           /*notification.classList.remove("hidden");
           setTimeout(() => {
               notification.classList.add("hidden");
@@ -1068,7 +1081,7 @@
              📥 iOS-kompatibler Download (TXT)
           =============================== */
 
-        document.getElementById("downloadBtn").addEventListener("click", () => {
+        document.getElementById("downloadPolBtn").addEventListener("click", () => {
           const textContent = createTxtContent(formDataCache);
         
           const blob = new Blob([textContent], {
@@ -1091,13 +1104,13 @@
         });
 
         function cleanup() {
-          downloadOverlay.classList.add("hidden");
+          downloadViewPol.classList.add("hidden");
           overlay.classList.add("hidden");
           formPolterabend.reset();
           formDataCache = null;
         }
 
-        document.getElementById("closeDownloadBtn").addEventListener("click", () => {
+        document.getElementById("closeDownloadPolBtn").addEventListener("click", () => {
           cleanup();
         });
 
@@ -1151,6 +1164,7 @@
       
       });*/
 
+       });
        });
       
     
@@ -1340,21 +1354,108 @@
             BegleiterHoch }),
         });
 
+        formDataCache = {
+            vorname, 
+            nachname, 
+            teilnahme,
+            gewohnheit,
+            Begleitung,
+            AnzahlBegleiter,
+            Uebernachtung,
+            Zimmer,
+            Kommentar,
+            BegleiterHoch
+          };
+
+
         popupHochzeit.classList.add("hidden");
-        notification.classList.remove("hidden");
+        downloadViewHoch.classList.remove("hidden");
+        /*notification.classList.remove("hidden");
         setTimeout(() => {
           notification.classList.add("hidden");
           overlayHoch.classList.add("hidden");
           formHochzeit.reset();
-        }, 3000);
+        }, 3000);*/
       } catch (error) {
         alert("Fehler beim Senden: " + error);
       }
+
+      /* ===============================
+            TXT aus Cache erzeugen
+          =============================== */
+
+        function createTxtContent(data) {
+          let text = `
+          Polterabend-Anmeldung
+          
+          Name: ${data.vorname} ${data.nachname}
+          Teilnahme: ${data.teilnahme}
+          Essgewohnheiten: ${data.gewohnheit}
+          Begleitung: ${data.Begleitung}
+          Anzahl Begleiter: ${data.AnzahlBegleiter}
+          Übernachtung: ${data.Uebernachtung}
+          Zimmer: ${data.Zimmer}
+          
+          Kommentar:
+          ${data.Kommentar}
+          
+          Begleiter:
+          `;
+          
+            data.BegleiterHoch.forEach((b, i) => {
+              text += `
+          ${i + 1}. ${b.Vorname} ${b.Nachname}
+             Alter: ${b.Alter}
+             Ernährung: ${b.Gewohnheit}
+          `;
+            });
+                    
+            return text;
+          }
+
+      /* ===============================
+             📥 iOS-kompatibler Download (TXT)
+          =============================== */
+
+        document.getElementById("downloadHochBtn").addEventListener("click", () => {
+          const textContent = createTxtContent(formDataCache);
+        
+          const blob = new Blob([textContent], {
+            type: "text/plain;charset=utf-8"
+          });
+        
+          const url = URL.createObjectURL(blob);
+        
+          // iOS SAFE
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `Hochzeit_${formDataCache.vorname}_${formDataCache.nachname}.txt`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        
+          URL.revokeObjectURL(url);
+        
+          cleanup();
+        });
+
+        function cleanup() {
+          downloadViewPol.classList.add("hidden");
+          overlay.classList.add("hidden");
+          formPolterabend.reset();
+          formDataCache = null;
+        }
+
+        document.getElementById("closeDownloadHochBtn").addEventListener("click", () => {
+          cleanup();
+        });
+
+      
     });
 
        /* ===============================
              📥 DOWNLOAD (TXT)
-          =============================== */
+          =============================== 
           let textContent = `
               Hochzeitsanmeldung
               
@@ -1388,7 +1489,7 @@
                 a.download = `Hochzeit_${vorname}_${nachname}.txt`;
                 a.click();
               
-                URL.revokeObjectURL(url); 
+                URL.revokeObjectURL(url); */
     
     // Klick außerhalb des Popups schließt es
     

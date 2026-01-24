@@ -800,7 +800,26 @@
     // =========================
     // FORMULARE ANMELDUNGEN
     // =========================
-    const notification = document.getElementById("notification");    
+    const notification = document.getElementById("notification");
+    function openPolterabendForm(){
+      overlay.classList.remove("hidden");
+        popupPolterabend.classList.remove("hidden");
+        formPolterabend.classList.remove("hidden");
+        downloadViewPol.classList.add("hidden");
+        formPolterabend.reset();
+        formDataCache=null;
+    }
+    function closePolterabendForm(){
+        overlay.classList.add("hidden");
+        popupPolterabend.classList.add("hidden");
+        formPolterabend.classList.add("hidden");
+        downloadViewPol.classList.add("hidden");
+        InformationenPol.classList.add("hidden");
+        BegleiterPol.classList.add("hidden");
+        MitbringenSection.classList.add("hidden");
+        formPolterabend.reset();
+        formDataCache=null;
+    }
       
 
     // =========================
@@ -824,34 +843,19 @@
 
        //Formular Polterabend öffnen
       openPolterabendBtn.addEventListener("click", () => {
-        overlay.classList.remove("hidden");
-        popupPolterabend.classList.remove("hidden");
-        formPolterabend.classList.remove("hidden");
-        downloadViewPol.classList.add("hidden");
-        formPolterabend.reset();
-        formDataCache=null;
+        openPolterabendForm()
       });
 
        //Formular Polterabend schließen
       closeformPolBtn.addEventListener("click", () => {
         //InformationenHoch.classlist.add("hidden");
-        overlay.classList.add("hidden");
-        popupPolterabend.classList.add("hidden");
-        formPolterabend.classList.add("hidden");
-        downloadViewPol.classList.add("hidden");
-        InformationenPol.classList.add("hidden");
-        BegleiterPol.classList.add("hidden");
-        MitbringenSection.classList.add("hidden");
-        formPolterabend.reset();
-        formDataCache=null;
+        closePolterabendForm();
       });
 
       // Schließen bei Klick auf Overlay
       overlay.addEventListener("click", (e) => {
         if (e.target === overlay) {
-          overlay.classList.add("hidden");
-          popupPolterabend.classList.add("hidden");
-          formPolterabend.reset();  
+          closePolterabendForm();  
         }
       });
     
@@ -1037,8 +1041,7 @@
             weitereGerichte
           };
 
-          formPolterabend.classList.add("hidden");
-          downloadViewPol.classList.remove("hidden");
+          closePolterabendForm();
           /*notification.classList.remove("hidden");
           setTimeout(() => {
               notification.classList.add("hidden");
@@ -1123,7 +1126,7 @@
         }
 
         document.getElementById("closeDownloadPolBtn").addEventListener("click", () => {
-          cleanup();
+          closePolterabendForm();
         });
 
         

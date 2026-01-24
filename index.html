@@ -1115,71 +1115,12 @@
         
           URL.revokeObjectURL(url);
         
-          cleanup();
+          closePolterabendForm();
         });
-
-        function cleanup() {
-          downloadViewPol.classList.add("hidden");
-          popupPolterabend.classList.add("hidden");
-          overlay.classList.add("hidden");
-          formPolterabend.reset();
-          formDataCache = null;
-        }
 
         document.getElementById("closeDownloadPolBtn").addEventListener("click", () => {
           closePolterabendForm();
         });
-
-        
-
-        
-        /* ===============================
-             📥 DOWNLOAD (TXT)
-          =============================== 
-          let textContent = `
-        Polterabend-Anmeldung
-        
-        Name: ${vorname} ${nachname}
-        Teilnahme: ${teilnahme}
-        Essgewohnheiten: ${gewohnheit}
-        Begleitung: ${Begleitung}
-        Anzahl Begleiter: ${AnzahlBegleiter}
-        Übernachtung: ${Uebernachtung}
-        
-        Kommentar:
-        ${Kommentar}
-        
-        Begleiter:
-        `;
-        
-          Begleiter.forEach((b, i) => {
-            textContent += `
-        ${i + 1}. ${b.Vorname} ${b.Nachname}
-           Alter: ${b.Alter}
-           Ernährung: ${b.Gewohnheit}
-        `;
-          });
-        
-          textContent += `
-        Buffet-Beiträge:
-        ${Buffetmitbringen.join(", ") || "Keine"}
-        
-        Weitere Gerichte:
-        ${weitereGerichte}
-        `;
-        
-          const blob = new Blob([textContent], { type: "text/plain;charset=utf-8" });
-          const url = URL.createObjectURL(blob);
-        
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = `Polterabend_${vorname}_${nachname}.txt`;
-          a.click();
-        
-          URL.revokeObjectURL(url);
-      
-      });*/
-
        });
        });
       
@@ -1187,6 +1128,26 @@
     // =========================
     // Hochzeit
     // =========================
+
+    function openHochzeitForm(){
+        overlayHoch.classList.remove("hidden");
+        popupHochzeit.classList.remove("hidden");
+        formHochzeit.classList.remove("hidden");
+        downloadViewHoch.classList.add("hidden");
+        formHochzeit.reset();
+        formDataCache=null;
+    }
+    function closeHochzeitForm(){
+        overlayHoch.classList.add("hidden");
+        popupHochzeit.classList.add("hidden");
+        formHochzeit.classList.add("hidden");
+        downloadViewHoch.classList.add("hidden");
+        InformationenHoch.classList.add("hidden");
+        BegleiterHoch.classList.add("hidden");
+        Zimmer.classList.add("hidden");
+        formHochzeit.reset();
+        formDataCache=null;
+    }
     
     const scriptURLHochzeit = "https://script.google.com/macros/s/AKfycbx-EOdnqZ8lk5ziLzxUoG3BCocAfHOi6fut7MpxTuTDtvaEZsr4NJ5rg9SUEQCkMpb9qg/exec";
 
@@ -1207,24 +1168,17 @@
 
       //Formular Hochzeit öffnen
       openHochzeitBtn.addEventListener("click", () => {
-        overlayHoch.classList.remove("hidden");
-        popupHochzeit.classList.remove("hidden");
+        openHochzeitForm();
       });
 
       //Formular Hochzeit schließen
       closeHochzeitBtn.addEventListener("click", () => {
-        //InformationenHoch.classlist.add("hidden");
-        overlayHoch.classList.add("hidden");
-        popupHochzeit.classList.add("hidden");
-        formHochzeit.reset();
+        closeHochzeitForm()
       });
       // Schließen bei Klick auf Overlay
       overlayHoch.addEventListener("click", (e) => {
         if (e.target === overlayHoch) {
-          //InformationenHoch.classlist.add("hidden");
-          overlayHoch.classList.add("hidden");
-          popupHochzeit.classList.add("hidden");
-          formHochzeit.reset();
+          closeHochzeitForm()
         }
       });
     
@@ -1452,63 +1406,15 @@
         
           URL.revokeObjectURL(url);
         
-          cleanup();
+          closeHochzeitForm()
         });
 
-        function cleanup() {
-          downloadViewPol.classList.add("hidden");
-          popupHochzeit.classList.add("hidden");
-          overlayHoch.classList.add("hidden");
-          formPolterabend.reset();
-          formDataCache = null;
-        }
-
         document.getElementById("closeDownloadHochBtn").addEventListener("click", () => {
-          cleanup();
+          closeHochzeitForm()
         });
 
       
     });
-
-       /* ===============================
-             📥 DOWNLOAD (TXT)
-          =============================== 
-          let textContent = `
-              Hochzeitsanmeldung
-              
-              Name: ${vorname} ${nachname}
-              Teilnahme: ${teilnahme}
-              Essgewohnheiten: ${gewohnheit}
-              Begleitung: ${Begleitung}
-              Anzahl Begleiter: ${AnzahlBegleiter}
-              Übernachtung: ${Uebernachtung}
-              Zimmer: ${Zimmer}
-              
-              Kommentar:
-              ${Kommentar}
-              
-              Begleiter:
-              `;
-              
-                BegleiterHoch.forEach((b, i) => {
-                  textContent += `
-              ${i + 1}. ${b.Vorname} ${b.Nachname}
-                 Alter: ${b.Alter}
-                 Ernährung: ${b.Gewohnheit}
-              `;
-                });
-              
-                const blob = new Blob([textContent], { type: "text/plain;charset=utf-8" });
-                const url = URL.createObjectURL(blob);
-              
-                const a = document.createElement("a");
-                a.href = url;
-                a.download = `Hochzeit_${vorname}_${nachname}.txt`;
-                a.click();
-              
-                URL.revokeObjectURL(url); */
-    
-    // Klick außerhalb des Popups schließt es
     
     });
   </script>

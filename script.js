@@ -510,7 +510,7 @@
           Essgewohnheiten: ${data.gewohnheit}
           Begleitung: ${data.Begleitung}
           Anzahl Begleiter: ${data.AnzahlBegleiter}
-          Übernachtung: ${data.Uebernachtung}
+          /*Übernachtung: ${data.Uebernachtung}*/
           
           Kommentar:
           ${data.Kommentar}

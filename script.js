@@ -503,7 +503,7 @@
 
         function createTxtContent(data) {
           let text = `
-          Polterabend-Anmeldung
+          Anmeldung Scherbenfrei-Feier
           
           Name: ${data.vorname} ${data.nachname}
           Teilnahme: ${data.teilnahme}

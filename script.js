@@ -552,7 +552,7 @@
           // iOS SAFE
           const a = document.createElement("a");
           a.href = url;
-          a.download = `Polterabend_${formDataCache.vorname}_${formDataCache.nachname}.txt`;
+          a.download = `Scherbenfrei-Feier_${formDataCache.vorname}_${formDataCache.nachname}.txt`;
           document.body.appendChild(a);
           a.click();
           document.body.removeChild(a);

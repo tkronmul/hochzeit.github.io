@@ -1,7 +1,7 @@
 //Passworteingabe
     const correctPassword1 = "ba41e0776ac22a8a5062339a04b58945b1c0fd72c2b6e8fd94414635144a58f1";
     const correctPassword2 = "773b868d9c53ed15806f04e45ec481d0c337636df2ba3deb252592265bb555fb";
-    const correctPassword3 = "da19774ff487709f2f49f33ca9b8b9e6ff9660e489d7b5a51d8869f93180ea00";
+    const correctPassword3 = "3483b4c9460907b05e82513b8c965a32b0eb4404aca6da5b8edb8064058eb62f";
 
     const topMenu = document.getElementById("topMenuBar");
     const tabHoch = document.querySelector('.menuTab[data-menu="hf"]');
